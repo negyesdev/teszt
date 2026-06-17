@@ -1,0 +1,307 @@
+farming:
+  name: "Shop → Farming (&f%page%&8/&f2&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  size: 54
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+#
+    wheat_seeds:
+      type: item
+      item:
+        material: WHEAT_SEEDS
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 1
+      slot: 11
+    pumpkin_seeds:
+      type: item
+      item:
+        material: PUMPKIN_SEEDS
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 12
+    melon_seeds:
+      type: item
+      item:
+        material: MELON_SEEDS
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 1
+      slot: 13
+    beetroot_seeds:
+      type: item
+      item:
+        material: BEETROOT_SEEDS
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 1
+      slot: 14
+    beetroot:
+      type: item
+      item:
+        material: BEETROOT
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 5
+      slot: 15
+    cocoa_beans:
+      type: item
+      item:
+        material: COCOA_BEANS
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 5
+      slot: 19
+    nether_wart:
+      type: item
+      item:
+        material: NETHER_WART
+        quantity: 1
+      buyPrice: 200
+      sellPrice: 8
+      slot: 20
+    sugar_cane:
+      type: item
+      item:
+        material: SUGAR_CANE 
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 6
+      slot: 21
+    wheat:
+      type: item
+      item:
+        material: WHEAT
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 5
+      slot: 22
+    pumpkin:
+      type: item
+      item:
+        material: PUMPKIN 
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 4
+      slot: 23
+    melon:
+      type: item
+      item:
+        material: MELON 
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 3
+      slot: 24
+    cactus:
+      type: item
+      item:
+        material: CACTUS 
+        quantity: 1
+      buyPrice: 300
+      sellPrice: 5
+      slot: 25
+    oak_sapling:
+      type: item
+      item:
+        material: OAK_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 29
+    spruce_sapling:
+      type: item
+      item:
+        material: SPRUCE_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 30
+    birch_sapling:
+      type: item
+      item:
+        material: BIRCH_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 31
+    jungle_sapling:
+      type: item
+      item:
+        material: JUNGLE_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 32
+    acacia_sapling:
+      type: item
+      item:
+        material: ACACIA_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    dark_oak_sapling:
+      type: item
+      item:
+        material: DARK_OAK_SAPLING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 11
+      page: 2
+    mangrove_propagule:
+      type: item
+      item:
+        material: MANGROVE_PROPAGULE
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1
+      slot: 12
+      page: 2
+    carrot:
+      type: item
+      item:
+        material: CARROT
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 7
+      slot: 14
+      page: 2
+    potato:
+      type: item
+      item:
+        material: POTATO
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 7
+      slot: 15
+      page: 2
+    brown_mushroom:
+      type: item
+      item:
+        material: BROWN_MUSHROOM
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 5
+      slot: 19
+      page: 2
+    red_mushroom:
+      type: item
+      item:
+        material: RED_MUSHROOM
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 5
+      slot: 20
+      page: 2
+    crimson_fungus:
+      type: item
+      item:
+        material: CRIMSON_FUNGUS
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 6
+      slot: 21
+      page: 2
+    warped_fungus:
+      type: item
+      item:
+        material: WARPED_FUNGUS
+        quantity: 1
+      buyPrice: 55
+      sellPrice: 6.5
+      slot: 22
+      page: 2
+    weeping_vines:
+      type: item
+      item:
+        material: WEEPING_VINES
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 1.2
+      slot: 23
+      page: 2
+    warped_roots:
+      type: item
+      item:
+        material: WARPED_ROOTS
+        quantity: 1
+      buyPrice: 45
+      sellPrice: 1.4
+      slot: 24
+      page: 2
+    twisting_vines:
+      type: item
+      item:
+        material: TWISTING_VINES
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 1.5
+      slot: 25
+      page: 2
+    poppy:
+      type: item
+      item:
+        material: POPPY
+        quantity: 1
+      buyPrice: 10
+      sellPrice: 0.5
+      slot: 29
+      page: 2
+    chorus_plant:
+      type: item
+      item:
+        material: CHORUS_PLANT
+        quantity: 1
+      buyPrice: 30
+      slot: 30
+      page: 2
+    chorus_fruit:
+      type: item
+      item:
+        material: CHORUS_FRUIT
+        quantity: 1
+      buyPrice: 6
+      sellPrice: 2
+      slot: 31
+      page: 2
+    kelp:
+      type: item
+      item:
+        material: KELP
+        quantity: 1
+      buyPrice: 5
+      sellPrice: 0.5
+      slot: 32
+      page: 2
+    shroomlight:
+      type: item
+      item:
+        material: SHROOMLIGHT
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 7.5
+      slot: 33
+      page: 2

@@ -1,0 +1,400 @@
+enchanting:
+  name: 'Shop → Enchanting (&f%page%&8/&f2&8)'
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: '&r'
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+#
+    enchanting_table:
+      type: item
+      item:
+        material: ENCHANTING_TABLE
+        quantity: 1
+      buyPrice: 5000
+      slot: 11
+      page: 1
+    book:
+      type: item
+      item:
+        material: BOOK
+        quantity: 1
+      buyPrice: 30
+      slot: 12
+      page: 1
+    anvil:
+      type: item
+      item:
+        material: ANVIL
+        quantity: 1
+      buyPrice: 3000
+      slot: 13
+      page: 1
+    exp_bottle:
+      type: item
+      item:
+        material: EXPERIENCE_BOTTLE
+        quantity: 1
+      buyPrice: 800
+      slot: 14
+      page: 1
+    bookshelf:
+      type: item
+      item:
+        material: BOOKSHELF
+        quantity: 1
+      buyPrice: 100
+      slot: 15
+      page: 1
+    protection_4:
+      type: enchantment
+      enchantment: PROTECTION
+      enchantmentLevel: 4
+      item:
+        name: '&fProtection IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 19
+    fire_protection_4:
+      type: enchantment
+      enchantment: PROTECTION_FIRE
+      enchantmentLevel: 4
+      item:
+        name: '&fFire Protection IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 20
+    feather_falling_4:
+      type: enchantment
+      enchantment: PROTECTION_FALL
+      enchantmentLevel: 4
+      item:
+        name: '&fFeather Falling IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 21
+    blast_protection_4:
+      type: enchantment
+      enchantment: BLAST_PROTECTION
+      enchantmentLevel: 4
+      item:
+        name: '&fBlast Protection IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 22
+    projectile_protection_4:
+      type: enchantment
+      enchantment: PROJECTILE_PROTECTION
+      enchantmentLevel: 4
+      item:
+        name: '&fProjectile Protection IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 23
+    respiration_3:
+      type: enchantment
+      enchantment: RESPIRATION
+      enchantmentLevel: 3
+      item:
+        name: '&fRespiration III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 24
+    aqua_affinity_1:
+      type: enchantment
+      enchantment: AQUA_AFFINITY
+      enchantmentLevel: 1
+      item:
+        name: '&fAqua Affinity I'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 25
+    thorns_3:
+      type: enchantment
+      enchantment: THORNS
+      enchantmentLevel: 3
+      item:
+        name: '&fThorns III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 28
+    depth_strider_3:
+      type: enchantment
+      enchantment: DEPTH_STRIDER
+      enchantmentLevel: 3
+      item:
+        name: '&fDepth Strider III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 29
+    sharpness_5:
+      type: enchantment
+      enchantment: SHARPNESS
+      enchantmentLevel: 5
+      item:
+        name: '&fSharpness V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 30
+    smite_5:
+      type: enchantment
+      enchantment: SMITE
+      enchantmentLevel: 5
+      item:
+        name: '&fSmite V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 31
+    bane_of_arthropods_5:
+      type: enchantment
+      enchantment: BANE_OF_ARTHROPODS
+      enchantmentLevel: 5
+      item:
+        name: '&fBane Of Arthropods V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 32
+    impaling_5:
+      type: enchantment
+      enchantment: IMPALING
+      enchantmentLevel: 5
+      item:
+        name: '&fImpaling V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 33
+    riptide_3:
+      type: enchantment
+      enchantment: RIPTIDE
+      enchantmentLevel: 3
+      item:
+        name: '&fRiptide III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 34
+    knockback_2:
+      type: enchantment
+      enchantment: KNOCKBACK
+      enchantmentLevel: 2
+      item:
+        name: '&fKnockback II'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 10
+      page: 2
+    fire_aspect_2:
+      type: enchantment
+      enchantment: FIRE_ASPECT
+      enchantmentLevel: 2
+      item:
+        name: '&fFire Aspect II'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 11
+      page: 2
+    looting_3:
+      type: enchantment
+      enchantment: LOOTING
+      enchantmentLevel: 3
+      item:
+        name: '&fLooting III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 12
+      page: 2
+    efficiency_5:
+      type: enchantment
+      enchantment: EFFICIENCY
+      enchantmentLevel: 5
+      item:
+        name: '&fEfficiency V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 40000
+      slot: 13
+      page: 2
+    silk_touch_1:
+      type: enchantment
+      enchantment: SILK_TOUCH
+      enchantmentLevel: 1
+      item:
+        name: '&fSilk Touch I'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 40000
+      slot: 14
+      page: 2
+    unbreaking_3:
+      type: enchantment
+      enchantment: UNBREAKING
+      enchantmentLevel: 3
+      item:
+        name: '&fUnbreaking III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 40000
+      slot: 15
+      page: 2
+    fortune_3:
+      type: enchantment
+      enchantment: FORTUNE
+      enchantmentLevel: 3
+      item:
+        name: '&fFortune III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 50000
+      slot: 16
+      page: 2
+    power_5:
+      type: enchantment
+      enchantment: POWER
+      enchantmentLevel: 5
+      item:
+        name: '&fPower V'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 19
+      page: 2
+    punch_2:
+      type: enchantment
+      enchantment: PUNCH
+      enchantmentLevel: 2
+      item:
+        name: '&fPunch II'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 20
+      page: 2
+    flame_1:
+      type: enchantment
+      enchantment: FLAME
+      enchantmentLevel: 1
+      item:
+        name: '&fFlame I'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 21
+      page: 2
+    infinity_1:
+      type: enchantment
+      enchantment: INFINITY
+      enchantmentLevel: 1
+      item:
+        name: '&fInfinity I'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 22
+      page: 2
+    luck_of_the_sea_3:
+      type: enchantment
+      enchantment: LUCK_OF_THE_SEA
+      enchantmentLevel: 3
+      item:
+        name: '&fLuck of the Sea III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 23
+      page: 2
+    lure_3:
+      type: enchantment
+      enchantment: LURE
+      enchantmentLevel: 3
+      item:
+        name: '&fLure III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 24
+      page: 2
+    frost_walker_2:
+      type: enchantment
+      enchantment: FROST_WALKER
+      enchantmentLevel: 2
+      item:
+        name: '&fFrost Walker II'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 25
+      page: 2
+    sweeping_edge_3:
+      type: enchantment
+      enchantment: SWEEPING_EDGE
+      enchantmentLevel: 3
+      item:
+        name: '&fSweeping Edge III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 29
+      page: 2
+    mending_1:
+      type: enchantment
+      enchantment: MENDING
+      enchantmentLevel: 1
+      item:
+        name: '&fMending I'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 30
+      page: 2
+    quiick_charge_3:
+      type: enchantment
+      enchantment: QUICK_CHARGE
+      enchantmentLevel: 3
+      item:
+        name: '&fQuick Charge III'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 32
+      page: 2
+    piercing_4:
+      type: enchantment
+      enchantment: PIERCING
+      enchantmentLevel: 4
+      item:
+        name: '&fPiercing IV'
+        material: ENCHANTED_BOOK
+        quantity: 1
+      buyPrice: 20000
+      slot: 33
+      page: 2

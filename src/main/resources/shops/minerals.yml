@@ -1,0 +1,425 @@
+minerals:
+  name: "Shop → Minerals (&f%page%&8/&f2&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+#
+    netherite_scrap:
+      type: item
+      item:
+        material: NETHERITE_SCRAP
+        quantity: 1
+      buyPrice: 1250
+      sellPrice: 80
+      slot: 9
+    netherite_ingot:
+      type: item
+      item:
+        material: NETHERITE_INGOT
+        quantity: 1
+      buyPrice: 5500
+      sellPrice: 400
+      slot: 18
+    netherite_block:
+      type: item
+      item:
+        material: NETHERITE_BLOCK
+        quantity: 1
+      buyPrice: 49500
+      sellPrice: 3600
+      slot: 27
+    diamond_ore:
+      type: item
+      item:
+        material: DIAMOND_ORE
+        quantity: 1
+      buyPrice: 225
+      sellPrice: 30
+      slot: 1
+    deepslate_diamond_ore:
+      type: item
+      item:
+        material: DEEPSLATE_DIAMOND_ORE
+        quantity: 1
+      buyPrice: 225
+      sellPrice: 30
+      slot: 10
+    diamond:
+      type: item
+      item:
+        material: DIAMOND
+        quantity: 1
+      buyPrice: 200
+      sellPrice: 30
+      slot: 19
+    diamond_block:
+      type: item
+      item:
+        material: DIAMOND_BLOCK
+        quantity: 1
+      buyPrice: 2000
+      sellPrice: 270
+      slot: 28
+    emerald_ore:
+      type: item
+      item:
+        material: EMERALD_ORE
+        quantity: 1
+      buyPrice: 175
+      sellPrice: 20
+      slot: 2
+    deepslate_emerald_ore:
+      type: item
+      item:
+        material: DEEPSLATE_EMERALD_ORE
+        quantity: 1
+      buyPrice: 175
+      sellPrice: 20
+      slot: 11
+    emerald:
+      type: item
+      item:
+        material: EMERALD
+        quantity: 1
+      buyPrice: 150
+      sellPrice: 20
+      slot: 20
+    emerald_block:
+      type: item
+      item:
+        material: EMERALD_BLOCK
+        quantity: 1
+      buyPrice: 1350
+      sellPrice: 180
+      slot: 29
+    gold_ore:
+      type: item
+      item:
+        material: GOLD_ORE
+        quantity: 1
+      buyPrice: 12
+      sellPrice: 1.5
+      slot: 3
+    deepslate_gold_ore:
+      type: item
+      item:
+        material: DEEPSLATE_GOLD_ORE
+        quantity: 1
+      buyPrice: 12
+      sellPrice: 1.5
+      slot: 12
+    gold:
+      type: item
+      item:
+        material: GOLD_INGOT
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 15
+      slot: 21
+    gold_block:
+      type: item
+      item:
+        material: GOLD_BLOCK
+        quantity: 1
+      buyPrice: 720
+      sellPrice: 135
+      slot: 30
+    iron_ore:
+      type: item
+      item:
+        material: IRON_ORE
+        quantity: 1
+      buyPrice: 9.5
+      sellPrice: 1
+      slot: 4
+    deepslate_iron_ore:
+      type: item
+      item:
+        material: DEEPSLATE_IRON_ORE
+        quantity: 1
+      buyPrice: 9.5
+      sellPrice: 1
+      slot: 13
+    iron:
+      type: item
+      item:
+        material: IRON_INGOT
+        quantity: 1
+      buyPrice: 70
+      sellPrice: 10
+      slot: 22
+    iron_block:
+      type: item
+      item:
+        material: IRON_BLOCK
+        quantity: 1
+      buyPrice: 630
+      sellPrice: 90
+      slot: 31
+    lapis_ore:
+      type: item
+      item:
+        material: LAPIS_ORE
+        quantity: 1
+      buyPrice: 150
+      sellPrice: 15
+      slot: 5
+    deepslate_lapis_ore:
+      type: item
+      item:
+        material: DEEPSLATE_LAPIS_ORE
+        quantity: 1
+      buyPrice: 150
+      sellPrice: 15
+      slot: 14
+    lapis_lazuli:
+      type: item
+      item:
+        material: LAPIS_LAZULI
+        quantity: 1
+      buyPrice: 15
+      sellPrice: 1
+      slot: 23
+    lapis_block:
+      type: item
+      item:
+        material: LAPIS_BLOCK
+        quantity: 1
+      buyPrice: 135
+      sellPrice: 9
+      slot: 32
+    redstone_ore:
+      type: item
+      item:
+        material: REDSTONE_ORE
+        quantity: 1
+      buyPrice: 125
+      sellPrice: 25
+      slot: 6
+    deepslate_redstone_ore:
+      type: item
+      item:
+        material: DEEPSLATE_REDSTONE_ORE
+        quantity: 1
+      buyPrice: 125
+      sellPrice: 25
+      slot: 15
+    redstone:
+      type: item
+      item:
+        material: REDSTONE
+        quantity: 1
+      buyPrice: 15
+      sellPrice: 3
+      slot: 24
+    redstone_block:
+      type: item
+      item:
+        material: REDSTONE_BLOCK
+        quantity: 1
+      buyPrice: 135
+      sellPrice: 27
+      slot: 33
+    coal_ore:
+      type: item
+      item:
+        material: COAL_ORE
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 2
+      slot: 7
+    deepslate_coal_ore:
+      type: item
+      item:
+        material: DEEPSLATE_COAL_ORE
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 2
+      slot: 16
+    coal:
+      type: item
+      item:
+        material: COAL
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 2
+      slot: 25
+    coal_block:
+      type: item
+      item:
+        material: COAL_BLOCK
+        quantity: 1
+      buyPrice: 270
+      sellPrice: 18
+      slot: 34
+    quartz_ore:
+      type: item
+      item:
+        material: NETHER_QUARTZ_ORE
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 0.5
+      slot: 17
+    quartz:
+      type: item
+      item:
+        material: QUARTZ
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 0.3
+      slot: 26
+    quartz_block:
+      type: item
+      item:
+        material: QUARTZ_BLOCK
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 1
+      slot: 35
+#
+#
+# PAGE #2
+#
+#
+    gold_nugget:
+      type: item
+      item:
+        material: GOLD_NUGGET
+        quantity: 1
+      buyPrice: 9
+      sellPrice: 1.5
+      slot: 2
+      page: 2
+    raw_gold:
+      type: item
+      item:
+        material: RAW_GOLD
+        quantity: 1
+      buyPrice: 12
+      sellPrice: 1.5
+      slot: 11
+      page: 2
+    nether_gold_ore:
+      type: item
+      item:
+        material: NETHER_GOLD_ORE
+        quantity: 1
+      buyPrice: 10
+      sellPrice: 1.5
+      slot: 20
+      page: 2
+    block_of_raw_gold:
+      type: item
+      item:
+        material: RAW_GOLD_BLOCK
+        quantity: 1
+      buyPrice: 108
+      sellPrice: 13.5
+      slot: 29
+      page: 2
+    iron_nugget:
+      type: item
+      item:
+        material: IRON_NUGGET
+        quantity: 1
+      buyPrice: 8
+      sellPrice: 1
+      slot: 3
+      page: 2
+    raw_iron:
+      type: item
+      item:
+        material: RAW_IRON
+        quantity: 1
+      buyPrice: 9.5
+      sellPrice: 1
+      slot: 12
+      page: 2
+    block_of_raw_iron:
+      type: item
+      item:
+        material: RAW_IRON_BLOCK
+        quantity: 1
+      buyPrice: 80.5
+      sellPrice: 9
+      slot: 21
+      page: 2
+    charcoal:
+      type: item
+      item:
+        material: CHARCOAL
+        quantity: 1
+      buyPrice: 32
+      sellPrice: 2
+      slot: 13
+      page: 2
+    raw_copper:
+      type: item
+      item:
+        material: RAW_COPPER
+        quantity: 1
+      buyPrice: 35
+      sellPrice: 1.5
+      slot: 14
+      page: 2
+    block_of_raw_copper:
+      type: item
+      item:
+        material: RAW_COPPER_BLOCK
+        quantity: 1
+      buyPrice: 315
+      sellPrice: 13.5
+      slot: 23
+      page: 2
+    copper_ore:
+      type: item
+      item:
+        material: COPPER_ORE
+        quantity: 1
+      buyPrice: 35
+      sellPrice: 1.5
+      slot: 6
+      page: 2
+    deepslate_copper_ore:
+      type: item
+      item:
+        material: DEEPSLATE_COPPER_ORE
+        quantity: 1
+      buyPrice: 35
+      sellPrice: 1.5
+      slot: 15
+      page: 2
+    cooper:
+      type: item
+      item:
+        material: COPPER_INGOT
+        quantity: 1
+      buyPrice: 41.5
+      sellPrice: 3
+      slot: 24
+      page: 2
+    cooper_block:
+      type: item
+      item:
+        material: COPPER_BLOCK
+        quantity: 1
+      buyPrice: 165
+      sellPrice: 15
+      slot: 33
+      page: 2

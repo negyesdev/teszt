@@ -4,7 +4,7 @@ main: dev.negyes.geneshop.GeNeShop
 api-version: '1.21'
 author: negyes Gerii06
 authors: [negyes Gerii06]
-description: Dinamikus arazasu GUI shop plugin - eladaskor esik az ar, majd 2-3 ora alatt visszaall.
+description: ShopGUI+ stilusu, dinamikus arazasu GUI shop - eladaskor esik az ar, majd 2-3 ora alatt visszaall.
 website: https://github.com/negyesdev/teszt
 softdepend: [Vault]
 

@@ -1,0 +1,643 @@
+spawners:
+  name: 'Shop → Spawners (&f%page%&8/&f4&8)'
+  size: 54
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: '&r'
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+    balance-page-3:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 3
+    balance-page-4:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 4
+#
+#
+#
+    pig:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PIG
+        quantity: 1
+      buyPrice: 200000
+      slot: 11
+    sheep:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SHEEP
+        quantity: 1
+      buyPrice: 300000
+      slot: 12
+    cow:
+      type: item
+      item:
+        material: SPAWNER
+        mob: COW
+        quantity: 1
+      buyPrice: 450000
+      slot: 13
+    mooshroom:
+      type: item
+      item:
+        material: SPAWNER
+        mob: MUSHROOM_COW
+        quantity: 1
+      buyPrice: 450000
+      slot: 14
+    chicken:
+      type: item
+      item:
+        material: SPAWNER
+        mob: CHICKEN
+        quantity: 1
+      buyPrice: 350000
+      slot: 15
+    rabbit:
+      type: item
+      item:
+        material: SPAWNER
+        mob: RABBIT
+        quantity: 1
+      buyPrice: 200000
+      slot: 19
+    squid:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SQUID
+        quantity: 1
+      buyPrice: 750000
+      slot: 20
+    glow_squid:
+      type: item
+      item:
+        material: SPAWNER
+        mob: GLOW_SQUID
+        quantity: 1
+      buyPrice: 800000
+      slot: 21
+    goat:
+      type: item
+      item:
+        material: SPAWNER
+        mob: GOAT
+        quantity: 1
+      buyPrice: 400000
+      slot: 22
+    axolotl:
+      type: item
+      item:
+        material: SPAWNER
+        mob: AXOLOTL
+        quantity: 1
+      buyPrice: 500000
+      slot: 23
+    ocelot:
+      type: item
+      item:
+        material: SPAWNER
+        mob: OCELOT
+        quantity: 1
+      buyPrice: 300000
+      slot: 24
+    cat:
+      type: item
+      item:
+        material: SPAWNER
+        mob: CAT
+        quantity: 1
+      buyPrice: 300000
+      slot: 25
+    fox:
+      type: item
+      item:
+        material: SPAWNER
+        mob: FOX
+        quantity: 1
+      buyPrice: 250000
+      slot: 29
+    llama:
+      type: item
+      item:
+        material: SPAWNER
+        mob: LLAMA
+        quantity: 1
+      buyPrice: 450000
+      slot: 30
+    trader_llama:
+      type: item
+      item:
+        material: SPAWNER
+        mob: TRADER_LLAMA
+        quantity: 1
+      buyPrice: 550000
+      slot: 31
+    cod:
+      type: item
+      item:
+        material: SPAWNER
+        mob: COD
+        quantity: 1
+      buyPrice: 350000
+      slot: 32
+    pufferfish:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PUFFERFISH
+        quantity: 1
+      buyPrice: 350000
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    salmon:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SALMON
+        quantity: 1
+      buyPrice: 350000
+      slot: 11
+      page: 2
+    tropical_fish:
+      type: item
+      item:
+        material: SPAWNER
+        mob: TROPICAL_FISH
+        quantity: 1
+      buyPrice: 350000
+      slot: 12
+      page: 2
+    dolphin:
+      type: item
+      item:
+        material: SPAWNER
+        mob: DOLPHIN
+        quantity: 1
+      buyPrice: 400000
+      slot: 13
+      page: 2
+    turtle:
+      type: item
+      item:
+        material: SPAWNER
+        mob: TURTLE
+        quantity: 1
+      buyPrice: 500000
+      slot: 14
+      page: 2
+    donkey:
+      type: item
+      item:
+        material: SPAWNER
+        mob: DONKEY
+        quantity: 1
+      buyPrice: 500000
+      slot: 15
+      page: 2
+    mule:
+      type: item
+      item:
+        material: SPAWNER
+        mob: MULE
+        quantity: 1
+      buyPrice: 500000
+      slot: 19
+      page: 2
+    horse:
+      type: item
+      item:
+        material: SPAWNER
+        mob: HORSE
+        quantity: 1
+      buyPrice: 450000
+      slot: 20
+      page: 2
+    zombie_horse:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ZOMBIE_HORSE
+        quantity: 1
+      buyPrice: 500000
+      slot: 21
+      page: 2
+    skeleton_horse:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SKELETON_HORSE
+        quantity: 1
+      buyPrice: 500000
+      slot: 22
+      page: 2
+    bat:
+      type: item
+      item:
+        material: SPAWNER
+        mob: BAT
+        quantity: 1
+      buyPrice: 200000
+      slot: 23
+      page: 2
+    vex:
+      type: item
+      item:
+        material: SPAWNER
+        mob: VEX
+        quantity: 1
+      buyPrice: 250000
+      slot: 24
+      page: 2
+    villager:
+      type: item
+      item:
+        material: SPAWNER
+        mob: VILLAGER
+        quantity: 1
+      buyPrice: 500000
+      slot: 25
+      page: 2
+    wandering_trader:
+      type: item
+      item:
+        material: SPAWNER
+        mob: WANDERING_TRADER
+        quantity: 1
+      buyPrice: 300000
+      slot: 29
+      page: 2
+    pillager:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PILLAGER
+        quantity: 1
+      buyPrice: 300000
+      slot: 30
+      page: 2
+    zombie_villager:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ZOMBIE_VILLAGER
+        quantity: 1
+      buyPrice: 300000
+      slot: 31
+      page: 2
+    evoker:
+      type: item
+      item:
+        material: SPAWNER
+        mob: EVOKER
+        quantity: 1
+      buyPrice: 450000
+      slot: 32
+      page: 2
+    vindicator:
+      type: item
+      item:
+        material: SPAWNER
+        mob: VINDICATOR
+        quantity: 1
+      buyPrice: 2200000
+      slot: 33
+      page: 2
+#
+#
+# PAGE #3
+#
+#
+    creeper:
+      type: item
+      item:
+        material: SPAWNER
+        mob: CREEPER
+        quantity: 1
+      buyPrice: 400000
+      slot: 11
+      page: 3
+    skeleton:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SKELETON
+        quantity: 1
+      buyPrice: 300000
+      slot: 12
+      page: 3
+    wither_skeleton:
+      type: item
+      item:
+        material: SPAWNER
+        mob: WITHER_SKELETON
+        quantity: 1
+      buyPrice: 300000
+      slot: 13
+      page: 3
+    stray:
+      type: item
+      item:
+        material: SPAWNER
+        mob: STRAY
+        quantity: 1
+      buyPrice: 500000
+      slot: 14
+      page: 3
+    spider:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SPIDER
+        quantity: 1
+      buyPrice: 300000
+      slot: 15
+      page: 3
+    cave_spider:
+      type: item
+      item:
+        material: SPAWNER
+        mob: CAVE_SPIDER
+        quantity: 1
+      buyPrice: 300000
+      slot: 19
+      page: 3
+    zombie:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ZOMBIE
+        quantity: 1
+      buyPrice: 300000
+      slot: 20
+      page: 3
+    drowned:
+      type: item
+      item:
+        material: SPAWNER
+        mob: DROWNED
+        quantity: 1
+      buyPrice: 850000
+      slot: 21
+      page: 3
+    phantom:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PHANTOM
+        quantity: 1
+      buyPrice: 900000
+      slot: 22
+      page: 3
+    husk:
+      type: item
+      item:
+        material: SPAWNER
+        mob: HUSK
+        quantity: 1
+      buyPrice: 300000
+      slot: 23
+      page: 3
+    slime:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SLIME
+        quantity: 1
+      buyPrice: 400000
+      slot: 24
+      page: 3
+    piglin:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PIGLIN
+        quantity: 1
+      buyPrice: 550000
+      slot: 25
+      page: 3
+    zombified_piglin:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ZOMBIFIED_PIGLIN
+        quantity: 1
+      buyPrice: 1000000
+      slot: 29
+      page: 3
+    piglin_brute:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PIGLIN_BRUTE
+        quantity: 1
+      buyPrice: 550000
+      slot: 30
+      page: 3
+    zoglin:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ZOGLIN
+        quantity: 1
+      buyPrice: 350000
+      slot: 31
+      page: 3
+    hoglin:
+      type: item
+      item:
+        material: SPAWNER
+        mob: HOGLIN
+        quantity: 1
+      buyPrice: 600000
+      slot: 32
+      page: 3
+    strider:
+      type: item
+      item:
+        material: SPAWNER
+        mob: STRIDER
+        quantity: 1
+      buyPrice: 550000
+      slot: 33
+      page: 3
+#
+#
+# PAGE #4
+#
+#
+    enderman:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ENDERMAN
+        quantity: 1
+      buyPrice: 1000000
+      slot: 11
+      page: 4
+    endermite:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ENDERMITE
+        quantity: 1
+      buyPrice: 200000
+      slot: 12
+      page: 4
+    silverfish:
+      type: item
+      item:
+        material: SPAWNER
+        mob: SILVERFISH
+        quantity: 1
+      buyPrice: 200000
+      slot: 13
+      page: 4
+    ghast:
+      type: item
+      item:
+        material: SPAWNER
+        mob: GHAST
+        quantity: 1
+      buyPrice: 1000000
+      slot: 14
+      page: 4
+    blaze:
+      type: item
+      item:
+        material: SPAWNER
+        mob: BLAZE
+        quantity: 1
+      buyPrice: 1000000
+      slot: 15
+      page: 4
+    magma_cube:
+      type: item
+      item:
+        material: SPAWNER
+        mob: MAGMA_CUBE
+        quantity: 1
+      buyPrice: 1250000
+      slot: 19
+      page: 4
+    guardian:
+      type: item
+      item:
+        material: SPAWNER
+        mob: GUARDIAN
+        quantity: 1
+      buyPrice: 1250000
+      slot: 20
+      page: 4
+    elder_guardian:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ELDER_GUARDIAN
+        quantity: 1
+      buyPrice: 1300000
+      slot: 21
+      page: 4
+    polar_bear:
+      type: item
+      item:
+        material: SPAWNER
+        mob: POLAR_BEAR
+        quantity: 1
+      buyPrice: 300000
+      slot: 22
+      page: 4
+    panda:
+      type: item
+      item:
+        material: SPAWNER
+        mob: PANDA
+        quantity: 1
+      buyPrice: 300000
+      slot: 23
+      page: 4
+    ravager:
+      type: item
+      item:
+        material: SPAWNER
+        mob: RAVAGER
+        quantity: 1
+      buyPrice: 600000
+      slot: 24
+      page: 4
+    iron_golem:
+      type: item
+      item:
+        material: SPAWNER
+        mob: IRON_GOLEM
+        quantity: 1
+      buyPrice: 1100000
+      slot: 25
+      page: 4
+    bee:
+      type: item
+      item:
+        material: SPAWNER
+        mob: BEE
+        quantity: 1
+      buyPrice: 600000
+      slot: 29
+      page: 4
+    tadpole:
+      type: item
+      item:
+        material: SPAWNER
+        mob: TADPOLE
+        quantity: 1
+      buyPrice: 200000
+      slot: 30
+      page: 4
+    frog:
+      type: item
+      item:
+        material: SPAWNER
+        mob: FROG
+        quantity: 1
+      buyPrice: 200000
+      slot: 31
+      page: 4
+    allay:
+      type: item
+      item:
+        material: SPAWNER
+        mob: ALLAY
+        quantity: 1
+      buyPrice: 300000
+      slot: 32
+      page: 4
+    warden:
+      type: item
+      item:
+        material: SPAWNER
+        mob: WARDEN
+        quantity: 1
+      buyPrice: 1350000
+      slot: 33
+      page: 4

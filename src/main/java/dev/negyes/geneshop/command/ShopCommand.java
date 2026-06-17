@@ -1,11 +1,11 @@
 package dev.negyes.geneshop.command;
 
 import dev.negyes.geneshop.GeNeShop;
-import dev.negyes.geneshop.shop.ShopCategory;
+import dev.negyes.geneshop.shop.Shop;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * A /shop parancs.
+ * A /shop parancs (fomenu vagy konkret kategoria).
  * GeNe Shop - keszitette: negyes Gerii06
  */
 public class ShopCommand implements CommandExecutor, TabCompleter {
@@ -27,24 +27,28 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            plugin.getMessages().send(sender, "players-only");
+            plugin.getLang().send(sender, "MSG.INGAMEONLY");
             return true;
         }
         if (!player.hasPermission("geneshop.use")) {
-            plugin.getMessages().send(player, "no-permission");
+            plugin.getLang().send(player, "MSG.NOACCESS");
             return true;
         }
 
         if (args.length >= 1) {
-            ShopCategory category = plugin.getShopManager().getCategory(args[0]);
-            if (category == null) {
-                plugin.getMessages().send(player, "unknown-category", "%category%", args[0]);
+            Shop shop = plugin.getShopManager().getShop(args[0].toLowerCase(Locale.ROOT));
+            if (shop == null) {
+                plugin.getLang().send(player, "MSG.INVALIDSHOP", "%shop%", args[0]);
                 return true;
             }
-            plugin.getShopGUI().openCategory(player, category, 0);
+            plugin.getShopGUI().openShop(player, shop, 1);
             return true;
         }
 
+        if (plugin.getShopManager().isMainMenuDisabled()) {
+            plugin.getLang().send(player, "MSG.MAINMENUDISABLED");
+            return true;
+        }
         plugin.getShopGUI().openMain(player);
         return true;
     }
@@ -54,9 +58,9 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
         List<String> result = new ArrayList<>();
         if (args.length == 1) {
             String prefix = args[0].toLowerCase(Locale.ROOT);
-            for (ShopCategory category : plugin.getShopManager().getCategories()) {
-                if (category.getId().toLowerCase(Locale.ROOT).startsWith(prefix)) {
-                    result.add(category.getId());
+            for (String id : plugin.getShopManager().getShops().keySet()) {
+                if (id.toLowerCase(Locale.ROOT).startsWith(prefix)) {
+                    result.add(id);
                 }
             }
         }

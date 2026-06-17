@@ -51,4 +51,16 @@ public class EconomyHook {
     public double balance(OfflinePlayer player) {
         return economy == null ? 0.0 : economy.getBalance(player);
     }
+
+    /** A penzosszeg formazasa a gazdasagi plugin stilusaban (pl. "$1,250"). */
+    public String format(double amount) {
+        if (economy == null) {
+            return String.format(java.util.Locale.US, "$%,.2f", amount);
+        }
+        try {
+            return economy.format(amount);
+        } catch (Exception e) {
+            return String.format(java.util.Locale.US, "$%,.2f", amount);
+        }
+    }
 }

@@ -1,0 +1,1008 @@
+decoration:
+  name: "Shop → Decoration (&f%page%&8/&f6&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+    balance-page-3:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 3
+    balance-page-4:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 4
+    balance-page-5:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 5
+    balance-page-6:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 6
+#
+#
+# PAGE #1
+#
+#
+    oak_leaves:
+      type: item
+      item:
+        material: OAK_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 1
+    spruce_leaves:
+      type: item
+      item:
+        material: SPRUCE_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 2
+    birch_leaves:
+      type: item
+      item:
+        material: BIRCH_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 3
+    jungle_leaves:
+      type: item
+      item:
+        material: JUNGLE_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 4
+    acacia_leaves:
+      type: item
+      item:
+        material: ACACIA_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 5
+    dark_oak_leaves:
+      type: item
+      item:
+        material: DARK_OAK_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 6
+    azalea_leaves:
+      type: item
+      item:
+        material: AZALEA_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 7
+    flowering_azalea_leaves:
+      type: item
+      item:
+        material: FLOWERING_AZALEA_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 9
+    mangrove_leaves:
+      type: item
+      item:
+        material: MANGROVE_LEAVES
+        quantity: 1
+      buyPrice: 3
+      slot: 10
+    mangrove_roots:
+      type: item
+      item:
+        material: MANGROVE_ROOTS
+        quantity: 1
+      buyPrice: 3
+      slot: 16
+    muddy_mangrove_roots:
+      type: item
+      item:
+        material: MUDDY_MANGROVE_ROOTS
+        quantity: 1
+      buyPrice: 3
+      slot: 17
+#
+    small_dripleaf:
+      type: item
+      item:
+        material: SMALL_DRIPLEAF
+        quantity: 1
+      buyPrice: 3
+      slot: 11
+    big_dripleaf:
+      type: item
+      item:
+        material: BIG_DRIPLEAF
+        quantity: 1
+      buyPrice: 5
+      slot: 12
+    azalea:
+      type: item
+      item:
+        material: AZALEA
+        quantity: 1
+      buyPrice: 3
+      slot: 14
+    flowering_azalea:
+      type: item
+      item:
+        material: FLOWERING_AZALEA
+        quantity: 1
+      buyPrice: 3
+      slot: 15
+    grass:
+      type: item
+      item:
+        material: SHORT_GRASS
+        quantity: 1
+      buyPrice: 1
+      slot: 19
+    seagrass:
+      type: item
+      item:
+        material: SEAGRASS
+        quantity: 1
+      buyPrice: 5
+      sellPrice: 0.1
+      slot: 20
+    fern:
+      type: item
+      item:
+        material: FERN
+        quantity: 1
+      buyPrice: 1
+      slot: 21
+    double_tallgrass:
+      type: item
+      item:
+        material: TALL_GRASS
+        quantity: 1
+      buyPrice: 1
+      slot: 22
+    double_fern:
+      type: item
+      item:
+        material: LARGE_FERN
+        quantity: 1
+      buyPrice: 1
+      slot: 23
+    lily_pad:
+      type: item
+      item:
+        material: LILY_PAD
+        quantity: 1
+      buyPrice: 1
+      slot: 24
+    bamboo:
+      type: item
+      item:
+        material: BAMBOO
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 1
+      slot: 25
+    sea_pickle:
+      type: item
+      item:
+        material: SEA_PICKLE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 30
+    crimson_roots:
+      type: item
+      item:
+        material: CRIMSON_ROOTS
+        quantity: 1
+      buyPrice: 2.5
+      slot: 31
+    nether_sprouts:
+      type: item
+      item:
+        material: NETHER_SPROUTS
+        quantity: 1
+      buyPrice: 3
+      slot: 32
+#
+#
+# PAGE #2
+#
+#
+    dandelion:
+      type: item
+      item:
+        material: DANDELION
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 10
+      page: 2
+    poppy:
+      type: item
+      item:
+        material: POPPY
+        quantity: 1
+      buyPrice: 10
+      sellPrice: 0.5
+      slot: 11
+      page: 2
+    allium:
+      type: item
+      item:
+        material: ALLIUM
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 12
+      page: 2
+    azure_bluet:
+      type: item
+      item:
+        material: AZURE_BLUET
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 13
+      page: 2
+    vines:
+      type: item
+      item:
+        material: VINE
+        quantity: 1
+      buyPrice: 1
+      slot: 13
+    blue_orchid:
+      type: item
+      item:
+        material: BLUE_ORCHID
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 14
+      page: 2
+    oxeye_daisy:
+      type: item
+      item:
+        material: OXEYE_DAISY
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 15
+      page: 2
+    sunflower:
+      type: item
+      item:
+        material: SUNFLOWER
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 16
+      page: 2
+    lily_of_the_valley:
+      type: item
+      item:
+        material: LILY_OF_THE_VALLEY
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 19
+      page: 2
+    cornflower:
+      type: item
+      item:
+        material: CORNFLOWER
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 20
+      page: 2
+    wither_rose:
+      type: item
+      item:
+        material: WITHER_ROSE
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 21
+      page: 2
+    red_tulip:
+      type: item
+      item:
+        material: RED_TULIP
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 22
+      page: 2
+    orange_tulip:
+      type: item
+      item:
+        material: ORANGE_TULIP
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 23
+      page: 2
+    pink_tulip:
+      type: item
+      item:
+        material: PINK_TULIP
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 24
+      page: 2
+    white_tulip:
+      type: item
+      item:
+        material: WHITE_TULIP
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 25
+      page: 2
+    rose_bush:
+      type: item
+      item:
+        material: ROSE_BUSH
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 29
+      page: 2
+    peony:
+      type: item
+      item:
+        material: PEONY
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 30
+      page: 2
+    lilac:
+      type: item
+      item:
+        material: LILAC
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 31
+      page: 2
+    chorus_flower:
+      type: item
+      item:
+        material: CHORUS_FLOWER
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 1
+      slot: 32
+      page: 2
+    dead_bush:
+      type: item
+      item:
+        material: DEAD_BUSH
+        quantity: 1
+      buyPrice: 3
+      sellPrice: 0.5
+      slot: 33
+      page: 2
+#
+#
+# PAGE #3
+#
+#
+    hanging_roots:
+      type: item
+      item:
+        material: HANGING_ROOTS
+        quantity: 1
+      buyPrice: 3
+      sellPrice: 0.1
+      slot: 11
+      page: 3
+    pointed_dripstone:
+      type: item
+      item:
+        material: POINTED_DRIPSTONE
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.1
+      slot: 12
+      page: 3
+    spore_blossom:
+      type: item
+      item:
+        material: SPORE_BLOSSOM
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 0.2
+      slot: 13
+      page: 3
+    end_rod:
+      type: item
+      item:
+        material: END_ROD
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 0.5
+      slot: 14
+      page: 3
+    lightning_rod:
+      type: item
+      item:
+        material: LIGHTNING_ROD
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 0.5
+      slot: 15
+      page: 3
+    cobweb:
+      type: item
+      item:
+        material: COBWEB
+        quantity: 1
+      buyPrice: 35
+      slot: 19
+      page: 3
+    armor_stand:
+      type: item
+      item:
+        material: ARMOR_STAND
+        quantity: 1
+      buyPrice: 125
+      slot: 20
+      page: 3
+    bed:
+      type: item
+      item:
+        material: RED_BED
+        quantity: 1
+      buyPrice: 50
+      slot: 21
+      page: 3
+    flower_pot:
+      type: item
+      item:
+        material: FLOWER_POT
+        quantity: 1
+      buyPrice: 4
+      sellPrice: 0.5
+      slot: 22
+      page: 3
+    painting:
+      type: item
+      item:
+        material: PAINTING
+        quantity: 1
+      buyPrice: 80
+      slot: 23
+      page: 3
+    item_frame:
+      type: item
+      item:
+        material: ITEM_FRAME
+        quantity: 1
+      buyPrice: 75
+      slot: 24
+      page: 3
+    glow_item_frame:
+      type: item
+      item:
+        material: GLOW_ITEM_FRAME
+        quantity: 1
+      buyPrice: 80
+      slot: 25
+      page: 3
+    small_amethyst_bud:
+      type: item
+      item:
+        material: SMALL_AMETHYST_BUD
+        quantity: 1
+      buyPrice: 100
+      slot: 29
+      page: 3
+    medium_amethyst_bud:
+      type: item
+      item:
+        material: MEDIUM_AMETHYST_BUD
+        quantity: 1
+      buyPrice: 125
+      slot: 30
+      page: 3
+    moss_carpet:
+      type: item
+      item:
+        material: MOSS_CARPET
+        quantity: 1
+      buyPrice: 5
+      slot: 31
+      page: 3
+    large_amethyst_bud:
+      type: item
+      item:
+        material: LARGE_AMETHYST_BUD
+        quantity: 1
+      buyPrice: 150
+      slot: 32
+      page: 3
+    amethyst_cluster:
+      type: item
+      item:
+        material: AMETHYST_CLUSTER
+        quantity: 1
+      buyPrice: 175
+      slot: 33
+      page: 3
+#
+#
+# PAGE #4
+#
+#
+    glow_lichen:
+      type: item
+      item:
+        material: GLOW_LICHEN
+        quantity: 1
+      buyPrice: 3
+      slot: 3
+      page: 4
+    sculk_vein:
+      type: item
+      item:
+        material: SCULK_VEIN
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 1
+      slot: 4
+      page: 4
+    frogspawn:
+      type: item
+      item:
+        material: FROGSPAWN
+        quantity: 1
+      buyPrice: 5
+      slot: 5
+      page: 4
+    crafting_table:
+      type: item
+      item:
+        material: CRAFTING_TABLE
+        quantity: 1
+      buyPrice: 75
+      slot: 10
+      page: 4
+    cartography_table:
+      type: item
+      item:
+        material: CARTOGRAPHY_TABLE
+        quantity: 1
+      buyPrice: 85
+      slot: 11
+      page: 4
+    fletching_table:
+      type: item
+      item:
+        material: FLETCHING_TABLE
+        quantity: 1
+      buyPrice: 100
+      slot: 12
+      page: 4
+    smithing_table:
+      type: item
+      item:
+        material: SMITHING_TABLE
+        quantity: 1
+      buyPrice: 250
+      slot: 13
+      page: 4
+    loom:
+      type: item
+      item:
+        material: LOOM
+        quantity: 1
+      buyPrice: 50
+      slot: 14
+      page: 4
+    stonecutter:
+      type: item
+      item:
+        material: STONECUTTER
+        quantity: 1
+      buyPrice: 150
+      slot: 15
+      page: 4
+    grindstone:
+      type: item
+      item:
+        material: GRINDSTONE
+        quantity: 1
+      buyPrice: 125
+      slot: 16
+      page: 4
+#
+    lodestone:
+      type: item
+      item:
+        material: LODESTONE
+        quantity: 1
+      buyPrice: 5500
+      sellPrice: 750
+      slot: 18
+      page: 4
+    bell:
+      type: item
+      item:
+        material: BELL
+        quantity: 1
+      buyPrice: 1000
+      slot: 19
+      page: 4
+    scaffolding:
+      type: item
+      item:
+        material: SCAFFOLDING
+        quantity: 1
+      buyPrice: 100
+      slot: 20
+      page: 4
+    furnace:
+      type: item
+      item:
+        material: FURNACE
+        quantity: 1
+      buyPrice: 50
+      slot: 21
+      page: 4
+    blast_furnace:
+      type: item
+      item:
+        material: BLAST_FURNACE
+        quantity: 1
+      buyPrice: 600
+      slot: 22
+      page: 4
+    smoker:
+      type: item
+      item:
+        material: SMOKER
+        quantity: 1
+      buyPrice: 125
+      slot: 23
+      page: 4
+    chest:
+      type: item
+      item:
+        material: CHEST
+        quantity: 1
+      buyPrice: 75
+      slot: 24
+      page: 4
+    barrel:
+      type: item
+      item:
+        material: BARREL
+        quantity: 1
+      buyPrice: 50
+      slot: 25
+      page: 4
+    chain:
+      type: item
+      item:
+        material: CHAIN
+        quantity: 1
+      buyPrice: 85
+      sellPrice: 1
+      slot: 26
+      page: 4
+#
+    torch:
+      type: item
+      item:
+        material: TORCH
+        quantity: 1
+      buyPrice: 35
+      slot: 28
+      page: 4
+    lantern:
+      type: item
+      item:
+        material: LANTERN
+        quantity: 1
+      buyPrice: 105
+      slot: 29
+      page: 4
+    campfire:
+      type: item
+      item:
+        material: CAMPFIRE
+        quantity: 1
+      buyPrice: 110
+      slot: 30
+      page: 4
+    soul_campfire:
+      type: item
+      item:
+        material: SOUL_CAMPFIRE
+        quantity: 1
+      buyPrice: 130
+      slot: 32
+      page: 4
+    soul_lantern:
+      type: item
+      item:
+        material: SOUL_LANTERN
+        quantity: 1
+      buyPrice: 120
+      slot: 33
+      page: 4
+    soul_torch:
+      type: item
+      item:
+        material: SOUL_TORCH
+        quantity: 1
+      buyPrice: 45
+      slot: 34
+      page: 4
+#
+#
+# PAGE #5
+#
+#
+    oak_sign:
+      type: item
+      item:
+        material: OAK_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 10
+      page: 5
+    spruce_sign:
+      type: item
+      item:
+        material: SPRUCE_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 12
+      page: 5
+    birch_sign:
+      type: item
+      item:
+        material: BIRCH_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 14
+      page: 5
+    jungle_sign:
+      type: item
+      item:
+        material: JUNGLE_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 16
+      page: 5
+    acacia_sign:
+      type: item
+      item:
+        material: ACACIA_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 19
+      page: 5
+    dark_oak_sign:
+      type: item
+      item:
+        material: DARK_OAK_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 22
+      page: 5
+    mangrove_sign:
+      type: item
+      item:
+        material: MANGROVE_SIGN
+        quantity: 1
+      buyPrice: 40
+      slot: 25
+      page: 5
+    crimson_sign:
+      type: item
+      item:
+        material: CRIMSON_SIGN
+        quantity: 1
+      buyPrice: 45
+      slot: 29
+      page: 5
+    warped_sign:
+      type: item
+      item:
+        material: WARPED_SIGN
+        quantity: 1
+      buyPrice: 50
+      slot: 33
+      page: 5
+#
+#
+# PAGE #6
+#
+#
+    tube_coral:
+      type: item
+      item:
+        material: TUBE_CORAL
+        quantity: 1
+      buyPrice: 10
+      slot: 2
+      page: 6
+    brain_coral:
+      type: item
+      item:
+        material: BRAIN_CORAL
+        quantity: 1
+      buyPrice: 10
+      slot: 3
+      page: 6
+    bubble_coral:
+      type: item
+      item:
+        material: BUBBLE_CORAL
+        quantity: 1
+      buyPrice: 10
+      slot: 4
+      page: 6
+    fire_coral:
+      type: item
+      item:
+        material: FIRE_CORAL
+        quantity: 1
+      buyPrice: 10
+      slot: 5
+      page: 6
+    horn_coral:
+      type: item
+      item:
+        material: HORN_CORAL
+        quantity: 1
+      buyPrice: 10
+      slot: 6
+      page: 6
+#
+    dead_tube_coral:
+      type: item
+      item:
+        material: DEAD_TUBE_CORAL
+        quantity: 1
+      buyPrice: 8
+      slot: 11
+      page: 6
+    dead_brain_coral:
+      type: item
+      item:
+        material: DEAD_BRAIN_CORAL
+        quantity: 1
+      buyPrice: 8
+      slot: 12
+      page: 6
+    dead_bubble_coral:
+      type: item
+      item:
+        material: DEAD_BUBBLE_CORAL
+        quantity: 1
+      buyPrice: 8
+      slot: 13
+      page: 6
+    dead_fire_coral:
+      type: item
+      item:
+        material: DEAD_FIRE_CORAL
+        quantity: 1
+      buyPrice: 8
+      slot: 14
+      page: 6
+    dead_horn_coral:
+      type: item
+      item:
+        material: DEAD_HORN_CORAL
+        quantity: 1
+      buyPrice: 8
+      slot: 15
+      page: 6
+#
+    fan_tube_coral:
+      type: item
+      item:
+        material: TUBE_CORAL_FAN
+        quantity: 1
+      buyPrice: 10
+      slot: 20
+      page: 6
+    fan_brain_coral:
+      type: item
+      item:
+        material: BRAIN_CORAL_FAN
+        quantity: 1
+      buyPrice: 10
+      slot: 21
+      page: 6
+    fan_bubble_coral:
+      type: item
+      item:
+        material: BUBBLE_CORAL_FAN
+        quantity: 1
+      buyPrice: 10
+      slot: 22
+      page: 6
+    fan_fire_coral:
+      type: item
+      item:
+        material: FIRE_CORAL_FAN
+        quantity: 1
+      buyPrice: 10
+      slot: 23
+      page: 6
+    fan_horn_coral:
+      type: item
+      item:
+        material: HORN_CORAL_FAN
+        quantity: 1
+      buyPrice: 10
+      slot: 24
+      page: 6
+#
+    fan_dead_tube_coral:
+      type: item
+      item:
+        material: DEAD_TUBE_CORAL_FAN
+        quantity: 1
+      buyPrice: 8
+      slot: 29
+      page: 6
+    fan_dead_brain_coral:
+      type: item
+      item:
+        material: DEAD_BRAIN_CORAL_FAN
+        quantity: 1
+      buyPrice: 8
+      slot: 30
+      page: 6
+    fan_dead_bubble_coral:
+      type: item
+      item:
+        material: DEAD_BUBBLE_CORAL_FAN
+        quantity: 1
+      buyPrice: 8
+      slot: 31
+      page: 6
+    fan_dead_fire_coral:
+      type: item
+      item:
+        material: DEAD_FIRE_CORAL_FAN
+        quantity: 1
+      buyPrice: 8
+      slot: 32
+      page: 6
+    fan_dead_horn_coral:
+      type: item
+      item:
+        material: DEAD_HORN_CORAL_FAN
+        quantity: 1
+      buyPrice: 8
+      slot: 33
+      page: 6

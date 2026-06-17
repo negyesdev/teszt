@@ -1,0 +1,151 @@
+PREFIX: '#B84DD3Shop #848484→ #D3D3D3'
+LANG:
+  CONSOLE: Console
+MSG:
+  AND: ' #D3D3D3and#DCB2FD '
+  ERROR: '#D3D3D3Error occured, please contact the server owner.'
+  INGAMEONLY: '#D3D3D3This command can be used only in the game.'
+  NOACCESS: '#D3D3D3You do not have access to do this.'
+  NOTLOADED: '#D3D3D3Your data is not loaded yet.'
+  NOTLOADEDTARGET: '#D3D3D3This player data is not loaded.'
+  RELOADED: '#D3D3D3Plugin was successfully reloaded.'
+  USAGE:
+    SUBCOMMAND: '#D3D3D3Command usage: #DCB2FD%usage%'
+  CMD:
+    SHOP:
+      ADDMODIFIER:
+        ITEM:
+          USAGE: /shop addmodifier item <player> <shop> <item> <value> [buy|sell]
+          ADDED: '#D3D3D3You set #DCB2FD%player% %type% #D3D3D3price modifier for
+            the #DCB2FD%item%#D3D3D3 item in #DCB2FD%shop%#D3D3D3 shop to #DCB2FD%modifier%#D3D3D3.'
+          ADDEDBY: '#D3D3D3Your #DCB2FD%type% price modifier for the #DCB2FD%item%#D3D3D3
+            item in #DCB2FD%shop%#D3D3D3 shop was set to #DCB2FD%modifier%#D3D3D3
+            by #DCB2FD%player%#D3D3D3.'
+        SHOP:
+          USAGE: /shop addmodifier shop <player> <shop> <value> [buy|sell]
+          ADDED: '#D3D3D3You set #DCB2FD%player% %type% #D3D3D3price modifier for
+            all items in #DCB2FD%shop%#D3D3D3 shop to #DCB2FD%modifier%#D3D3D3.'
+          ADDEDBY: '#D3D3D3Your #DCB2FD%type%#D3D3D3 price modifier for all items
+            in #DCB2FD%shop%#D3D3D3 shop was set to #DCB2FD%modifier%#D3D3D3 by #DCB2FD%player%#D3D3D3.'
+        GLOBAL:
+          USAGE: /shop addmodifier global <player> <value> [buy|sell]
+          ADDED: '#D3D3D3You set #DCB2FD%player% %type% #D3D3D3price modifier to #DCB2FD%modifier%#D3D3D3.'
+          ADDEDBY: '#D3D3D3Your #DCB2FD%type% #D3D3D3price modifier was set to #DCB2FD%modifier%#D3D3D3
+            by #DCB2FD%player%#D3D3D3.'
+      CHECKMODIFIERS:
+        VIEW:
+          VIEW: "#DCB2FD%player%#D3D3D3's modifiers:\n&r \n#B84DD3ɢʟᴏʙᴀʟ ᴍᴏᴅɪғɪᴇʀ\
+            s\n%global%\n#B84DD3sʜᴏᴘ ᴍᴏᴅɪғɪᴇʀs\n%shop%\n#B84DD3ɪᴛᴇᴍ ᴍᴏᴅɪғɪᴇʀs\n%item%"
+          ENTRY:
+            ITEM: '#D3D3D3Item: #DCB2FD%item%#D3D3D3, shop: #DCB2FD%shop%#D3D3D3,
+              buy: #DCB2FD%buy%#D3D3D3, sell: #DCB2FD%sell%#D3D3D3'
+            SHOP: '#D3D3D3Shop: #DCB2FD%shop%#D3D3D3, buy: #DCB2FD%buy%#D3D3D3, sell:
+              #DCB2FD%sell%#D3D3D3'
+            GLOBAL: '#D3D3D3Buy: #DCB2FD%buy%#D3D3D3, sell: #DCB2FD%sell%#D3D3D3'
+      RESETMODIFIER:
+        ITEM:
+          USAGE: /shop resetmodifier item <player> <shop> <item> [buy|sell]
+          RESET: '#D3D3D3You reset #DCB2FD%player% %type%#D3D3D3 price modifier for
+            the #DCB2FD%item%#D3D3D3 item in #DCB2FD%shop%#D3D3D3 shop.'
+          RESETBY: '#D3D3D3Your #DCB2FD%type%#D3D3D3 price modifier for the #DCB2FD%item%#D3D3D3
+            item in #DCB2FD%shop%#D3D3D3 shop was reset by #DCB2FD%player%#D3D3D3.'
+        SHOP:
+          USAGE: /shop resetmodifier shop <player> <shop> [buy|sell]
+          RESET: '#D3D3D3You reset #DCB2FD%player% %type%#D3D3D3 price modifier for
+            all items in #DCB2FD%shop%#D3D3D3 shop.'
+          RESETBY: '#D3D3D3Your #DCB2FD%type%#D3D3D3 price modifier for all items
+            in #DCB2FD%shop%#D3D3D3 shop was set to by #DCB2FD%player%#D3D3D3.'
+        GLOBAL:
+          USAGE: /shop resetmodifier global <player> [buy|sell]
+          RESET: '#D3D3D3You reset #DCB2FD%player% %type%#D3D3D3 price modifier.'
+          RESETBY: '#D3D3D3Your #DCB2FD%type%#D3D3D3 price modifier was set to #DCB2FD%modifier%#D3D3D3
+            by #DCB2FD%player%#D3D3D3.'
+      CHECK:
+        ITEM: '#D3D3D3This item type is #DCB2FD%material%#D3D3D3 with damage #DCB2FD%damage%#D3D3D3.'
+        NOITEM: '#D3D3D3You have to hold an item in your hand in order to check its
+          type.'
+  MODIFIER:
+    INVALIDAMOUNT: '#D3D3D3Invalid modifier value specified. Valid values are for
+      instance 0.50 which is 50%, 2.0 which is 200% etc.'
+    INVALIDTYPE: '#D3D3D3Invalid modifier type specified. Valid values are buy, sell
+      and both.'
+    BUY: Buy
+    SELL: Sell
+    BOTH: Buy & Sell
+  INVALIDPLAYER: '#D3D3D3Invalid player name specified.'
+  INVALIDSHOP: '#D3D3D3Category #DCB2FD%shop%#D3D3D3 is not found.'
+  INVALIDITEM: '#D3D3D3Item with ID #DCB2FD%item%#D3D3D3 not found in #DCB2FD%shop%#D3D3D3.'
+  NOACCESSTOSHOP: '#D3D3D3You do not have access to this shop category.'
+  NODIRECTACCESSTOSHOP: '#D3D3D3You cannot access to this shop.'
+  MAINMENUDISABLED: '#D3D3D3You cannot use this command. Please use #DCB2FD/shop <id>#D3D3D3
+    instead.'
+  WORLDBLACKLISTED: '#D3D3D3You cannot access #DCB2FD%shop%#D3D3D3 in this world.'
+  WORLDBANNED: '#D3D3D3You cannot access the shop in this world.'
+  WORLDBANNEDTARGET: '%player% cannot access the shop in that world.'
+  GAMEMODEBANNED: '#D3D3D3You cannot access the shop when in gamemode #DCB2FD%gamemode%#D3D3D3.'
+  GAMEMODEBANNEDTARGET: '%player% cannot access the shop when in gamemode %gamemode%.'
+  ITEM:
+    FULLINVENTORY: '#D3D3D3You do not have enough free space in your inventory.'
+    CANNOTAFFORD: '#D3D3D3You need #DCB2FD%price%#D3D3D3 to buy #DCB2FD%amount%x %item%#D3D3D3.'
+    CANNOTBUY: '#D3D3D3You cannot buy this item.'
+    CANNOTSELL: '#D3D3D3You cannot sell this item.'
+    BOUGHT: '#D3D3D3You bought #DCB2FD%amount%x %item%#D3D3D3 for #DCB2FD%price%#D3D3D3.'
+    BOUGHTFREE: '#D3D3D3You received #DCB2FD%amount%x %item%#D3D3D3.'
+    NOTENOUGH: '#D3D3D3You do not have #DCB2FD%amount%x %item%#D3D3D3 to sell.'
+    SOLD: '#D3D3D3You sold #DCB2FD%amount%x %item%#D3D3D3 for #DCB2FD%price%#D3D3D3.'
+    SOLDFREE: '#D3D3D3You gave away #DCB2FD%amount%x %item%#D3D3D3.'
+    SOLDALL: '#D3D3D3You sold all #DCB2FD%item%&7 (#DCB2FD%amount%x %item%&7)#D3D3D3
+      for #DCB2FD%price%#D3D3D3.'
+    SOLDALLFREE: '#D3D3D3You gave away all #DCB2FD%item%&7 (#DCB2FD%amount%x %item%&7)'
+    NOACCESS: '#D3D3D3You do not have access to this item.'
+  ENCHANT:
+    CANNOTAPPLY: '#D3D3D3Enchantment #DCB2FD%enchantment%#D3D3D3 cannot be applied
+      to the item you are holding.'
+    ALREADYAPPLIED: '#D3D3D3This item already has #DCB2FD%enchantment%#D3D3D3 applied.'
+    LEVELDIFF: '#D3D3D3You need an item with at least #DCB2FD%enchantment% %level%#D3D3D3
+      applied.'
+    CANNOTAFFORD: '#D3D3D3You need #DCB2FD%price%#D3D3D3 to buy #DCB2FD%enchantment%#D3D3D3.'
+    MAX: '#D3D3D3This item already has the maximum amount of enchantments.'
+    TOOMANY: '#D3D3D3You cannot enchant more than #DCB2FD%amount% #D3D3D3items at
+      once.'
+    BOUGHT: '#D3D3D3You bought #DCB2FD%enchantment%#D3D3D3 enchantment for #DCB2FD%price%#D3D3D3.'
+    BOUGHTFREE: '#D3D3D3You received #DCB2FD%enchantment%#D3D3D3.'
+  PERMISSION:
+    PERMISSIONSDISABLED: '#D3D3D3Permissions are disabled.'
+    ALREADYHAVE: '#D3D3D3You already have the #DCB2FD%permission%#D3D3D3 permission.'
+    CANNOTAFFORD: '#D3D3D3You need #DCB2FD%price%#D3D3D3 to buy #DCB2FD%permission%#D3D3D3.'
+    BOUGHT: '#D3D3D3You bought #DCB2FD%permission%#D3D3D3 permission for #DCB2FD%price%#D3D3D3.'
+    BOUGHTFREE: '#D3D3D3You received #DCB2FD%permission%#D3D3D3.'
+  COMMAND:
+    BOUGHT: '#D3D3D3You bought #DCB2FD%command%#D3D3D3 for #DCB2FD%price%#D3D3D3.'
+    CANNOTAFFORD: '#D3D3D3You need #DCB2FD%price%#D3D3D3 to buy this command.'
+    BOUGHTFREE: '#D3D3D3You received #DCB2FD%command%#D3D3D3.'
+  SELLHAND:
+    NOITEM: '#D3D3D3You have to hold an item in your hand in order to sell it.'
+    INVALIDQUANTITY: |-
+      #D3D3D3Invalid quantity specified.
+      #D3D3D3Must be between #DCB2FD1 #D3D3D3and #DCB2FD%max%#D3D3D3.
+    CANNOTSELL: '#D3D3D3You cannot sell this item.'
+    MULTIPLEQUANTITYONLY: |-
+      #D3D3D3You can't sell that quantity.
+      #D3D3D3Only multiples of #DCB2FD%quantity%#D3D3D3 are allowed for this item.
+  SELLHANDALL:
+    SOLD: '#D3D3D3You sold #DCB2FD%quantity%x %item%#D3D3D3 for a total of #DCB2FD%price%#D3D3D3.'
+  SELLALL:
+    NOITEMS: '#D3D3D3You do not have any items you can sell.'
+    SOLD: '#D3D3D3You sold #DCB2FD%quantity%x #D3D3D3items for a total of #DCB2FD%price%#D3D3D3.'
+    INVALIDSHOP: '#D3D3D3Invalid shop specified.'
+DIALOG:
+  AMOUNTSELECTION:
+    BUY:
+      NAME: Shop → Buying %item%
+    SELL:
+      NAME: Shop → Selling %item%
+    BULKBUY:
+      NAME: Shop → Buying %item%
+    BULKSELL:
+      NAME: Shop → Selling %item%
+SHOP:
+  PERMISSION:
+    ALREADYOWNED: '&2(Already owned)'
+    NOTOWNED: '&4(Not owned)'

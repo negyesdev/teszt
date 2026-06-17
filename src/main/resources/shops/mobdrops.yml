@@ -1,0 +1,248 @@
+mobdrops:
+  name: "Shop → Mob Drops (&f%page%&8/&f2&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+#
+    rotten_flesh:
+      type: item
+      item:
+        material: ROTTEN_FLESH
+        quantity: 1
+      buyPrice: 12
+      sellPrice: 5
+      slot: 11
+    bone:
+      type: item
+      item:
+        material: BONE
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 5
+      slot: 12
+    gunpowder:
+      type: item
+      item:
+        material: GUNPOWDER
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 5
+      slot: 13
+    string:
+      type: item
+      item:
+        material: STRING
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 3
+      slot: 14
+    spider_eye:
+      type: item
+      item:
+        material: SPIDER_EYE
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 3
+      slot: 15
+    ender_pearl:
+      type: item
+      item:
+        material: ENDER_PEARL
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 8
+      slot: 20
+    slime_ball:
+      type: item
+      item:
+        material: SLIME_BALL
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 4
+      slot: 21
+    blaze_rod:
+      type: item
+      item:
+        material: BLAZE_ROD
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 5
+      slot: 22
+    magma_cream:
+      type: item
+      item:
+        material: MAGMA_CREAM
+        quantity: 1
+      buyPrice: 40
+      sellPrice: 4
+      slot: 23
+    ghast_tear:
+      type: item
+      item:
+        material: GHAST_TEAR
+        quantity: 1
+      buyPrice: 200
+      sellPrice: 12
+      slot: 24
+    leather:
+      type: item
+      item:
+        material: LEATHER
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 6
+      slot: 29
+    rabbit_hide:
+      type: item
+      item:
+        material: RABBIT_HIDE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 3
+      slot: 30
+    rabbit_foot:
+      type: item
+      item:
+        material: RABBIT_FOOT
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 8
+      slot: 31
+    ink_sac:
+      type: item
+      item:
+        material: INK_SAC
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 6
+      slot: 32
+    glow_ink_sac:
+      type: item
+      item:
+        material: GLOW_INK_SAC
+        quantity: 1
+      buyPrice: 30
+      sellPrice: 7
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    feather:
+      type: item
+      item:
+        material: FEATHER
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 3
+      slot: 11
+      page: 2
+    egg:
+      type: item
+      item:
+        material: EGG
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 3
+      slot: 12
+      page: 2
+    arrow:
+      type: item
+      item:
+        material: ARROW
+        quantity: 1
+      buyPrice: 50
+      sellPrice: 3
+      slot: 13
+      page: 2
+    prismarine_shard:
+      type: item
+      item:
+        material: PRISMARINE_SHARD
+        quantity: 1
+      buyPrice: 10
+      sellPrice: 2
+      slot: 14
+      page: 2
+    prismarine_crystals:
+      type: item
+      item:
+        material: PRISMARINE_CRYSTALS
+        quantity: 1
+      buyPrice: 10
+      sellPrice: 2
+      slot: 15
+      page: 2
+    totem:
+      type: item
+      item:
+        material: TOTEM_OF_UNDYING
+        quantity: 1
+      buyPrice: 100000
+      sellPrice: 3
+      slot: 20
+      page: 2
+    scute:
+      type: item
+      item:
+        material: TURTLE_SCUTE
+        quantity: 1
+      buyPrice: 150
+      sellPrice: 10
+      slot: 21
+      page: 2
+    phantom_membrane:
+      type: item
+      item:
+        material: PHANTOM_MEMBRANE
+        quantity: 1
+      buyPrice: 250
+      sellPrice: 12
+      slot: 22
+      page: 2
+    nautilus_shell:
+      type: item
+      item:
+        material: NAUTILUS_SHELL
+        quantity: 1
+      buyPrice: 1000
+      sellPrice: 10
+      slot: 23
+      page: 2
+    trident:
+      type: item
+      item:
+        material: TRIDENT
+        quantity: 1
+        flags:
+          - HIDE_ATTRIBUTES
+      buyPrice: 850
+      sellPrice: 8
+      slot: 24
+      page: 2
+    sculk_catalyst:
+      type: item
+      item:
+        material: SCULK_CATALYST
+        quantity: 1
+      buyPrice: 1250
+      sellPrice: 12
+      slot: 31
+      page: 2

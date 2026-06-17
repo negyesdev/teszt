@@ -1,190 +1,402 @@
 package dev.negyes.geneshop.shop;
 
 import dev.negyes.geneshop.GeNeShop;
+import dev.negyes.geneshop.util.ItemFactory;
 import dev.negyes.geneshop.util.Text;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Collection;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 /**
- * Betolti a kategoriakat es kezeli a vetel/eladas tranzakciokat.
+ * Betolti a ShopGUI+ formatumu configot (config.yml + shops/*.yml) es kezeli
+ * a vetel / eladas / mind-eladasa tranzakciokat. Az eladasi ar a GeNe Shop
+ * egyedi dinamikus arazasat hasznalja (a logika valtozatlan).
+ *
  * GeNe Shop - keszitette: negyes Gerii06
  */
 public class ShopManager {
 
     private final GeNeShop plugin;
-    private final Map<String, ShopCategory> categories = new LinkedHashMap<>();
 
-    private String currencySymbol = "$";
-    private int priceDecimals = 2;
-    private boolean sounds = true;
+    // Fomenu
+    private String mainTitle = "Shop";
+    private int mainSize = 54;
+    private ItemStack mainFill;
+    private boolean disableMainMenu = false;
+    private final List<MenuButton> menuButtons = new ArrayList<>();
+
+    // Shopok
+    private final Map<String, Shop> shops = new LinkedHashMap<>();
+
+    // Lore formatumok + placeholderek
+    private List<String> itemLoreFormat = new ArrayList<>();
+    private List<String> enchantLoreFormat = new ArrayList<>();
+    private String unbuyableText = "Unbuyable";
+    private String unsellableText = "Unsellable";
+    private boolean hideBuyForUnbuyable = false;
+    private boolean hideSellForUnsellable = false;
+
+    // Nav gombok
+    private ItemStack backButton;
+    private int backSlot = 49;
+    private ItemStack prevButton;
+    private int prevSlot = 48;
+    private ItemStack nextButton;
+    private int nextSlot = 50;
+
+    // Balance ikon forrasa
+    private ConfigurationSection balanceItemSection;
+
+    // Klikk akciok (ClickType nev -> "BUY"/"SELL"/"SELL_ALL"/"NONE")
+    private final Map<String, String> clickActions = new HashMap<>();
 
     public ShopManager(GeNeShop plugin) {
         this.plugin = plugin;
     }
 
     public void load() {
-        categories.clear();
-        this.currencySymbol = plugin.getConfig().getString("settings.currency-symbol", "$");
-        this.priceDecimals = plugin.getConfig().getInt("settings.price-decimals", 2);
-        this.sounds = plugin.getConfig().getBoolean("settings.sounds", true);
+        menuButtons.clear();
+        shops.clear();
+        clickActions.clear();
 
-        ConfigurationSection root = plugin.getConfig().getConfigurationSection("categories");
+        FileConfiguration cfg = plugin.getConfig();
+
+        this.mainTitle = Text.color(cfg.getString("shopMenuName", "Shop"));
+        this.mainSize = normalizeSize(cfg.getInt("shopMenuSize", 54));
+        this.disableMainMenu = cfg.getBoolean("disableMainMenu", false);
+        this.mainFill = ItemFactory.build(cfg.getConfigurationSection("shopMenuFillItem"), plugin.getLogger());
+
+        this.itemLoreFormat = cfg.getStringList("shopItemLoreFormat.item");
+        this.enchantLoreFormat = cfg.getStringList("shopItemLoreFormat.enchantment");
+        this.unbuyableText = cfg.getString("buyPriceForUnsellablePlaceholder", "Unbuyable");
+        this.unsellableText = cfg.getString("sellPriceForUnsellablePlaceholder", "Unsellable");
+        this.hideBuyForUnbuyable = cfg.getBoolean("hideBuyPriceForUnbuyable", false);
+        this.hideSellForUnsellable = cfg.getBoolean("hideSellPriceForUnsellable", false);
+
+        loadClickActions(cfg);
+        loadButtons(cfg);
+        this.balanceItemSection = cfg.getConfigurationSection("specialElements.balance.item");
+
+        loadMenuAndShops(cfg);
+
+        plugin.getLogger().info("Betoltve " + shops.size() + " shop, " + menuButtons.size() + " menu gomb.");
+    }
+
+    private void loadClickActions(FileConfiguration cfg) {
+        ConfigurationSection sec = cfg.getConfigurationSection("clickActions");
+        if (sec != null) {
+            for (String key : sec.getKeys(false)) {
+                clickActions.put(key.toUpperCase(Locale.ROOT), sec.getString(key, "NONE").toUpperCase(Locale.ROOT));
+            }
+        }
+        clickActions.putIfAbsent("LEFT", "BUY");
+        clickActions.putIfAbsent("RIGHT", "SELL");
+        clickActions.putIfAbsent("SHIFT_RIGHT", "SELL_ALL");
+        clickActions.putIfAbsent("MIDDLE", "SELL_ALL");
+    }
+
+    private void loadButtons(FileConfiguration cfg) {
+        ConfigurationSection back = cfg.getConfigurationSection("buttons.goBack");
+        if (back != null) {
+            backButton = ItemFactory.build(back.getConfigurationSection("item"), plugin.getLogger());
+            backSlot = back.getInt("slot", 49);
+        }
+        ConfigurationSection prev = cfg.getConfigurationSection("buttons.previousPage");
+        if (prev != null) {
+            prevButton = ItemFactory.build(prev.getConfigurationSection("item"), plugin.getLogger());
+            prevSlot = prev.getInt("slot", 48);
+        }
+        ConfigurationSection next = cfg.getConfigurationSection("buttons.nextPage");
+        if (next != null) {
+            nextButton = ItemFactory.build(next.getConfigurationSection("item"), plugin.getLogger());
+            nextSlot = next.getInt("slot", 50);
+        }
+    }
+
+    private void loadMenuAndShops(FileConfiguration cfg) {
+        ConfigurationSection menu = cfg.getConfigurationSection("shopMenuItems");
+        if (menu == null) {
+            plugin.getLogger().warning("Nincs 'shopMenuItems' a config.yml-ben!");
+            return;
+        }
+        for (String key : menu.getKeys(false)) {
+            ConfigurationSection entry = menu.getConfigurationSection(key);
+            if (entry == null) {
+                continue;
+            }
+            ItemStack icon = ItemFactory.build(entry.getConfigurationSection("item"), plugin.getLogger());
+            String shopId = entry.getString("shop", key);
+            int slot = entry.getInt("slot", -1);
+            if (slot >= 0) {
+                menuButtons.add(new MenuButton(icon, shopId, slot));
+            }
+            loadShopFile(shopId);
+        }
+    }
+
+    private void loadShopFile(String id) {
+        if (shops.containsKey(id)) {
+            return;
+        }
+        File file = new File(plugin.getDataFolder(), "shops/" + id + ".yml");
+        if (!file.exists()) {
+            try {
+                plugin.saveResource("shops/" + id + ".yml", false);
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Hianyzo shop fajl: shops/" + id + ".yml");
+                return;
+            }
+        }
+        YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
+        ConfigurationSection root = data.getConfigurationSection(id);
         if (root == null) {
-            plugin.getLogger().warning("Nincs 'categories' szekcio a config.yml-ben!");
+            plugin.getLogger().warning("Ervenytelen shop fajl (nincs '" + id + "' gyoker): " + file.getName());
             return;
         }
 
-        for (String id : root.getKeys(false)) {
-            ConfigurationSection sec = root.getConfigurationSection(id);
-            if (sec == null) {
-                continue;
-            }
-            String display = Text.color(sec.getString("display", id));
-            Material icon = parseMaterial(sec.getString("icon", "CHEST"), Material.CHEST);
-            int slot = sec.getInt("slot", -1);
+        String title = root.getString("name", id);
+        int size = normalizeSize(root.getInt("size", 54));
+        ItemStack fill = root.isConfigurationSection("fillItem")
+                ? ItemFactory.build(root.getConfigurationSection("fillItem"), plugin.getLogger())
+                : (mainFill == null ? null : mainFill.clone());
 
-            ShopCategory category = new ShopCategory(id, display, icon, slot);
+        Shop shop = new Shop(id, title, size, fill);
 
-            ConfigurationSection itemsSec = sec.getConfigurationSection("items");
-            if (itemsSec != null) {
-                for (String matName : itemsSec.getKeys(false)) {
-                    Material material = Material.matchMaterial(matName);
-                    if (material == null || !material.isItem()) {
-                        plugin.getLogger().warning("Ervenytelen item a(z) '" + id + "' kategoriaban: " + matName);
-                        continue;
-                    }
-                    double buy = itemsSec.getDouble(matName + ".buy", -1);
-                    double sell = itemsSec.getDouble(matName + ".sell", -1);
-                    category.addItem(new ShopItem(material, buy, sell, id));
+        ConfigurationSection items = root.getConfigurationSection("items");
+        if (items != null) {
+            for (String entryKey : items.getKeys(false)) {
+                ConfigurationSection sec = items.getConfigurationSection(entryKey);
+                if (sec == null) {
+                    continue;
+                }
+                ShopEntry entry = parseEntry(sec);
+                if (entry != null) {
+                    shop.addEntry(entry);
                 }
             }
-            categories.put(id.toLowerCase(Locale.ROOT), category);
         }
-        plugin.getLogger().info("Betoltve " + categories.size() + " kategoria.");
+        shops.put(id, shop);
     }
 
-    public Collection<ShopCategory> getCategories() {
-        return categories.values();
+    private ShopEntry parseEntry(ConfigurationSection sec) {
+        String type = sec.getString("type", "item").toLowerCase(Locale.ROOT);
+        int slot = sec.getInt("slot", -1);
+        int page = sec.getInt("page", 1);
+        if (slot < 0) {
+            return null;
+        }
+
+        if (type.equals("special")) {
+            if ("BALANCE".equalsIgnoreCase(sec.getString("special", ""))) {
+                return new ShopEntry(ShopEntry.Kind.BALANCE, slot, page);
+            }
+            return null;
+        }
+
+        if (type.equals("enchantment")) {
+            return parseEnchantment(sec, slot, page);
+        }
+
+        return parseItem(sec, slot, page);
     }
 
-    public ShopCategory getCategory(String id) {
-        return id == null ? null : categories.get(id.toLowerCase(Locale.ROOT));
+    private ShopEntry parseItem(ConfigurationSection sec, int slot, int page) {
+        ConfigurationSection itemSec = sec.getConfigurationSection("item");
+        if (itemSec == null) {
+            return null;
+        }
+        ItemStack give = ItemFactory.build(itemSec, plugin.getLogger());
+
+        ShopEntry entry = new ShopEntry(ShopEntry.Kind.ITEM, slot, page);
+        entry.setGiveStack(give);
+        entry.setBuyPrice(sec.getDouble("buyPrice", -1));
+        if (sec.contains("sellPrice")) {
+            entry.setSellPrice(sec.getDouble("sellPrice"));
+        }
+
+        String name = itemSec.getString("name");
+        String display = (name != null) ? Text.color(name) : Text.color("&f" + Text.pretty(give.getType()));
+        entry.setDisplayName(display);
+        entry.setPlainName((name != null) ? Text.strip(name) : Text.pretty(give.getType()));
+
+        boolean sellable = entry.getSellPrice() != null && !hasSpecialMeta(give);
+        entry.setSellable(sellable);
+        return entry;
     }
 
-    public boolean areSoundsEnabled() {
-        return sounds;
+    private ShopEntry parseEnchantment(ConfigurationSection sec, int slot, int page) {
+        String enchName = sec.getString("enchantment", "");
+        int level = sec.getInt("enchantmentLevel", 1);
+        Enchantment ench = ItemFactory.resolveEnchantment(enchName);
+
+        ConfigurationSection itemSec = sec.getConfigurationSection("item");
+        ItemStack book = ItemFactory.build(itemSec, plugin.getLogger());
+        if (ench != null && book.getItemMeta() instanceof EnchantmentStorageMeta esm) {
+            esm.addStoredEnchant(ench, level, true);
+            book.setItemMeta(esm);
+        }
+
+        ShopEntry entry = new ShopEntry(ShopEntry.Kind.ENCHANTMENT, slot, page);
+        entry.setGiveStack(book);
+        entry.setBuyPrice(sec.getDouble("buyPrice", -1));
+        entry.setEnchantment(ench);
+        entry.setEnchantLevel(level);
+
+        String name = (itemSec != null) ? itemSec.getString("name") : null;
+        String display = (name != null) ? Text.color(name) : Text.color("&b" + enchName);
+        entry.setDisplayName(display);
+        entry.setPlainName((name != null) ? Text.strip(name) : enchName);
+        entry.setSellable(false);
+        return entry;
     }
 
-    // ---------------------------------------------------------------
-    //  Ar formazas
-    // ---------------------------------------------------------------
-
-    public String formatPrice(double price) {
-        return currencySymbol + String.format(Locale.US, "%,." + priceDecimals + "f", price);
+    /** Igaz, ha az itemnek olyan metaja van, amitol nem "sima" (spawner/potion/konyv). */
+    private boolean hasSpecialMeta(ItemStack stack) {
+        Material type = stack.getType();
+        if (type == Material.SPAWNER || type == Material.ENCHANTED_BOOK) {
+            return true;
+        }
+        String n = type.name();
+        return n.contains("POTION") || n.equals("TIPPED_ARROW");
     }
 
     // ---------------------------------------------------------------
     //  Tranzakciok
     // ---------------------------------------------------------------
 
-    /** Megveteti a jatekossal az itemet. */
-    public void buy(Player player, ShopItem item, int amount) {
+    public void buy(Player player, ShopEntry entry, boolean fullStack) {
         if (!plugin.getEconomyHook().isReady()) {
-            plugin.getMessages().send(player, "no-economy");
+            plugin.getLang().send(player, "MSG.ERROR");
             return;
         }
-        if (!item.isBuyable()) {
-            plugin.getMessages().send(player, "not-buyable");
+        if (!entry.isBuyable()) {
+            plugin.getLang().send(player, "MSG.ITEM.CANNOTBUY");
+            failSound(player);
             return;
         }
-        amount = Math.max(1, amount);
-        double total = item.getBuyPrice() * amount;
 
+        int unit = entry.getQuantity();
+        double unitPrice = entry.getBuyPrice();
+        int maxStack = Math.max(1, entry.getGiveStack().getMaxStackSize());
+        int groups = 1;
+        if (fullStack) {
+            groups = Math.max(1, maxStack / unit);
+        }
+        int amount = groups * unit;
+        double total = groups * unitPrice;
+
+        if (!hasSpace(player, entry.getGiveStack(), amount)) {
+            plugin.getLang().send(player, "MSG.ITEM.FULLINVENTORY");
+            failSound(player);
+            return;
+        }
         if (!plugin.getEconomyHook().has(player, total)) {
-            plugin.getMessages().send(player, "not-enough-money", "%price%", formatPrice(total));
+            plugin.getLang().send(player, "MSG.ITEM.CANNOTAFFORD",
+                    "%price%", plugin.getEconomyHook().format(total),
+                    "%amount%", String.valueOf(amount),
+                    "%item%", entry.getPlainName());
+            failSound(player);
+            return;
+        }
+        if (total > 0 && !plugin.getEconomyHook().withdraw(player, total)) {
+            plugin.getLang().send(player, "MSG.ITEM.CANNOTAFFORD",
+                    "%price%", plugin.getEconomyHook().format(total),
+                    "%amount%", String.valueOf(amount),
+                    "%item%", entry.getPlainName());
             failSound(player);
             return;
         }
 
-        // Eloszor megnezzuk, befer-e (a maradekot eldobnank, ezt nem akarjuk).
-        ItemStack stack = new ItemStack(item.getMaterial(), amount);
-        if (!hasInventorySpace(player, stack)) {
-            plugin.getMessages().send(player, "inventory-full");
-            failSound(player);
-            return;
-        }
+        giveItems(player, entry.getGiveStack(), amount);
 
-        if (!plugin.getEconomyHook().withdraw(player, total)) {
-            plugin.getMessages().send(player, "not-enough-money", "%price%", formatPrice(total));
-            failSound(player);
-            return;
+        if (total <= 0 && plugin.getConfig().getBoolean("useDifferentMessagesForFreeItems", true)) {
+            plugin.getLang().send(player, "MSG.ITEM.BOUGHTFREE",
+                    "%amount%", String.valueOf(amount), "%item%", entry.getPlainName());
+        } else {
+            plugin.getLang().send(player, "MSG.ITEM.BOUGHT",
+                    "%amount%", String.valueOf(amount),
+                    "%item%", entry.getPlainName(),
+                    "%price%", plugin.getEconomyHook().format(total));
         }
-
-        giveItems(player, item.getMaterial(), amount);
-        plugin.getMessages().send(player, "buy-success",
-                "%amount%", String.valueOf(amount),
-                "%item%", Text.pretty(item.getMaterial()),
-                "%price%", formatPrice(total));
-        successSound(player);
+        playSound(player, "BUY_ITEM", Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
 
-    /** Eladatja a jatekos itemeit. amount = -1 eseten az osszeset. */
-    public void sell(Player player, ShopItem item, int amount) {
+    public void sell(Player player, ShopEntry entry, boolean all) {
         if (!plugin.getEconomyHook().isReady()) {
-            plugin.getMessages().send(player, "no-economy");
+            plugin.getLang().send(player, "MSG.ERROR");
             return;
         }
-        if (!item.isSellable()) {
-            plugin.getMessages().send(player, "not-sellable");
+        if (!entry.isSellable()) {
+            plugin.getLang().send(player, "MSG.ITEM.CANNOTSELL");
+            failSound(player);
             return;
         }
 
-        int owned = countItems(player, item.getMaterial());
+        Material material = entry.getMaterial();
+        int unit = entry.getQuantity();
+        int owned = countPlain(player, material);
         if (owned <= 0) {
-            plugin.getMessages().send(player, "not-enough-items");
+            plugin.getLang().send(player, "MSG.ITEM.NOTENOUGH",
+                    "%amount%", String.valueOf(unit), "%item%", entry.getPlainName());
             failSound(player);
             return;
         }
 
-        int toSell = (amount < 0) ? owned : Math.min(amount, owned);
+        int toSell = all ? owned : Math.min(unit, owned);
         if (toSell <= 0) {
-            plugin.getMessages().send(player, "not-enough-items");
+            plugin.getLang().send(player, "MSG.ITEM.NOTENOUGH",
+                    "%amount%", String.valueOf(unit), "%item%", entry.getPlainName());
             failSound(player);
             return;
         }
 
-        // Az aktualis (dinamikus) egysegar, majd a teljes osszeg.
-        double unit = plugin.getPriceManager().currentSellPrice(item.getMaterial(), item.getBaseSell());
-        double total = unit * toSell;
+        double perItemBase = entry.getSellPrice() / unit;
+        double unitDynamic = plugin.getPriceManager().currentSellPrice(material, perItemBase);
+        double total = unitDynamic * toSell;
 
-        removeItems(player, item.getMaterial(), toSell);
-        plugin.getEconomyHook().deposit(player, total);
+        removePlain(player, material, toSell);
+        if (total > 0) {
+            plugin.getEconomyHook().deposit(player, total);
+        }
 
-        // Eladas utan esik az ar.
-        plugin.getPriceManager().registerSale(item.getMaterial(), toSell);
+        // Az eladas csokkenti az arat (egyedi dinamikus logika).
+        plugin.getPriceManager().registerSale(material, toSell);
 
-        plugin.getMessages().send(player, "sell-success",
-                "%amount%", String.valueOf(toSell),
-                "%item%", Text.pretty(item.getMaterial()),
-                "%price%", formatPrice(total));
-        successSound(player);
+        boolean free = total <= 0 && plugin.getConfig().getBoolean("useDifferentMessagesForFreeItems", true);
+        if (all) {
+            plugin.getLang().send(player, free ? "MSG.ITEM.SOLDALLFREE" : "MSG.ITEM.SOLDALL",
+                    "%amount%", String.valueOf(toSell),
+                    "%item%", entry.getPlainName(),
+                    "%price%", plugin.getEconomyHook().format(total));
+        } else {
+            plugin.getLang().send(player, free ? "MSG.ITEM.SOLDFREE" : "MSG.ITEM.SOLD",
+                    "%amount%", String.valueOf(toSell),
+                    "%item%", entry.getPlainName(),
+                    "%price%", plugin.getEconomyHook().format(total));
+        }
+        playSound(player, all ? "SELL_ALL_ITEM" : "SELL_ITEM", Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
 
     // ---------------------------------------------------------------
     //  Inventory segedek
     // ---------------------------------------------------------------
 
-    public int countItems(Player player, Material material) {
-        // Csak "tiszta" (nem nevezett, nem enchantelt stb.) itemeket szamolunk,
-        // hogy a ritka/varazsolt targyak ne menjenek el alapron.
+    private int countPlain(Player player, Material material) {
         int count = 0;
         for (ItemStack stack : player.getInventory().getStorageContents()) {
             if (stack != null && stack.getType() == material && !stack.hasItemMeta()) {
@@ -194,7 +406,7 @@ public class ShopManager {
         return count;
     }
 
-    private void removeItems(Player player, Material material, int amount) {
+    private void removePlain(Player player, Material material, int amount) {
         int remaining = amount;
         ItemStack[] contents = player.getInventory().getStorageContents();
         for (int i = 0; i < contents.length && remaining > 0; i++) {
@@ -213,14 +425,14 @@ public class ShopManager {
         player.updateInventory();
     }
 
-    private void giveItems(Player player, Material material, int amount) {
-        int max = material.getMaxStackSize();
+    private void giveItems(Player player, ItemStack template, int amount) {
+        int max = Math.max(1, template.getMaxStackSize());
         int remaining = amount;
         while (remaining > 0) {
             int give = Math.min(max, remaining);
-            ItemStack stack = new ItemStack(material, give);
+            ItemStack stack = template.clone();
+            stack.setAmount(give);
             Map<Integer, ItemStack> leftover = player.getInventory().addItem(stack);
-            // Ha valami maradna (elvileg a hasInventorySpace miatt nem), eldobjuk a labhoz.
             for (ItemStack left : leftover.values()) {
                 player.getWorld().dropItemNaturally(player.getLocation(), left);
             }
@@ -229,41 +441,140 @@ public class ShopManager {
         player.updateInventory();
     }
 
-    /** Megnezi, befer-e a stack a jatekos inventoryjaba (eldobas nelkul). */
-    private boolean hasInventorySpace(Player player, ItemStack stack) {
+    private boolean hasSpace(Player player, ItemStack template, int amount) {
         int capacity = 0;
-        int max = stack.getMaxStackSize();
+        int max = Math.max(1, template.getMaxStackSize());
         for (ItemStack content : player.getInventory().getStorageContents()) {
             if (content == null || content.getType() == Material.AIR) {
                 capacity += max;
-            } else if (content.getType() == stack.getType() && !content.hasItemMeta()) {
+            } else if (content.isSimilar(template)) {
                 capacity += Math.max(0, content.getMaxStackSize() - content.getAmount());
             }
-            if (capacity >= stack.getAmount()) {
+            if (capacity >= amount) {
                 return true;
             }
         }
-        return capacity >= stack.getAmount();
+        return capacity >= amount;
     }
 
     // ---------------------------------------------------------------
     //  Hangok
     // ---------------------------------------------------------------
 
-    private void successSound(Player player) {
-        if (sounds) {
-            player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.7f, 1.4f);
+    private void playSound(Player player, String key, Sound fallback) {
+        String name = plugin.getConfig().getString("sounds." + key, null);
+        Sound sound = fallback;
+        if (name != null) {
+            try {
+                sound = Sound.valueOf(name.toUpperCase(Locale.ROOT));
+            } catch (IllegalArgumentException ignored) {
+                sound = fallback;
+            }
+        }
+        if (sound != null) {
+            player.playSound(player.getLocation(), sound, 0.7f, 1.3f);
         }
     }
 
     private void failSound(Player player) {
-        if (sounds) {
-            player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_VILLAGER_NO, 0.7f, 1.0f);
-        }
+        player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.7f, 1.0f);
     }
 
-    private Material parseMaterial(String name, Material fallback) {
-        Material material = Material.matchMaterial(name == null ? "" : name);
-        return material == null ? fallback : material;
+    private int normalizeSize(int size) {
+        if (size < 9) {
+            return 9;
+        }
+        if (size > 54) {
+            return 54;
+        }
+        return (size / 9) * 9;
+    }
+
+    // ---------------------------------------------------------------
+    //  Getterek
+    // ---------------------------------------------------------------
+
+    public String getMainTitle() {
+        return mainTitle;
+    }
+
+    public int getMainSize() {
+        return mainSize;
+    }
+
+    public ItemStack getMainFill() {
+        return mainFill;
+    }
+
+    public boolean isMainMenuDisabled() {
+        return disableMainMenu;
+    }
+
+    public List<MenuButton> getMenuButtons() {
+        return menuButtons;
+    }
+
+    public Shop getShop(String id) {
+        return id == null ? null : shops.get(id);
+    }
+
+    public Map<String, Shop> getShops() {
+        return shops;
+    }
+
+    public List<String> getItemLoreFormat() {
+        return itemLoreFormat;
+    }
+
+    public List<String> getEnchantLoreFormat() {
+        return enchantLoreFormat;
+    }
+
+    public String getUnbuyableText() {
+        return unbuyableText;
+    }
+
+    public String getUnsellableText() {
+        return unsellableText;
+    }
+
+    public boolean isHideBuyForUnbuyable() {
+        return hideBuyForUnbuyable;
+    }
+
+    public boolean isHideSellForUnsellable() {
+        return hideSellForUnsellable;
+    }
+
+    public ItemStack getBackButton() {
+        return backButton;
+    }
+
+    public int getBackSlot() {
+        return backSlot;
+    }
+
+    public ItemStack getPrevButton() {
+        return prevButton;
+    }
+
+    public int getPrevSlot() {
+        return prevSlot;
+    }
+
+    public ItemStack getNextButton() {
+        return nextButton;
+    }
+
+    public int getNextSlot() {
+        return nextSlot;
+    }
+
+    public ConfigurationSection getBalanceItemSection() {
+        return balanceItemSection;
+    }
+
+    public Map<String, String> getClickActions() {
+        return clickActions;
     }
 }

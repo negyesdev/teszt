@@ -1,0 +1,351 @@
+miscellaneous:
+  name: "Shop → Miscellaneous (&f%page%&8/&f2&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+# PAGE #1
+#
+#
+    composter:
+      type: item
+      item:
+        material: COMPOSTER
+        quantity: 1
+      buyPrice: 50
+      slot: 3
+    honeycomb:
+      type: item
+      item:
+        material: HONEYCOMB
+        quantity: 1
+      buyPrice: 60
+      sellPrice: 1
+      slot: 4
+    spyglass:
+      type: item
+      item:
+        material: SPYGLASS
+        quantity: 1
+      buyPrice: 350
+      slot: 5
+    brewing_stand:
+      type: item
+      item:
+        material: BREWING_STAND
+        quantity: 1
+      buyPrice: 1000
+      slot: 11
+    nether_star:
+      type: item
+      item:
+        material: NETHER_STAR
+        quantity: 1
+      buyPrice: 500000
+      slot: 12
+    ender_eye:
+      type: item
+      item:
+        material: ENDER_EYE
+        quantity: 1
+      buyPrice: 30000
+      slot: 13
+    cauldron:
+      type: item
+      item:
+        material: CAULDRON
+        quantity: 1
+      buyPrice: 400
+      slot: 14
+    clock:
+      type: item
+      item:
+        material: CLOCK
+        quantity: 1
+      buyPrice: 350
+      slot: 15
+    compass:
+      type: item
+      item:
+        material: COMPASS
+        quantity: 1
+      buyPrice: 300
+      slot: 19
+    saddle:
+      type: item
+      item:
+        material: SADDLE
+        quantity: 1
+      buyPrice: 8500
+      slot: 20
+    anvil:
+      type: item
+      item:
+        material: ANVIL
+        quantity: 1
+      buyPrice: 3000
+      slot: 21
+    beacon:
+      type: item
+      item:
+        material: BEACON
+        quantity: 1
+      buyPrice: 550000
+      slot: 22
+    ender_chest:
+      type: item
+      item:
+        material: ENDER_CHEST
+        quantity: 1
+      buyPrice: 150000
+      slot: 23
+    elytra:
+      type: item
+      item:
+        material: ELYTRA
+        quantity: 1
+      buyPrice: 1000000
+      slot: 24
+    heart_of_the_sea:
+      type: item
+      item:
+        material: HEART_OF_THE_SEA
+        quantity: 1
+      buyPrice: 100000
+      slot: 25
+    conduit:
+      type: item
+      item:
+        material: CONDUIT
+        quantity: 1
+      buyPrice: 110000
+      slot: 29
+    amethyst_shard:
+      type: item
+      item:
+        material: AMETHYST_SHARD
+        quantity: 1
+      buyPrice: 190
+      slot: 30
+    echo_shard:
+      type: item
+      item:
+        material: ECHO_SHARD
+        quantity: 1
+      buyPrice: 3000
+      sellPrice: 200
+      slot: 31
+    sculk_shrieker:
+      type: item
+      item:
+        material: SCULK_SHRIEKER
+        quantity: 1
+      buyPrice: 5000
+      sellPrice: 350
+      slot: 32
+    sculk_sensor:
+      type: item
+      item:
+        material: SCULK_SENSOR
+        quantity: 1
+      buyPrice: 6500
+      sellPrice: 450
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    leather_horse_armor:
+      type: item
+      item:
+        material: LEATHER_HORSE_ARMOR
+        quantity: 1
+      buyPrice: 1500
+      slot: 2
+      page: 2
+    iron_horse_armor:
+      type: item
+      item:
+        material: IRON_HORSE_ARMOR
+        quantity: 1
+      buyPrice: 3500
+      slot: 3
+      page: 2
+    golden_horse_armor:
+      type: item
+      item:
+        material: GOLDEN_HORSE_ARMOR
+        quantity: 1
+      buyPrice: 4000
+      slot: 5
+      page: 2
+    diamond_horse_armor:
+      type: item
+      item:
+        material: DIAMOND_HORSE_ARMOR
+        quantity: 1
+      buyPrice: 5000
+      slot: 6
+      page: 2
+#
+    bucket:
+      type: item
+      item:
+        material: BUCKET
+        quantity: 1
+      buyPrice: 100
+      slot: 11
+      page: 2
+    milk_bucket:
+      type: item
+      item:
+        material: MILK_BUCKET
+        quantity: 1
+      buyPrice: 120
+      slot: 12
+      page: 2
+    water_bucket:
+      type: item
+      item:
+        material: WATER_BUCKET
+        quantity: 1
+      buyPrice: 200
+      slot: 14
+      page: 2
+    lava_bucket:
+      type: item
+      item:
+        material: LAVA_BUCKET
+        quantity: 1
+      buyPrice: 3000
+      slot: 15
+      page: 2
+    powder_snow_bucket:
+      type: item
+      item:
+        material: POWDER_SNOW_BUCKET
+        quantity: 1
+      buyPrice: 200
+      slot: 19
+      page: 2
+    pufferfish_bucket:
+      type: item
+      item:
+        material: PUFFERFISH_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 20
+      page: 2
+    salmon_bucket:
+      type: item
+      item:
+        material: SALMON_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 21
+      page: 2
+    cod_bucket:
+      type: item
+      item:
+        material: COD_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 22
+      page: 2
+    tropical_fish_bucket:
+      type: item
+      item:
+        material: TROPICAL_FISH_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 23
+      page: 2
+    bucket_of_axolotl:
+      type: item
+      item:
+        material: AXOLOTL_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 24
+      page: 2
+    bucket_of_tadpole:
+      type: item
+      item:
+        material: TADPOLE_BUCKET
+        quantity: 1
+      buyPrice: 1250
+      slot: 25
+      page: 2
+#
+    oak_boat:
+      type: item
+      item:
+        material: OAK_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 28
+      page: 2
+    spruce_boat:
+      type: item
+      item:
+        material: SPRUCE_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 29
+      page: 2
+    birch_boat:
+      type: item
+      item:
+        material: BIRCH_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 30
+      page: 2
+    jungle_boat:
+      type: item
+      item:
+        material: JUNGLE_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 31
+      page: 2
+    acacia_boat:
+      type: item
+      item:
+        material: ACACIA_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 32
+      page: 2
+    dark_oak_boat:
+      type: item
+      item:
+        material: DARK_OAK_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 33
+      page: 2
+    mangrove_boat:
+      type: item
+      item:
+        material: MANGROVE_BOAT
+        quantity: 1
+      buyPrice: 125
+      slot: 34
+      page: 2

@@ -1,0 +1,1485 @@
+potions&arrows:
+  name: "Shop → Potions & Arrows (&f%page%&8/&f4&8)"
+  fillItem:
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+    balance-page-3:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 3
+    balance-page-4:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 4
+#
+#
+#     PAGE #1
+#
+#
+    regeneration_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 1
+      page: 1
+    regeneration_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 2
+      buyPrice: 400
+      slot: 10
+      page: 1
+#
+#
+#
+    speed_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 2
+      page: 1
+    speed_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 2
+      buyPrice: 500
+      slot: 11
+      page: 1
+#
+#
+#
+    strength_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 1
+          extended: true
+      buyPrice: 450
+      slot: 3
+      page: 1
+    strength_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 2
+      buyPrice: 600
+      slot: 12
+      page: 1
+#
+#
+#
+    instanthealth_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 1
+      buyPrice: 250
+      slot: 4
+      page: 1
+    instanthealth_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 2
+      buyPrice: 350
+      slot: 13
+      page: 1
+#
+#
+#
+    slowfalling_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+      buyPrice: 250
+      slot: 22
+      page: 1
+    slowfalling_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 31
+      page: 1
+#
+#
+#
+    fireresistance_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+      buyPrice: 400
+      slot: 5
+      page: 1
+    fireresistance_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+          extended: true
+      buyPrice: 500
+      slot: 14
+      page: 1
+#
+#
+#
+    waterbreathing_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+      buyPrice: 200
+      slot: 6
+      page: 1
+    waterbreathing_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 15
+      page: 1
+#
+#
+#
+    jump_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 7
+      page: 1
+    jump_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 2
+      buyPrice: 400
+      slot: 16
+      page: 1
+#
+#
+#
+    nightvision_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+      buyPrice: 250
+      slot: 19
+      page: 1
+    nightvision_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 28
+      page: 1
+#
+#
+#
+    invisibility_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+      buyPrice: 250
+      slot: 20
+      page: 1
+    invisibility_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 29
+      page: 1
+#
+#
+#
+    instantdamage_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 1
+      buyPrice: 300
+      slot: 21
+      page: 1
+    instantdamage_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 2
+      buyPrice: 400
+      slot: 30
+      page: 1
+#
+#
+#
+    poison_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 23
+      page: 1
+    poison_potion_II:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 2
+      buyPrice: 400
+      slot: 32
+      page: 1
+#
+#
+#
+    slowness_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+      buyPrice: 150
+      slot: 24
+      page: 1
+    slowness_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 33
+      page: 1
+#
+#
+#
+    weakness_potion:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+      buyPrice: 150
+      slot: 25
+      page: 1
+    weakness_potion_extended:
+      type: item
+      item:
+        material: POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 34
+      page: 1
+#
+#
+# PAGE #2
+#
+#
+    regeneration_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 1
+      page: 2
+    regeneration_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 2
+      buyPrice: 400
+      slot: 10
+      page: 2
+#
+#
+#
+    speed_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 2
+      page: 2
+    speed_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 2
+      buyPrice: 500
+      slot: 11
+      page: 2
+#
+#
+#
+    strength_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 1
+          extended: true
+      buyPrice: 450
+      slot: 3
+      page: 2
+    strength_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 2
+      buyPrice: 600
+      slot: 12
+      page: 2
+#
+#
+#
+    instanthealth_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 1
+      buyPrice: 250
+      slot: 4
+      page: 2
+    instanthealth_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 2
+      buyPrice: 350
+      slot: 13
+      page: 2
+#
+#
+#
+    slowfalling_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+      buyPrice: 250
+      slot: 22
+      page: 2
+    slowfalling_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 31
+      page: 2
+#
+#
+#
+    fireresistance_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+      buyPrice: 400
+      slot: 5
+      page: 2
+    fireresistance_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+          extended: true
+      buyPrice: 500
+      slot: 14
+      page: 2
+#
+#
+#
+    waterbreathing_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+      buyPrice: 200
+      slot: 6
+      page: 2
+    waterbreathing_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 15
+      page: 2
+#
+#
+#
+    jump_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 7
+      page: 2
+    jump_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 2
+      buyPrice: 400
+      slot: 16
+      page: 2
+#
+#
+#
+    nightvision_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+      buyPrice: 250
+      slot: 19
+      page: 2
+    nightvision_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 28
+      page: 2
+#
+#
+#
+    invisibility_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+      buyPrice: 250
+      slot: 20
+      page: 2
+    invisibility_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 29
+      page: 2
+#
+#
+#
+    instantdamage_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 1
+      buyPrice: 300
+      slot: 21
+      page: 2
+    instantdamage_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 2
+      buyPrice: 400
+      slot: 30
+      page: 2
+#
+#
+#
+    poison_potion_splash_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 23
+      page: 2
+    poison_splash_potion_II:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 2
+      buyPrice: 400
+      slot: 32
+      page: 2
+#
+#
+#
+    slowness_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+      buyPrice: 150
+      slot: 24
+      page: 2
+    slowness_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 33
+      page: 2
+#
+#
+#
+    weakness_splash_potion:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+      buyPrice: 150
+      slot: 25
+      page: 2
+    weakness_splash_potion_extended:
+      type: item
+      item:
+        material: SPLASH_POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 34
+      page: 2
+#
+#
+# PAGE #3
+#
+#
+    regeneration_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 1
+          extended: true
+      buyPrice: 200
+      slot: 1
+      page: 3
+    regeneration_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 2
+      buyPrice: 300
+      slot: 10
+      page: 3
+#
+#
+#
+    speed_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 1
+          extended: true
+      buyPrice: 200
+      slot: 2
+      page: 3
+    speed_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 2
+      buyPrice: 300
+      slot: 11
+      page: 3
+#
+#
+#
+    strength_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 3
+      page: 3
+    strength_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 2
+      buyPrice: 300
+      slot: 12
+      page: 3
+#
+#
+#
+    instanthealth_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 1
+      buyPrice: 200
+      slot: 4
+      page: 3
+    instanthealth_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 2
+      buyPrice: 300
+      slot: 13
+      page: 3
+#
+#
+#
+    slowfalling_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+      buyPrice: 200
+      slot: 22
+      page: 3
+    slowfalling_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 31
+      page: 3
+#
+#
+#
+    fireresistance_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+      buyPrice: 200
+      slot: 5
+      page: 3
+    fireresistance_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+          extended: true
+      buyPrice: 300
+      slot: 14
+      page: 3
+#
+#
+#
+    waterbreathing_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+      buyPrice: 100
+      slot: 6
+      page: 3
+    waterbreathing_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+          extended: true
+      buyPrice: 150
+      slot: 15
+      page: 3
+#
+#
+#
+    jump_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 1
+          extended: true
+      buyPrice: 200
+      slot: 7
+      page: 3
+    jump_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 2
+      buyPrice: 300
+      slot: 16
+      page: 3
+#
+#
+#
+    nightvision_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+      buyPrice: 150
+      slot: 19
+      page: 3
+    nightvision_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+          extended: true
+      buyPrice: 200
+      slot: 28
+      page: 3
+#
+#
+#
+    invisibility_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+      buyPrice: 150
+      slot: 20
+      page: 3
+    invisibility_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+          extended: true
+      buyPrice: 200
+      slot: 29
+      page: 3
+#
+#
+#
+    instantdamage_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 1
+      buyPrice: 200
+      slot: 21
+      page: 3
+    instantdamage_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 2
+      buyPrice: 300
+      slot: 30
+      page: 3
+#
+#
+#
+    poison_potion_lingering_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 1
+          extended: true
+      buyPrice: 150
+      slot: 23
+      page: 3
+    poison_lingering_potion_II:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: POISON
+          level: 2
+      buyPrice: 300
+      slot: 32
+      page: 3
+#
+#
+#
+    slowness_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+      buyPrice: 100
+      slot: 24
+      page: 3
+    slowness_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 33
+      page: 3
+#
+#
+#
+    weakness_lingering_potion:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+      buyPrice: 100
+      slot: 25
+      page: 3
+    weakness_lingering_potion_extended:
+      type: item
+      item:
+        material: LINGERING_POTION
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 34
+      page: 3
+#
+#
+# PAGE #4
+#
+#
+    regeneration_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 1
+      page: 4
+    regeneration_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: REGEN
+          level: 2
+      buyPrice: 450
+      slot: 10
+      page: 4
+#
+#
+#
+    speed_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 2
+      page: 4
+    speed_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SPEED
+          level: 2
+      buyPrice: 600
+      slot: 11
+      page: 4
+#
+#
+#
+    strength_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 1
+          extended: true
+      buyPrice: 500
+      slot: 3
+      page: 4
+    strength_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: STRENGTH
+          level: 2
+      buyPrice: 700
+      slot: 12
+      page: 4
+#
+#
+#
+    instanthealth_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 1
+      buyPrice: 350
+      slot: 4
+      page: 4
+    instanthealth_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INSTANT_HEAL
+          level: 2
+      buyPrice: 500
+      slot: 13
+      page: 4
+#
+#
+#
+    slowfalling_arrow:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+      buyPrice: 350
+      slot: 22
+      page: 4
+    slowfalling_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SLOW_FALLING
+          level: 1
+          extended: true
+      buyPrice: 500
+      slot: 31
+      page: 4
+#
+#
+#
+    fireresistance_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+      buyPrice: 350
+      slot: 5
+      page: 4
+    fireresistance_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: FIRE_RESISTANCE
+          level: 1
+          extended: true
+      buyPrice: 500
+      slot: 14
+      page: 4
+#
+#
+#
+    waterbreathing_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+      buyPrice: 250
+      slot: 6
+      page: 4
+    waterbreathing_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: WATER_BREATHING
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 15
+      page: 4
+#
+#
+#
+    jump_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 1
+          extended: true
+      buyPrice: 250
+      slot: 7
+      page: 4
+    jump_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: JUMP
+          level: 2
+      buyPrice: 350
+      slot: 16
+      page: 4
+#
+#
+#
+    nightvision_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+      buyPrice: 250
+      slot: 19
+      page: 4
+    nightvision_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: NIGHT_VISION
+          level: 1
+          extended: true
+      buyPrice: 350
+      slot: 28
+      page: 4
+#
+#
+#
+    invisibility_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+      buyPrice: 400
+      slot: 20
+      page: 4
+    invisibility_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INVISIBILITY
+          level: 1
+          extended: true
+      buyPrice: 650
+      slot: 29
+      page: 4
+#
+#
+#
+    instantdamage_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 1
+      buyPrice: 500
+      slot: 21
+      page: 4
+    instantdamage_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: INSTANT_DAMAGE
+          level: 2
+      buyPrice: 700
+      slot: 30
+      page: 4
+#
+#
+#
+    poison_potion_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: POISON
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 23
+      page: 4
+    poison_arrow_II:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: POISON
+          level: 2
+      buyPrice: 500
+      slot: 32
+      page: 4
+#
+#
+#
+    slowness_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+      buyPrice: 250
+      slot: 24
+      page: 4
+    slowness_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: SLOWNESS
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 33
+      page: 4
+#
+#
+#
+    weakness_arrow_potion:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+      buyPrice: 250
+      slot: 25
+      page: 4
+    weakness_arrow_extended:
+      type: item
+      item:
+        material: TIPPED_ARROW
+        quantity: 1
+        potion:
+          type: WEAKNESS
+          level: 1
+          extended: true
+      buyPrice: 400
+      slot: 34
+      page: 4

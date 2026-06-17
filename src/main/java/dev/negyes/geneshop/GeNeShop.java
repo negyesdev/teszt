@@ -2,7 +2,7 @@ package dev.negyes.geneshop;
 
 import dev.negyes.geneshop.command.AdminCommand;
 import dev.negyes.geneshop.command.ShopCommand;
-import dev.negyes.geneshop.config.Messages;
+import dev.negyes.geneshop.config.Lang;
 import dev.negyes.geneshop.economy.EconomyHook;
 import dev.negyes.geneshop.gui.ShopGUI;
 import dev.negyes.geneshop.gui.ShopListener;
@@ -13,13 +13,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 /**
- * GeNe Shop - dinamikus arazasu GUI shop plugin (Minecraft 1.21.8).
+ * GeNe Shop - ShopGUI+ stilusu, dinamikus arazasu GUI shop (Minecraft 1.21.8).
  *
  * Keszitette: negyes Gerii06
  */
 public class GeNeShop extends JavaPlugin {
 
-    private Messages messages;
+    private Lang lang;
     private EconomyHook economyHook;
     private PriceManager priceManager;
     private ShopManager shopManager;
@@ -31,13 +31,13 @@ public class GeNeShop extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
 
-        this.messages = new Messages(this);
+        this.lang = new Lang(this);
         this.economyHook = new EconomyHook(this);
         this.priceManager = new PriceManager(this);
         this.shopManager = new ShopManager(this);
         this.shopGUI = new ShopGUI(this);
 
-        messages.load();
+        lang.load();
         priceManager.load();
         shopManager.load();
 
@@ -72,13 +72,13 @@ public class GeNeShop extends JavaPlugin {
         getLogger().info("GeNe Shop kikapcsolva. Az arak elmentve.");
     }
 
-    /** Ujratolt mindent (config, uzenetek, kategoriak, arak). */
+    /** Ujratolt mindent (config, uzenetek, shopok, arak). */
     public void reloadAll() {
         if (priceManager != null) {
             priceManager.save();
         }
         reloadConfig();
-        messages.load();
+        lang.load();
         priceManager.load();
         shopManager.load();
         startSaveTask();
@@ -107,8 +107,8 @@ public class GeNeShop extends JavaPlugin {
         }
     }
 
-    public Messages getMessages() {
-        return messages;
+    public Lang getLang() {
+        return lang;
     }
 
     public EconomyHook getEconomyHook() {

@@ -1,0 +1,359 @@
+redstone:
+  name: "Shop → Redstone (&f%page%&8/&f3&8)"
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+    balance-page-3:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 3
+#
+#
+#
+    redstone:
+      type: item
+      item:
+        material: REDSTONE
+        quantity: 1
+      buyPrice: 15
+      sellPrice: 3
+      slot: 3
+    target:
+      type: item
+      item:
+        material: TARGET
+        quantity: 1
+      buyPrice: 100
+      sellPrice: 3
+      slot: 4
+    lectern:
+      type: item
+      item:
+        material: LECTERN
+        quantity: 1
+      buyPrice: 300
+      sellPrice: 1
+      slot: 5
+    repeater:
+      type: item
+      item:
+        material: REPEATER
+        quantity: 1
+      buyPrice: 350
+      slot: 11
+    comparator:
+      type: item
+      item:
+        material: COMPARATOR
+        quantity: 1
+      buyPrice: 400
+      slot: 12
+    hopper:
+      type: item
+      item:
+        material: HOPPER
+        quantity: 1
+      buyPrice: 400
+      slot: 13
+    piston:
+      type: item
+      item:
+        material: PISTON
+        quantity: 1
+      buyPrice: 500
+      slot: 14
+    sticky_piston:
+      type: item
+      item:
+        material: STICKY_PISTON
+        quantity: 1
+      buyPrice: 800
+      slot: 15
+    daylight_sensor:
+      type: item
+      item:
+        material: DAYLIGHT_DETECTOR
+        quantity: 1
+      buyPrice: 800
+      slot: 20
+    note_block:
+      type: item
+      item:
+        material: NOTE_BLOCK
+        quantity: 1
+      buyPrice: 700
+      slot: 21
+    dropper:
+      type: item
+      item:
+        material: DROPPER
+        quantity: 1
+      buyPrice: 500
+      slot: 22
+    dispenser:
+      type: item
+      item:
+        material: DISPENSER
+        quantity: 1
+      buyPrice: 500
+      slot: 23
+    observer:
+      type: item
+      item:
+        material: OBSERVER
+        quantity: 1
+      buyPrice: 500
+      slot: 24
+    trapped_chest:
+      type: item
+      item:
+        material: TRAPPED_CHEST
+        quantity: 1
+      buyPrice: 250
+      slot: 29
+    redstone_torch:
+      type: item
+      item:
+        material: REDSTONE_TORCH
+        quantity: 1
+      buyPrice: 35
+      slot: 30
+    redstone_lamp:
+      type: item
+      item:
+        material: REDSTONE_LAMP
+        quantity: 1
+      buyPrice: 800
+      slot: 31
+    lever:
+      type: item
+      item:
+        material: LEVER
+        quantity: 1
+      buyPrice: 50
+      slot: 32
+    tripwire_hook:
+      type: item
+      item:
+        material: TRIPWIRE_HOOK
+        quantity: 1
+      buyPrice: 85
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    stone_plate:
+      type: item
+      item:
+        material: STONE_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 12
+      page: 2
+    iron_plate:
+      type: item
+      item:
+        material: HEAVY_WEIGHTED_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 350
+      slot: 13
+      page: 2
+    gold_plate:
+      type: item
+      item:
+        material: LIGHT_WEIGHTED_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 400
+      slot: 14
+      page: 2
+#
+    oak_plate:
+      type: item
+      item:
+        material: OAK_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 20
+      page: 2
+    spruce_plate:
+      type: item
+      item:
+        material: SPRUCE_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 21
+      page: 2
+    birch_plate:
+      type: item
+      item:
+        material: BIRCH_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 22
+      page: 2
+    jungle_plate:
+      type: item
+      item:
+        material: JUNGLE_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 23
+      page: 2
+    acacia_plate:
+      type: item
+      item:
+        material: ACACIA_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 24
+      page: 2
+    dark_oak_plate:
+      type: item
+      item:
+        material: DARK_OAK_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 29
+      page: 2
+    mangrove_plate:
+      type: item
+      item:
+        material: MANGROVE_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 50
+      slot: 30
+      page: 2
+    crimson_plate:
+      type: item
+      item:
+        material: CRIMSON_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 90
+      slot: 31
+      page: 2
+    warped_plate:
+      type: item
+      item:
+        material: WARPED_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 90
+      slot: 32
+      page: 2
+    polished_blackstone_plate:
+      type: item
+      item:
+        material: POLISHED_BLACKSTONE_PRESSURE_PLATE
+        quantity: 1
+      buyPrice: 275
+      slot: 33
+      page: 2
+#
+#
+# PAGE #3
+#
+#
+    stone_button:
+      type: item
+      item:
+        material: STONE_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 4
+      page: 3
+    oak_button:
+      type: item
+      item:
+        material: OAK_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 11
+      page: 3
+    spruce_button:
+      type: item
+      item:
+        material: SPRUCE_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 13
+      page: 3
+    birch_button:
+      type: item
+      item:
+        material: BIRCH_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 15
+      page: 3
+    jungle_button:
+      type: item
+      item:
+        material: JUNGLE_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 20
+      page: 3
+    acacia_button:
+      type: item
+      item:
+        material: ACACIA_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 21
+      page: 3
+    dark_oak_button:
+      type: item
+      item:
+        material: DARK_OAK_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 22
+      page: 3
+    mangrove_button:
+      type: item
+      item:
+        material: MANGROVE_BUTTON
+        quantity: 1
+      buyPrice: 30
+      slot: 23
+      page: 3
+    crimson_button:
+      type: item
+      item:
+        material: CRIMSON_BUTTON
+        quantity: 1
+      buyPrice: 40
+      slot: 24
+      page: 3
+    warped_button:
+      type: item
+      item:
+        material: WARPED_BUTTON
+        quantity: 1
+      buyPrice: 50
+      slot: 30
+      page: 3
+    polished_blackstone_button:
+      type: item
+      item:
+        material: POLISHED_BLACKSTONE_BUTTON
+        quantity: 1
+      buyPrice: 70
+      slot: 32
+      page: 3

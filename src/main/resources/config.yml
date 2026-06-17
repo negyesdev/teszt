@@ -1,179 +1,1195 @@
-# =====================================================================
-#  GeNe Shop  -  keszitette: negyes Gerii06
-#  Dinamikus arazasu shop plugin Minecraft 1.21.8-hoz
-# =====================================================================
-#
-#  Hogyan mukodik a dinamikus arazas?
-#   - Minden itemnek van egy alap eladasi ara (sell) es vetel ara (buy).
-#   - Amikor a szerveren valaki elad egy itembol, annak az eladasi ara
-#     kicsit beesik (lasd: dynamic-pricing.drop-per-sale).
-#   - Az ar magatol, folyamatosan visszamaszik az alapertekre. A teljes
-#     visszaallas a legaljarol kb. recover-minutes perc (alapbol 150 perc
-#     = 2.5 ora), tehat ~2-3 oran belul minden ar normalisra all vissza.
-#   - A VETELI ar fix, ezert nem lehet "buy-low / sell-high" trukkel
-#     visszaelni a rendszerrel.
-#
-# =====================================================================
+database:
+  type: sqlite
+  mySQLHost: "localhost"
+  mySQLPort: 3306
+  mySQLDatabase: "database"
+  mySQLUser: "username"
+  mySQLPassword: "password"
+  tableNames:
+    players: "ShopGUIPlus"
 
-settings:
-  # A GUI fomenu cime.
-  main-title: "&8» &b&lGeNe Shop"
-  # A penznem szimboluma a kiirasokban (csak megjelenites).
-  currency-symbol: "$"
-  # Hangok lejatszasa a tranzakciokhoz.
-  sounds: true
-  # Ennyi tizedesjegyre kerekitsuk az arakat a kiirasban.
-  price-decimals: 2
+economyTypes:
+  - VAULT
 
-dynamic-pricing:
-  # Bekapcsolja a dinamikus arazast. Ha false, az eladasi ar mindig fix.
-  enabled: true
-  # Egyetlen eladott darab ennyivel csokkenti az ar-szorzot (0.0 - 1.0).
-  # Pl. 0.0008 azt jelenti: 1 stack (64 db) eladasa ~5%-kal csokkenti az arat.
-  drop-per-sale: 0.0008
-  # Az ar-szorzo soha nem eshet ez ala (vagyis legfeljebb ennyire esik be az ar).
-  # 0.40 => az eladasi ar maximum 60%-ot eshet.
-  min-multiplier: 0.40
-  # Ennyi perc alatt all vissza teljesen az ar a legaljarol az alapertekre.
-  # 150 perc = 2.5 ora (a "2-3 oran belul" kovetelmenynek megfelelo).
-  recover-minutes: 150
-  # Ilyen gyakran (masodperc) mentodik el az arak allapota lemezre.
-  save-interval-seconds: 120
+# Name of the main GUI
+shopMenuName: "Shop → Main"
+# Size of the main GUI, valid values are 9, 18, 27, 36, 45 and 54
+shopMenuSize: 54
+# Choose an item to fill the empty slots of menu with
+shopMenuFillItem:
+  material: GRAY_STAINED_GLASS_PANE
+  name: "&r"
+# Define whether selling all with middle mouse button is enabled
+enableSellAll: true
+# Define whether the buy GUI with option to select quantity is enabled
+enableBuyGUI: true
+# Define whether the sell GUI with option to select quantity is enabled
+enableSellGUI: true
+# Define whether sell all button in SellGUI is enabled (enableSellGUI has to be enabled too)
+enableSellGUISellAll: true
+# Define whether after closing/buying/selling the shop GUI should be opened again
+returnToShop: true
+# Define whether the quick buy/sell option should be enabled (amount selection gui will stay open until player closes it)
+quickBuySell: false
+# Define whether lines containing the %buy% placeholder should be hidden for unbuyable items
+hideBuyPriceForUnbuyable: false
+# Choose placeholder for the price when hideBuyPriceForUnbuyable is disabled
+buyPriceForUnsellablePlaceholder: "Unbuyable"
+# Define whether lines containing the %sell% placeholder should be hidden for unsellable items
+hideSellPriceForUnsellable: false
+# Choose placeholder for the price when hideSellPriceForUnsellable is disabled
+sellPriceForUnsellablePlaceholder: "Unsellable"
+# Choose actions for mouse clicks inside shops
+# Supported click types: all from ClickType enum (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
+# Supported actions: BUY, SELL, SELL_ALL, NONE
+# ef8783fd9c07a8dcca408660d2a5f94c
+# bca78523808be9c884b68740ba652cd5
+clickActions:
+  LEFT: BUY
+  RIGHT: SELL
+  SHIFT_RIGHT: SELL_ALL
+  MIDDLE: SELL_ALL
+# Maximum amount of enchantments players can add to an item, set to -1 for no limit
+maxEnchantments: 4
+# Choose whether players should be able to buy enchantments only 1 level higher than current (eg. player has sword with Sharpness 1, they could buy only Sharpness 2)
+limitEnchantmentLevelDiff: false
+# Define whether the amount selection double click bug fix should be enabled
+enableAmountSelectionFix: true
+# Define whether players should be able to use sell all option to sell all their items (allowAllSellAllStackSizes = true) or only amount multiplied by the original stack size of the shop item (allowAllSellAllStackSizes = false)
+allowAllSellAllStackSizes: false
+# Define whether all prices should be rounded up, down, to the nearest whole number or not rounded (valid values are UP, DOWN, NEAREST and NONE)
+roundPrices: none
+# Define whether main menu (/shop command) should be disabled. The only way to access shops will be to use /shop <id> when you disable it.
+disableMainMenu: false
+# Choose if different messages should be sent when someone buy/sell items for $0 (MSG_ITEM_BOUGHTFREE, MSG_ITEM_SOLDFREE, MSG_ITEM_SOLDALLFREE)
+useDifferentMessagesForFreeItems: true
+# Choose if item names should have first letters of their names capitalized, for instance nether brick would become Nether Brick
+capitalizeItemNames: true
+# Choose the type of price modifiers. (BOTH (permission modifiers have higher priority than command-ones), COMMAND, PERMISSION)
+priceModifiersType: BOTH
+# Choose if the gui shall be closed after using the Sell All feature
+closeGuiAfterSellAll: false
+# Choose if bulk buy/sell guis should be opened immediately after clicking an item (enableBuyGUI and enableSellGUI have to be enabled as well and players need the bulk buy/sell permissions)
+openBulkGuiImmediately: false
+# Choose if players who have the shop opened by console with /shop [player] should be able to access all shops regardless of permissions they have
+sudoAllowAllShopsAccess: false
+# Choose which items stack size should be capped at 16 inside the amount selection GUI so players can't buy eg. oversized ender pearl stacks
+# Format is same as for regular items in shops yaml
+itemStackSizeCappedAt:
+  1:
+    material: ENDER_PEARL
+    size: 16
+  2:
+    material: SNOWBALL
+    size: 16
+  3:
+    material: EGG
+    size: 16
+  4:
+    material: BUCKET
+    size: 1
+# Choose what gamemodes will prevent players from accessing shops. Valid values: ADVENTURE, CREATIVE, SPECTATOR, SURVIVAL
+disableShopsInGamemodes:
+  - ADVENTURE
+  - CREATIVE
+  - SPECTATOR
+# Choose in which worlds players won't be able to access the shop. Same list format as disableShopsInGamemodes
+disableShopsInWorlds: []
 
-# =====================================================================
-#  KATEGORIAK
-#  Minden kategoria sajat ablakot kap. Az "icon" a fomenuben latszik.
-#  Az itemeknel: buy = vetel ar (fix), sell = alap eladasi ar.
-#  Ha egy itemnel a buy vagy sell -1, akkor az a muvelet le van tiltva.
-# =====================================================================
-categories:
+# Choose whether price modifiers should be displayed in percents instead of decimals (eg. 10% instead of 0.10), remember you will still have to use the decimal way in commands
+displayPriceModifiersInPercents: true
 
-  blokkok:
-    display: "&e&lBlokkok"
-    icon: GRASS_BLOCK
-    slot: 10
-    items:
-      STONE: { buy: 2.0, sell: 0.5 }
-      COBBLESTONE: { buy: 1.5, sell: 0.4 }
-      DIRT: { buy: 1.0, sell: 0.2 }
-      SAND: { buy: 1.5, sell: 0.4 }
-      GRAVEL: { buy: 1.5, sell: 0.4 }
-      OAK_LOG: { buy: 4.0, sell: 1.5 }
-      SPRUCE_LOG: { buy: 4.0, sell: 1.5 }
-      BIRCH_LOG: { buy: 4.0, sell: 1.5 }
-      OAK_PLANKS: { buy: 1.5, sell: 0.4 }
-      GLASS: { buy: 3.0, sell: 1.0 }
-      SANDSTONE: { buy: 4.0, sell: 1.2 }
-      OBSIDIAN: { buy: 50.0, sell: 15.0 }
-      NETHERRACK: { buy: 1.0, sell: 0.2 }
-      ICE: { buy: 5.0, sell: 1.5 }
-      CLAY: { buy: 4.0, sell: 1.2 }
+# Choose whether the world-specific permission to access shops should be omitted when player has a shop opened with /shop [player] [shop name]
+disableSudoWorldPermissionCheck: false
 
-  ercek:
-    display: "&b&lErcek &7& Asvanyok"
-    icon: DIAMOND
+# Choose whether the shop-specific permission to access shops should be omitted when player has a shop opened with /shop [player] [shop name]
+disableSudoShopPermissionCheck: false
+
+# Choose sounds for certain GUI actions. Full list is available at https://wiki.brcdev.net/Sounds
+sounds:
+  MAIN_MENU_OPEN: UI_BUTTON_CLICK
+  SHOP_OPEN: UI_BUTTON_CLICK
+  SHOP_SELECT_ITEM: UI_BUTTON_CLICK
+  SHOP_SWITCH_PAGE: UI_BUTTON_CLICK
+  SELL_ITEM: ENTITY_EXPERIENCE_ORB_PICKUP
+  SELL_ALL_ITEM: ENTITY_EXPERIENCE_ORB_PICKUP
+  BUY_ITEM: ENTITY_EXPERIENCE_ORB_PICKUP
+
+# Choose predefined settings for all items (will be overriden when set explicitly for an item in shops yaml)
+defaultItemSettings:
+  # Choose whether item meta (name, lore etc.) should be compared when players attempt to sell an item
+  compareMeta: false
+  # Choose whether item meta should be removed from an item when it's purchased by a player from the shop
+  stripItemMeta: false
+  # Choose whether item model should be compared when players attempt to sell an item
+  compareModel: true
+  # Choose whether item damage/durability should be compared when players attempt to sell an item
+  compareDamage: false
+  # Choose whether item NBT data should be compared when players attempt to sell an item
+  compareNbt: false
+
+# Format of item lores in shops, %buy% will be replaced with the buy price and %sell% with sell price
+shopItemLoreFormat:
+  # This lore will be applied to items
+  item:
+    - ''
+    - '&8&m---------------------------'
+    - '#D3D3D3Use left or right click to'
+    - '#D3D3D3complete the transaction.'
+    - ''
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
+    - '#DCB2FD ▪ &fSell Price: #DCB2FD%sell%'
+    - ''
+    - '#D3D3D3➥ Click with MMB to sell all.'
+    - '&8&m---------------------------'
+    - ''
+  # This lore will be applied to items in the buy GUI (when enableBuyGUI is set to true)
+  itemBuyGUI:
+    - ''
+    - '&8&m---------------------------'
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
+    - '&8&m---------------------------'
+    - ''
+  # This lore will be applied to items in the sell GUI (when enableSellGUI is set to true)
+  itemSellGUI:
+    - ''
+    - '&8&m---------------------------'
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fSell Price: #DCB2FD%sell%'
+    - '&8&m---------------------------'
+    - ''
+  # This lore will be applied to the sell all button in the sell GUI (when enableSellGUI and enableSellGUISellAll are set to true)
+  itemSellGUISellAll:
+    - ''
+    - '&8&m---------------------------'
+    - '#D3D3D3Sell a full inventory of item.'
+    - ''
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fSell Price: #DCB2FD%sell%'
+    - ''
+    - '#D3D3D3➥ Click to sell this item.'
+    - '&8&m---------------------------'
+    - ''
+  # This one to permissions
+  permission:
+    - ''
+    - '&8&m---------------------------'
+    - '#D3D3D3Use left click to complete'
+    - '#D3D3D3the transaction.'
+    - ''
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
+    - ''
+    - '#D3D3D3➥ Left click to buy.'
+    - '&8&m---------------------------'
+    - ''
+  # And this one to enchantments
+  enchantment:
+    - ''
+    - '&8&m---------------------------'
+    - '#D3D3D3Use left click to complete'
+    - '#D3D3D3the transaction.'
+    - ''
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
+    - ''
+    - '#D3D3D3➥ Left click to buy.'
+    - '&8&m---------------------------'
+    - ''
+  # And the last one to commands
+  command:
+    - ''
+    - '&8&m---------------------------'
+    - '#D3D3D3Use left click to complete'
+    - '#D3D3D3the transaction.'
+    - ''
+    - '#DCB2FDInformation'
+    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
+    - ''
+    - '#D3D3D3➥ Left click to buy.'
+    - '&8&m---------------------------'
+    - ''
+
+# Logging settings
+log:
+  # Define whether transactions will be logged to the console/main server log
+  toConsole: true
+  # Define whether transactions will be logged to a separate log
+  toFile: false
+  # Date format of transactions (http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)
+  formatDate: "dd/MM/yyyy HH:mm:ss"
+  # Log message for bought command
+  formatBuyCommand: "%player% bought %amount% x %command% command for %price% from %shop% shop"
+  # Log message for bought enchantment
+  formatBuyEnchantment: "%player% bought %enchantment% enchantment for %price% from %shop% shop"
+  # Log message for bought permission
+  formatBuyPermission: "%player% bought %permission% permission for %price% from %shop% shop"
+  # Log message for bought items
+  formatBuy: "%player% bought %amount% x %item% for %price% from %shop% shop"
+  # Log message for sold items
+  formatSell: "%player% sold %amount% x %item% for %price% to %shop% shop"
+  # Log message for sold all items
+  formatSellAll: "%player% sold all %amount% x %item% for %price% to %shop% shop"
+
+# Sell hand command settings
+sellHand:
+  # When set to true, players will be able to sell any quantity of the item (the price will be calculated from the base price)
+  allowAllQuantities: true
+  # When set to true, /sell hand will work same way as /sell handall does
+  sellsAllItems: false
+  # When set to true, free items (with sell price of $0) will be excluded from being sold using /sell hand and /sell handall
+  excludeFreeItems: true
+
+# Sell all command settings
+sellAll:
+  # When set to true, players will get a detailed summary with prices of each item stack sold
+  detailedSummary: false
+  # Choose if maximal sell price of an item across all shops should be chosen in sell all. Enabling this may affect sell command performance when having lots of shops/items
+  findMaxSellPrice: true
+  # When set to true, free items (with sell price of $0) will be excluded from being sold using /sell all
+  excludeFreeItems: true
+
+buttons:
+  # "Go back button"
+  goBack:
+    item:
+      # Material name, full list can be found here: http://wiki.brcdev.net/Materials
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYThmZWQxMjI4NWYxZDliZjI0NWZlZGU0MTQ3YjhjZGE5M2Q1OTM4M2NlOGE1OGQ2Mjk5ZGQ0ZWFlOTg0MyJ9fX0=
+      # Amount of the item
+      amount: 1
+      # (optional) Data value, for example 1 for WOOD:1 means spruce wood planks
+      # (optional) Custom name
+      name: "#B84DD3Back"
+      # (optional) Lore, can contain multiple lines
+      lore: ''
+    # Slot in each shop's GUI
+    slot: 49
+  # "Previous page" button
+  previousPage:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWMwNjQ2YTI4YjQ1MWRhNzQzOTRlNjk4YjA0ZmFjOTM1YmExOTc1ZjQyODI5MDY3YTBmYmZlZDE4MWEzNjU5NCJ9fX0=
+      quantity: 1
+      name: "#DCB2FD◄ Previous Page"
+    slot: 48
+  # "Next page" button
+  nextPage:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDYzNjgyZjE5ZGU0OTZjYjNjMzE0ZDYyOWQzZmMxZjQyNWU2NjAyNTI4MmQyY2U4YTFmMGUyMjQ3NmMwMWMwNCJ9fX0=
+      quantity: 1
+      name: "#DCB2FDNext Page ►"
+    slot: 50
+
+# Elements of the bulk buy GUI
+amountSelectionGUIBulkBuy:
+  # Size of the GUI, valid values are 9, 18, 27, 36, 45 and 54
+  size: 36
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  # Choose if buttons type should be replaced with the bought item's type
+  replaceButtonsType: true
+  # Buttons
+  buttons:
+    # "Buy 1 stack" button
+    buy1:
+      item:
+        material: CHEST
+        quantity: 1
+        name: "#B84DD3&lBUY STACKS&7 → &f1 Stack"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD64"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      # Value indicated the amount of stacks
+      value: 1
+      slot: 9
+    # "Buy 2 stacks" button
+    buy2:
+      item:
+        material: CHEST
+        quantity: 2
+        name: "#B84DD3&lBUY STACKS&7 → &f2 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD128"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 2
+      slot: 10
+    # "Buy 3 stacks" button
+    buy3:
+      item:
+        material: CHEST
+        quantity: 3
+        name: "#B84DD3&lBUY STACKS&7 → &f3 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD192"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 3
+      slot: 11
+    # "Buy 4 stacks" button
+    buy4:
+      item:
+        material: CHEST
+        quantity: 4
+        name: "#B84DD3&lBUY STACKS&7 → &f4 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD256"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 4
+      slot: 12
+    # "Buy 5 stacks" button
+    buy5:
+      item:
+        material: CHEST
+        quantity: 5
+        name: "#B84DD3&lBUY STACKS&7 → &f5 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD320"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 5
+      slot: 13
+    # "Buy 6 stacks" button
+    buy6:
+      item:
+        material: CHEST
+        quantity: 6
+        name: "#B84DD3&lBUY STACKS&7 → &f6 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD384"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 6
+      slot: 14
+    # "Buy 7 stacks" button
+    buy7:
+      item:
+        material: CHEST
+        quantity: 7
+        name: "#B84DD3&lBUY STACKS&7 → &f7 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD448"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 7
+      slot: 15
+    # "Buy 8 stacks" button
+    buy8:
+      item:
+        material: CHEST
+        quantity: 8
+        name: "#B84DD3&lBUY STACKS&7 → &f8 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD512"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 8
+      slot: 16
+    # "Buy 9 stacks" button
+    buy9:
+      item:
+        material: CHEST
+        quantity: 9
+        name: "#B84DD3&lBUY STACKS&7 → &f9 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD576"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 9
+      slot: 17
+    # "Cancel" button
+    cancel:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==
+        quantity: 1
+        name: "#B84DD3&lCANCEL"
+        lore: []
+      slot: 31
+
+# Elements of the bulk buy GUI
+amountSelectionGUIBulkSell:
+  # Size of the GUI, valid values are 9, 18, 27, 36, 45 and 54
+  size: 36
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  # Choose if buttons type should be replaced with the bought item's type
+  replaceButtonsType: true
+  # Buttons
+  buttons:
+    # "Sell 1 stack" button
+    sell1:
+      item:
+        material: CHEST
+        quantity: 1
+        name: "#B84DD3&lSELL STACKS&7 → &f1 Stack"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD64"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      # Value indicated the amount of stacks
+      value: 1
+      slot: 9
+    # "Sell 2 stacks" button
+    sell2:
+      item:
+        material: CHEST
+        quantity: 2
+        name: "#B84DD3&lSELL STACKS&7 → &f2 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD128"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 2
+      slot: 10
+    # "Sell 3 stacks" button
+    sell3:
+      item:
+        material: CHEST
+        quantity: 3
+        name: "#B84DD3&lSELL STACKS&7 → &f3 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD192"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 3
+      slot: 11
+    # "Sell 4 stacks" button
+    sell4:
+      item:
+        material: CHEST
+        quantity: 4
+        name: "#B84DD3&lSELL STACKS&7 → &f4 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD256"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 4
+      slot: 12
+    # "Sell 5 stacks" button
+    sell5:
+      item:
+        material: CHEST
+        quantity: 5
+        name: "#B84DD3&lSELL STACKS&7 → &f5 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD320"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 5
+      slot: 13
+    # "Sell 6 stacks" button
+    sell6:
+      item:
+        material: CHEST
+        quantity: 6
+        name: "#B84DD3&lSELL STACKS&7 → &f6 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD384"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 6
+      slot: 14
+    # "Sell 7 stacks" button
+    sell7:
+      item:
+        material: CHEST
+        quantity: 7
+        name: "#B84DD3&lSELL STACKS&7 → &f7 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD448"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 7
+      slot: 15
+    # "Sell 8 stacks" button
+    sell8:
+      item:
+        material: CHEST
+        quantity: 8
+        name: "#B84DD3&lSELL STACKS&7 → &f8 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD512"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 8
+      slot: 16
+    # "Sell 9 stacks" button
+    sell9:
+      item:
+        material: CHEST
+        quantity: 9
+        name: "#B84DD3&lSELL STACKS&7 → &f9 Stacks"
+        lore:
+          - ""
+          - "&8&m---------------------------"
+          - "#D3D3D3Do you want to confirm"
+          - "#D3D3D3transaction for this items?"
+          - ""
+          - "#DCB2FDInformation"
+          - "#DCB2FD ▪ &fSell Price: #DCB2FD%sell%"
+          - "#DCB2FD ▪ &fItems: #DCB2FD576"
+          - ""
+          - "#D3D3D3➥ Click to confirm."
+          - "&8&m---------------------------"
+          - ""
+      value: 9
+      slot: 17
+    # "Cancel" button
+    cancel:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==
+        quantity: 1
+        name: "#B84DD3&lCANCEL"
+        lore: []
+      slot: 31
+
+# Elements of the regular buy/sell GUI
+amountSelectionGUI:
+  # Size of the GUI, valid values are 9, 18, 27, 36, 45 and 54
+  size: 36
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  # Slot of the item being bought/sold
+  itemSlot: 13
+  # Buttons
+  buttons:
+    # "Set to 1" button
+    set1:
+      item:
+        material: RED_STAINED_GLASS_PANE
+        quantity: 1
+        name: "#DCB2FD&lSET TO 1"
+        lore: []
+      slot: 10
+    # "Remove 10" button
+    remove10:
+      item:
+        material: RED_STAINED_GLASS_PANE
+        quantity: 10
+        name: "#DCB2FD&lREMOVE 10"
+        lore: []
+      slot: 11
+    # "Remove 1" button
+    remove1:
+      item:
+        material: RED_STAINED_GLASS_PANE
+        quantity: 1
+        name: "#DCB2FD&lREMOVE 1"
+        lore: []
+      slot: 12
+    # "Add 1" button
+    add1:
+      item:
+        material: LIME_STAINED_GLASS_PANE
+        quantity: 1
+        name: "#DCB2FD&lADD 1"
+        lore: []
+      slot: 14
+    # "Add 10" button
+    add10:
+      item:
+        material: LIME_STAINED_GLASS_PANE
+        quantity: 10
+        name: "#DCB2FD&lADD 10"
+        lore: []
+      slot: 15
+    # "Set to 16" button
+    set16:
+      item:
+        material: LIME_STAINED_GLASS_PANE
+        quantity: 16
+        name: "#DCB2FD&lSET TO 16"
+        lore: []
+      slot: 16
+    # "Set to 64" button
+    set64:
+      item:
+        material: LIME_STAINED_GLASS_PANE
+        quantity: 64
+        name: "#DCB2FD&lSET TO 64"
+        lore: []
+      slot: 16
+    # "Confirm" button
+    confirm:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTkyZTMxZmZiNTljOTBhYjA4ZmM5ZGMxZmUyNjgwMjAzNWEzYTQ3YzQyZmVlNjM0MjNiY2RiNDI2MmVjYjliNiJ9fX0=
+        quantity: 1
+        name: "#B84DD3&lCONFIRM"
+        lore: []
+      slot: 34
+    # "Sell all" button
+    sellAll:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjYyNDVmYjM5N2I3YzJiM2EzNmUyYTI0ZDQ5NmJlMjU4ZjFjZGY0MTA1NGY5OWU5YzY1ZTFhNjczYWRkN2I0In19fQ==
+        quantity: 1
+        name: "#B84DD3&lSELL ALL"
+        lore: []
+      slot: 30
+    # "Buy more" button
+    buyMore:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWRmZmYxYjNjNWQ4NWZlM2NkZDU2NTY4NjliYWEwZWFkZTVlNTNhY2E5ZDU2MTQyNzY0OGNjNzJmNWUyNWE5In19fQ==
+        quantity: 1
+        name: "#B84DD3&lBUY MORE"
+        lore: []
+      slot: 31
+    # "Sell more" button
+    sellMore:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWRmZmYxYjNjNWQ4NWZlM2NkZDU2NTY4NjliYWEwZWFkZTVlNTNhY2E5ZDU2MTQyNzY0OGNjNzJmNWUyNWE5In19fQ==
+        quantity: 1
+        name: "#B84DD3&lSELL MORE"
+        lore: []
+      slot: 32
+    # "Cancel" button
+    cancel:
+      item:
+        material: PLAYER_HEAD
+        skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==
+        quantity: 1
+        name: "#B84DD3&lCANCEL"
+        lore: []
+      slot: 28
+
+
+# USED COLORS
+# 
+# COLOR #1 - #B84DD3
+# COLOR #2 - #DCB2FD
+# COLOR #3 - #D3D3D3
+
+shopMenuItems:
+  buildingblocks:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTIxYTZlMGNkMmRjMzIyM2IyNzFlNTYwM2I3MWQ3MDllNWI5ZWI2YzkxMzVhYTY0YmU1NjE2NmE2NTY3ZGMwIn19fQ==
+      quantity: 1
+      name: "#B84DD3&lBUILDING BLOCKS&7 → &f321 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Search your favorite items for'
+        - '#D3D3D3build and make your best builds.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fGrass, Dirt, Stone'
+        - '#DCB2FD ▪ &fWood, Glass, Doors'
+        - '#DCB2FD ▪ &fFence, Stairs and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "buildingblocks"
     slot: 11
-    items:
-      COAL: { buy: 8.0, sell: 3.0 }
-      CHARCOAL: { buy: 6.0, sell: 2.0 }
-      RAW_IRON: { buy: 12.0, sell: 5.0 }
-      IRON_INGOT: { buy: 18.0, sell: 8.0 }
-      RAW_GOLD: { buy: 15.0, sell: 6.0 }
-      GOLD_INGOT: { buy: 22.0, sell: 9.0 }
-      RAW_COPPER: { buy: 6.0, sell: 2.0 }
-      COPPER_INGOT: { buy: 8.0, sell: 3.0 }
-      REDSTONE: { buy: 5.0, sell: 2.0 }
-      LAPIS_LAZULI: { buy: 8.0, sell: 3.0 }
-      DIAMOND: { buy: 120.0, sell: 50.0 }
-      EMERALD: { buy: 90.0, sell: 35.0 }
-      NETHERITE_SCRAP: { buy: 400.0, sell: 180.0 }
-      QUARTZ: { buy: 6.0, sell: 2.0 }
-      AMETHYST_SHARD: { buy: 10.0, sell: 4.0 }
-
-  farm:
-    display: "&a&lFarm &7& Novenyek"
-    icon: WHEAT
+  coloredblocks:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTFlNDJiOGY1MGZlZDgyOGQ0Yjk4MWMyN2NhMTNkMDcxY2U4NjNmNjE1NDBiMjc2MzgyNjZmNzcyZDQxZCJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lCOLORED BLOCKS&7 → &f176 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Beautify your builds with'
+        - '#D3D3D3different block colors.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fWool, Glass, Glass Pane'
+        - '#DCB2FD ▪ &fCarpet, Glazed Terracotta'
+        - '#DCB2FD ▪ &fBanners Shulkers and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "coloredblocks"
     slot: 12
-    items:
-      WHEAT: { buy: 3.0, sell: 1.0 }
-      WHEAT_SEEDS: { buy: 1.0, sell: 0.2 }
-      CARROT: { buy: 3.0, sell: 1.0 }
-      POTATO: { buy: 3.0, sell: 1.0 }
-      BEETROOT: { buy: 3.0, sell: 1.0 }
-      SUGAR_CANE: { buy: 3.0, sell: 1.0 }
-      PUMPKIN: { buy: 6.0, sell: 2.0 }
-      MELON_SLICE: { buy: 2.0, sell: 0.5 }
-      NETHER_WART: { buy: 8.0, sell: 3.0 }
-      COCOA_BEANS: { buy: 4.0, sell: 1.5 }
-      BAMBOO: { buy: 2.0, sell: 0.5 }
-      KELP: { buy: 2.0, sell: 0.5 }
-
-  kaja:
-    display: "&6&lKaja"
-    icon: COOKED_BEEF
-    slot: 13
-    items:
-      BREAD: { buy: 5.0, sell: 1.5 }
-      APPLE: { buy: 4.0, sell: 1.5 }
-      GOLDEN_APPLE: { buy: 150.0, sell: 60.0 }
-      COOKED_BEEF: { buy: 8.0, sell: 3.0 }
-      COOKED_PORKCHOP: { buy: 8.0, sell: 3.0 }
-      COOKED_CHICKEN: { buy: 6.0, sell: 2.0 }
-      COOKED_MUTTON: { buy: 6.0, sell: 2.0 }
-      COOKED_COD: { buy: 5.0, sell: 2.0 }
-      COOKED_SALMON: { buy: 6.0, sell: 2.0 }
-      CARROT: { buy: 3.0, sell: 1.0 }
-      COOKIE: { buy: 2.0, sell: 0.5 }
-      CAKE: { buy: 30.0, sell: 10.0 }
-
-  drop:
-    display: "&c&lMob Dropok"
-    icon: ROTTEN_FLESH
+  food: 
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2E5Yzg3NTM3ODBlYmMzOWMzNTFkYThlZmQ5MWJjZTkwYmQ4Y2NhN2I1MTFmOTNlNzhkZjc1ZjY2MTVjNzlhNiJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lFOOD&7 → &f30 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Don''t be hungry! Buy some' 
+        - '#D3D3D3jummy food and feed yourself.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fGolden Apple, Fish, Steak'
+        - '#DCB2FD ▪ &fCooked Porchop, Pumpkin Pie'
+        - '#DCB2FD ▪ &fBread, Cake and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "food" 
     slot: 14
-    items:
-      ROTTEN_FLESH: { buy: -1, sell: 0.3 }
-      BONE: { buy: 4.0, sell: 1.5 }
-      STRING: { buy: 4.0, sell: 1.5 }
-      SPIDER_EYE: { buy: 5.0, sell: 2.0 }
-      GUNPOWDER: { buy: 8.0, sell: 3.0 }
-      ENDER_PEARL: { buy: 40.0, sell: 15.0 }
-      BLAZE_ROD: { buy: 30.0, sell: 12.0 }
-      SLIME_BALL: { buy: 10.0, sell: 4.0 }
-      GHAST_TEAR: { buy: 60.0, sell: 25.0 }
-      LEATHER: { buy: 6.0, sell: 2.0 }
-      FEATHER: { buy: 3.0, sell: 1.0 }
-      PHANTOM_MEMBRANE: { buy: 25.0, sell: 10.0 }
-
-  termeszet:
-    display: "&2&lTermeszet"
-    icon: OAK_SAPLING
+  mobdrops:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJhOGE4MDBhMGY5Y2Y3ZWJhNjQyM2E5MjVmOTZmMjYxYzQ0ODMyMWJlMzNkYTNmNzhiZjRmNTc4MGNiZGVhMCJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lMOB DROPS&7 → &f26 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Make your money by killing or'
+        - '#D3D3D3farming mobs and sell their drops.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fArrow, Leather, Feather'
+        - '#DCB2FD ▪ &fBlaze Rod, Magma Cube, String'
+        - '#DCB2FD ▪ &fBone, Gunpowder and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "mobdrops"
     slot: 15
-    items:
-      OAK_SAPLING: { buy: 3.0, sell: 1.0 }
-      SPRUCE_SAPLING: { buy: 3.0, sell: 1.0 }
-      BIRCH_SAPLING: { buy: 3.0, sell: 1.0 }
-      DANDELION: { buy: 2.0, sell: 0.5 }
-      POPPY: { buy: 2.0, sell: 0.5 }
-      RED_MUSHROOM: { buy: 3.0, sell: 1.0 }
-      BROWN_MUSHROOM: { buy: 3.0, sell: 1.0 }
-      VINE: { buy: 3.0, sell: 1.0 }
-      LILY_PAD: { buy: 4.0, sell: 1.5 }
-      CACTUS: { buy: 3.0, sell: 1.0 }
-
-  egyeb:
-    display: "&d&lEgyeb &7& Redstone"
-    icon: REDSTONE_TORCH
-    slot: 16
-    items:
-      TORCH: { buy: 1.0, sell: 0.2 }
-      STICK: { buy: 0.5, sell: 0.1 }
-      PAPER: { buy: 2.0, sell: 0.5 }
-      BOOK: { buy: 10.0, sell: 4.0 }
-      FLINT: { buy: 2.0, sell: 0.5 }
-      REDSTONE_TORCH: { buy: 3.0, sell: 1.0 }
-      REPEATER: { buy: 10.0, sell: 4.0 }
-      COMPARATOR: { buy: 12.0, sell: 5.0 }
-      PISTON: { buy: 20.0, sell: 8.0 }
-      HOPPER: { buy: 35.0, sell: 14.0 }
-      TNT: { buy: 25.0, sell: 10.0 }
-      NAME_TAG: { buy: 50.0, sell: 20.0 }
+  miscellaneous:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzBhOTFjYTFkMjRmNDBlMWFiMGMyMjIyNmM5MDA5Mjk4ZWZhMDk3MmM4ZTA3YTliNTYzMmRiMmQ0M2U5MWNjIn19fQ==
+      quantity: 1
+      name: "#B84DD3&lMISCELLANEOUS&7 → &f42 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3There are some rare'
+        - '#D3D3D3and random items.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fWater Bucket, Lava Bucket'
+        - '#DCB2FD ▪ &fEnder Chest, Beacon, Saddle'
+        - '#DCB2FD ▪ &fHorse Armor and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "miscellaneous"
+    slot: 19
+  minerals: 
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMyMTc5OWZkYjIzZWE0NDQzMmQ2YTQ0OWM3NDdkM2JiZDU2NmNjMjkzOTJjMGZlMzE1M2E5ZGRjYTVlNWQ1In19fQ==
+      quantity: 1
+      name: "#B84DD3&lMINERALS&7 → &f48 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Precious minerals are on sale.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fNetherite, Diamond, Emerald'
+        - '#DCB2FD ▪ &fGold, Iron, Lapis, Redstone'
+        - '#DCB2FD ▪ &fQuartz, Coal & more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "minerals" 
+    slot: 20
+  potions&arrows:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmQ4ZTBiMjY5NDJhODAwOTEwNTQyMGZmNWNiZDQwOTYwMTc3MDY0MDJiMGU0OTUwODA1Y2VkMDdlMWI4NGM2OCJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lPOTIONS & ARROWS&7 → &f112 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Be stronger by using potions'
+        - '#D3D3D3and arrows with effects!'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fInstant Health, Regeneration'
+        - '#DCB2FD ▪ &fNight Vision, Jump and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+      flags:
+        - HIDE_POTION_EFFECTS
+    shop: "potions&arrows"
+    slot: 22
+  spawners:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWY0NTVkMTEzNTVkZThlM2E2Y2Q2ZmU5NzBiYWQ1MWM1OTJhYTZhNTcxNzMwOTI1NWZiMWI5ZTQ3YTRlIn19fQ==
+      quantity: 1
+      name: "#B84DD3&lSPAWNERS&7 → &f68 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Build your own farms'
+        - '#D3D3D3and start making money!'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fPig, Sheep, Cow, Chicken'
+        - '#DCB2FD ▪ &fVillager, Zombie, Skeleton'
+        - '#DCB2FD ▪ &fand much other spawners!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "spawners"
+    slot: 24
+  monstereggs:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmMzZjExNGVmYmQ5MDgyODRjN2FhZGQ4MTk5Mzc2OTA1NzM2MWRkNzU2YmY1ZTc4ODNiOGUwYjFjZWE0NDZlNyJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lMONSTEREGGS&7 → &f69 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Spawn your mobs with eggs.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fPig, Sheep, Cow, Chicken'
+        - '#DCB2FD ▪ &fVillager, Zombie, Skeleton'
+        - '#DCB2FD ▪ &fand much other eggs!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "monstereggs"
+    slot: 25
+  redstone:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTRhMzdlNWUzYTVkYWU2ZDI3ODFmYWVmN2NkNGVlOThiMDFmMGQwYTQyOTM0MzJhYjNiY2JhNWEzYmNlZDE5YiJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lREDSTONE&7 → &f42 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3You love to play with redstone?'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fRedstone, Piston, Sticky Piston'
+        - '#DCB2FD ▪ &fHopper, Dispenser, Red Lamp'
+        - '#DCB2FD ▪ &fDaylight Sensor and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "redstone"
+    slot: 28
+  enchanting:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjYyNjUxODc5ZDg3MDQ5OWRhNTBlMzQwMzY4MDBkZGZmZDUyZjNlNGUxOTkzYzVmYzBmYzgyNWQwMzQ0NmQ4YiJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lENCHANTING&7 → &f37 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Enchant your weapon/armor.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fEnchanting Table, Anvil'
+        - '#DCB2FD ▪ &fExperience Bottle, Book Shelf'
+        - '#DCB2FD ▪ &fEnchanting Books and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "enchanting"
+    slot: 30
+  dyes&candles:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGIzYmNjMWE2NjhmYjMzOTc1MDczNTk2NzQxMjhhNDJjMjZmMzQ0OTc0MTg5ZWMzMjJhMzNkMTMxNjg0MjhlYSJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lDYES & CANDLES&7 → &f33 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Paint your leather armor, wool'
+        - '#D3D3D3or glass in various colors.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fWhite Dye, Blue Dye'
+        - '#DCB2FD ▪ &fGreen Dye, Lime Dye'
+        - '#DCB2FD ▪ &fYellow Dye and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "dyes&candles"
+    slot: 32
+  farming:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjY0NTliZTA5OTk4ZTUwYWJkMmNjZjRjZDM4M2U2YjM4YWI1YmM5MDVmYWNiNjZkY2UwZTE0ZTAzOGJhMTk2OCJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lFARMING&7 → &f33 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Make your own garden and'
+        - '#D3D3D3start earning your money.'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fSeeds, Nether Wart, Melon'
+        - '#DCB2FD ▪ &fSapling, Mushroom, Cactus'
+        - '#DCB2FD ▪ &fCarrot, Potato and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "farming"
+    slot: 34
+  combat&tools:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjYyMTk2ZTQyZGVmOTk1ODE5Mjk4ZmJkMmE5YmJmYzJmNDU1NjRmZDQ0OGZhZjlhYzliZWQ3YmI4Nzc1NDU3NCJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lCOMBAT & TOOLS&7 → &f41 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Do you need PvP equipment'
+        - '#D3D3D3or some tools?'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fArmor, Sword, Shears'
+        - '#DCB2FD ▪ &fBow, Crossbow, Arrow'
+        - '#DCB2FD ▪ &fFishing Rod, and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "combat&tools"
+    slot: 39
+  decoration:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWIyMDY0MzkwZTc5ZDllNTRjY2I0MThiMDczMzE1M2NmOTkyM2ZjNGE4ZDE0YWIxZDJiN2VmNTk2ODgzMWM5MyJ9fX0=
+      quantity: 1
+      name: "#B84DD3&lDECORATION&7 → &f116 Items"
+      lore:
+        - ''
+        - '&8&m---------------------------'
+        - '#D3D3D3Decorate your builds with'
+        - '#D3D3D3flowers, leaves and more!'
+        - ''
+        - '#DCB2FDThis category contains'
+        - '#DCB2FD ▪ &fLeaves, Flowers, Signs'
+        - '#DCB2FD ▪ &fCampfire, Torch, Bell'
+        - '#DCB2FD ▪ &fCorals and more!'
+        - ''
+        - '#D3D3D3➥ Click to browse.'
+        - '&8&m---------------------------'
+        - ''
+    shop: "decoration"
+    slot: 41
+#
+#
+#
+specialElements:
+  balance:
+    item:
+      material: PLAYER_HEAD
+      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMyNGE3ZDYxY2NkNDRiMDMxNzQ0YjUxN2Y5MTFhNWM0NjE2MTRiOTUzYjE3ZjY0ODI4MmUxNDdiMjlkMTBlIn19fQ==
+      quantity: 1
+      name: "#B84DD3&lBALANCE"
+      lore:
+        - ''
+        - '#D3D3D3Here''s displayed how much'
+        - '#D3D3D3money you currently have.'
+        - ''
+        - '#DCB2FD➥ &f%balance%'
+        - ''
+# =====================================================================
+#  GeNe Shop - EGYEDI DINAMIKUS ARAZAS  (keszitette: negyes Gerii06)
+# ---------------------------------------------------------------------
+#  Ez a plugin kulonleges resze. Amikor a szerveren valaki ELAD egy
+#  itembol, annak az eladasi ara picit beesik. Az ar magatol, folyamatosan
+#  visszamaszik az alapra - a legaljarol kb. recover-minutes perc alatt
+#  (alapbol 150 perc = 2.5 ora), tehat ~2-3 oran belul minden visszaall.
+#  A VETELI ar fix, ezert nem lehet visszaelni a rendszerrel.
+#  A %sell% ar a GUI-ban mar a dinamikus (aktualis) arat mutatja.
+# =====================================================================
+dynamic-pricing:
+  enabled: true
+  # Egy eladott darab ennyivel csokkenti az ar-szorzot (0.0 - 1.0).
+  drop-per-sale: 0.0008
+  # Az ar-szorzo soha nem eshet ez ala (0.40 => max -60%).
+  min-multiplier: 0.40
+  # Ennyi perc alatt all vissza teljesen az ar a legaljarol az alapra.
+  recover-minutes: 150
+  # Ilyen gyakran (mp) mentodik el az arak allapota lemezre.
+  save-interval-seconds: 120
+  # Mutassa-e a GUI-ban kulon sorban, ha egy item ara epp beesett.
+  show-discount-note: true

@@ -1,0 +1,309 @@
+dyes&candles:
+  name: "Shop → Dyes & Candles (&f%page%&8/&f2&8)"
+  size: 54
+  fillItem:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&r"
+  items:
+#
+# BALANCE
+#
+    balance-page-1:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 1
+    balance-page-2:
+      type: special
+      special: BALANCE
+      slot: 53
+      page: 2
+#
+#
+#
+    black_dye:
+      type: item
+      item:
+        material: BLACK_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 11
+    gray_dye:
+      type: item
+      item:
+        material: GRAY_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 12
+    light_gray_dye:
+      type: item
+      item:
+        material: LIGHT_GRAY_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 14
+    white_dye:
+      type: item
+      item:
+        material: WHITE_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 15
+    blue_dye:
+      type: item
+      item:
+        material: BLUE_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 0.5
+      slot: 19
+    cyan_dye:
+      type: item
+      item:
+        material: CYAN_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 20
+    light_blue_dye:
+      type: item
+      item:
+        material: LIGHT_BLUE_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 21
+    purple_dye:
+      type: item
+      item:
+        material: PURPLE_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 22
+    magenta_dye:
+      type: item
+      item:
+        material: MAGENTA_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 23
+    pink_dye:
+      type: item
+      item:
+        material: PINK_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 24
+    red_dye:
+      type: item
+      item:
+        material: RED_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 0.5
+      slot: 25
+    brown_dye:
+      type: item
+      item:
+        material: BROWN_DYE
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 5
+      slot: 29
+    orange_dye:
+      type: item
+      item:
+        material: ORANGE_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 30
+    yellow_dye:
+      type: item
+      item:
+        material: YELLOW_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 31
+    lime_dye:
+      type: item
+      item:
+        material: LIME_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 32
+    green_dye:
+      type: item
+      item:
+        material: GREEN_DYE
+        quantity: 1
+      buyPrice: 20
+      sellPrice: 2
+      slot: 33
+#
+#
+# PAGE #2
+#
+#
+    candle:
+      type: item
+      item:
+        material: CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 11
+      page: 2
+    black_candle:
+      type: item
+      item:
+        material: BLACK_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 12
+      page: 2
+    gray_candle:
+      type: item
+      item:
+        material: GRAY_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 13
+      page: 2
+    light_gray_candle:
+      type: item
+      item:
+        material: LIGHT_GRAY_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 14
+      page: 2
+    white_candle:
+      type: item
+      item:
+        material: WHITE_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 15
+      page: 2
+    blue_candle:
+      type: item
+      item:
+        material: BLUE_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 0.5
+      slot: 19
+      page: 2
+    cyan_candle:
+      type: item
+      item:
+        material: CYAN_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 20
+      page: 2
+    light_blue_candle:
+      type: item
+      item:
+        material: LIGHT_BLUE_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 21
+      page: 2
+    purple_candle:
+      type: item
+      item:
+        material: PURPLE_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 22
+      page: 2
+    magenta_candle:
+      type: item
+      item:
+        material: MAGENTA_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 23
+      page: 2
+    pink_candle:
+      type: item
+      item:
+        material: PINK_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 24
+      page: 2
+    red_candle:
+      type: item
+      item:
+        material: RED_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 0.5
+      slot: 25
+      page: 2
+    brown_candle:
+      type: item
+      item:
+        material: BROWN_CANDLE
+        quantity: 1
+      buyPrice: 25
+      sellPrice: 5
+      slot: 29
+      page: 2
+    orange_candle:
+      type: item
+      item:
+        material: ORANGE_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 30
+      page: 2
+    yellow_candle:
+      type: item
+      item:
+        material: YELLOW_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 31
+      page: 2
+    lime_candle:
+      type: item
+      item:
+        material: LIME_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 32
+      page: 2
+    green_candle:
+      type: item
+      item:
+        material: GREEN_CANDLE
+        quantity: 1
+      buyPrice: 80
+      sellPrice: 3
+      slot: 33
+      page: 2
