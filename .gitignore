@@ -1,0 +1,13 @@
+# Maven build
+target/
+
+# IntelliJ / Eclipse
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+bin/
+
+# Egyeb
+*.log

@@ -1,0 +1,27 @@
+name: GeNeShop
+version: '${project.version}'
+main: dev.negyes.geneshop.GeNeShop
+api-version: '1.21'
+author: negyes Gerii06
+authors: [negyes Gerii06]
+description: Dinamikus arazasu GUI shop plugin - eladaskor esik az ar, majd 2-3 ora alatt visszaall.
+website: https://github.com/negyesdev/teszt
+softdepend: [Vault]
+
+commands:
+  shop:
+    description: Megnyitja a GeNe Shop fomenujet.
+    usage: /shop [kategoria]
+    aliases: [bolt, shopgui]
+  geneshop:
+    description: GeNe Shop adminisztracios parancsok.
+    usage: /geneshop <reload|prices>
+    permission: geneshop.admin
+
+permissions:
+  geneshop.use:
+    description: Engedelyezi a shop hasznalatat.
+    default: true
+  geneshop.admin:
+    description: GeNe Shop admin parancsok (reload, arak).
+    default: op

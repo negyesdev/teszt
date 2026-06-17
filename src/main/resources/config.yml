@@ -1,0 +1,179 @@
+# =====================================================================
+#  GeNe Shop  -  keszitette: negyes Gerii06
+#  Dinamikus arazasu shop plugin Minecraft 1.21.8-hoz
+# =====================================================================
+#
+#  Hogyan mukodik a dinamikus arazas?
+#   - Minden itemnek van egy alap eladasi ara (sell) es vetel ara (buy).
+#   - Amikor a szerveren valaki elad egy itembol, annak az eladasi ara
+#     kicsit beesik (lasd: dynamic-pricing.drop-per-sale).
+#   - Az ar magatol, folyamatosan visszamaszik az alapertekre. A teljes
+#     visszaallas a legaljarol kb. recover-minutes perc (alapbol 150 perc
+#     = 2.5 ora), tehat ~2-3 oran belul minden ar normalisra all vissza.
+#   - A VETELI ar fix, ezert nem lehet "buy-low / sell-high" trukkel
+#     visszaelni a rendszerrel.
+#
+# =====================================================================
+
+settings:
+  # A GUI fomenu cime.
+  main-title: "&8» &b&lGeNe Shop"
+  # A penznem szimboluma a kiirasokban (csak megjelenites).
+  currency-symbol: "$"
+  # Hangok lejatszasa a tranzakciokhoz.
+  sounds: true
+  # Ennyi tizedesjegyre kerekitsuk az arakat a kiirasban.
+  price-decimals: 2
+
+dynamic-pricing:
+  # Bekapcsolja a dinamikus arazast. Ha false, az eladasi ar mindig fix.
+  enabled: true
+  # Egyetlen eladott darab ennyivel csokkenti az ar-szorzot (0.0 - 1.0).
+  # Pl. 0.0008 azt jelenti: 1 stack (64 db) eladasa ~5%-kal csokkenti az arat.
+  drop-per-sale: 0.0008
+  # Az ar-szorzo soha nem eshet ez ala (vagyis legfeljebb ennyire esik be az ar).
+  # 0.40 => az eladasi ar maximum 60%-ot eshet.
+  min-multiplier: 0.40
+  # Ennyi perc alatt all vissza teljesen az ar a legaljarol az alapertekre.
+  # 150 perc = 2.5 ora (a "2-3 oran belul" kovetelmenynek megfelelo).
+  recover-minutes: 150
+  # Ilyen gyakran (masodperc) mentodik el az arak allapota lemezre.
+  save-interval-seconds: 120
+
+# =====================================================================
+#  KATEGORIAK
+#  Minden kategoria sajat ablakot kap. Az "icon" a fomenuben latszik.
+#  Az itemeknel: buy = vetel ar (fix), sell = alap eladasi ar.
+#  Ha egy itemnel a buy vagy sell -1, akkor az a muvelet le van tiltva.
+# =====================================================================
+categories:
+
+  blokkok:
+    display: "&e&lBlokkok"
+    icon: GRASS_BLOCK
+    slot: 10
+    items:
+      STONE: { buy: 2.0, sell: 0.5 }
+      COBBLESTONE: { buy: 1.5, sell: 0.4 }
+      DIRT: { buy: 1.0, sell: 0.2 }
+      SAND: { buy: 1.5, sell: 0.4 }
+      GRAVEL: { buy: 1.5, sell: 0.4 }
+      OAK_LOG: { buy: 4.0, sell: 1.5 }
+      SPRUCE_LOG: { buy: 4.0, sell: 1.5 }
+      BIRCH_LOG: { buy: 4.0, sell: 1.5 }
+      OAK_PLANKS: { buy: 1.5, sell: 0.4 }
+      GLASS: { buy: 3.0, sell: 1.0 }
+      SANDSTONE: { buy: 4.0, sell: 1.2 }
+      OBSIDIAN: { buy: 50.0, sell: 15.0 }
+      NETHERRACK: { buy: 1.0, sell: 0.2 }
+      ICE: { buy: 5.0, sell: 1.5 }
+      CLAY: { buy: 4.0, sell: 1.2 }
+
+  ercek:
+    display: "&b&lErcek &7& Asvanyok"
+    icon: DIAMOND
+    slot: 11
+    items:
+      COAL: { buy: 8.0, sell: 3.0 }
+      CHARCOAL: { buy: 6.0, sell: 2.0 }
+      RAW_IRON: { buy: 12.0, sell: 5.0 }
+      IRON_INGOT: { buy: 18.0, sell: 8.0 }
+      RAW_GOLD: { buy: 15.0, sell: 6.0 }
+      GOLD_INGOT: { buy: 22.0, sell: 9.0 }
+      RAW_COPPER: { buy: 6.0, sell: 2.0 }
+      COPPER_INGOT: { buy: 8.0, sell: 3.0 }
+      REDSTONE: { buy: 5.0, sell: 2.0 }
+      LAPIS_LAZULI: { buy: 8.0, sell: 3.0 }
+      DIAMOND: { buy: 120.0, sell: 50.0 }
+      EMERALD: { buy: 90.0, sell: 35.0 }
+      NETHERITE_SCRAP: { buy: 400.0, sell: 180.0 }
+      QUARTZ: { buy: 6.0, sell: 2.0 }
+      AMETHYST_SHARD: { buy: 10.0, sell: 4.0 }
+
+  farm:
+    display: "&a&lFarm &7& Novenyek"
+    icon: WHEAT
+    slot: 12
+    items:
+      WHEAT: { buy: 3.0, sell: 1.0 }
+      WHEAT_SEEDS: { buy: 1.0, sell: 0.2 }
+      CARROT: { buy: 3.0, sell: 1.0 }
+      POTATO: { buy: 3.0, sell: 1.0 }
+      BEETROOT: { buy: 3.0, sell: 1.0 }
+      SUGAR_CANE: { buy: 3.0, sell: 1.0 }
+      PUMPKIN: { buy: 6.0, sell: 2.0 }
+      MELON_SLICE: { buy: 2.0, sell: 0.5 }
+      NETHER_WART: { buy: 8.0, sell: 3.0 }
+      COCOA_BEANS: { buy: 4.0, sell: 1.5 }
+      BAMBOO: { buy: 2.0, sell: 0.5 }
+      KELP: { buy: 2.0, sell: 0.5 }
+
+  kaja:
+    display: "&6&lKaja"
+    icon: COOKED_BEEF
+    slot: 13
+    items:
+      BREAD: { buy: 5.0, sell: 1.5 }
+      APPLE: { buy: 4.0, sell: 1.5 }
+      GOLDEN_APPLE: { buy: 150.0, sell: 60.0 }
+      COOKED_BEEF: { buy: 8.0, sell: 3.0 }
+      COOKED_PORKCHOP: { buy: 8.0, sell: 3.0 }
+      COOKED_CHICKEN: { buy: 6.0, sell: 2.0 }
+      COOKED_MUTTON: { buy: 6.0, sell: 2.0 }
+      COOKED_COD: { buy: 5.0, sell: 2.0 }
+      COOKED_SALMON: { buy: 6.0, sell: 2.0 }
+      CARROT: { buy: 3.0, sell: 1.0 }
+      COOKIE: { buy: 2.0, sell: 0.5 }
+      CAKE: { buy: 30.0, sell: 10.0 }
+
+  drop:
+    display: "&c&lMob Dropok"
+    icon: ROTTEN_FLESH
+    slot: 14
+    items:
+      ROTTEN_FLESH: { buy: -1, sell: 0.3 }
+      BONE: { buy: 4.0, sell: 1.5 }
+      STRING: { buy: 4.0, sell: 1.5 }
+      SPIDER_EYE: { buy: 5.0, sell: 2.0 }
+      GUNPOWDER: { buy: 8.0, sell: 3.0 }
+      ENDER_PEARL: { buy: 40.0, sell: 15.0 }
+      BLAZE_ROD: { buy: 30.0, sell: 12.0 }
+      SLIME_BALL: { buy: 10.0, sell: 4.0 }
+      GHAST_TEAR: { buy: 60.0, sell: 25.0 }
+      LEATHER: { buy: 6.0, sell: 2.0 }
+      FEATHER: { buy: 3.0, sell: 1.0 }
+      PHANTOM_MEMBRANE: { buy: 25.0, sell: 10.0 }
+
+  termeszet:
+    display: "&2&lTermeszet"
+    icon: OAK_SAPLING
+    slot: 15
+    items:
+      OAK_SAPLING: { buy: 3.0, sell: 1.0 }
+      SPRUCE_SAPLING: { buy: 3.0, sell: 1.0 }
+      BIRCH_SAPLING: { buy: 3.0, sell: 1.0 }
+      DANDELION: { buy: 2.0, sell: 0.5 }
+      POPPY: { buy: 2.0, sell: 0.5 }
+      RED_MUSHROOM: { buy: 3.0, sell: 1.0 }
+      BROWN_MUSHROOM: { buy: 3.0, sell: 1.0 }
+      VINE: { buy: 3.0, sell: 1.0 }
+      LILY_PAD: { buy: 4.0, sell: 1.5 }
+      CACTUS: { buy: 3.0, sell: 1.0 }
+
+  egyeb:
+    display: "&d&lEgyeb &7& Redstone"
+    icon: REDSTONE_TORCH
+    slot: 16
+    items:
+      TORCH: { buy: 1.0, sell: 0.2 }
+      STICK: { buy: 0.5, sell: 0.1 }
+      PAPER: { buy: 2.0, sell: 0.5 }
+      BOOK: { buy: 10.0, sell: 4.0 }
+      FLINT: { buy: 2.0, sell: 0.5 }
+      REDSTONE_TORCH: { buy: 3.0, sell: 1.0 }
+      REPEATER: { buy: 10.0, sell: 4.0 }
+      COMPARATOR: { buy: 12.0, sell: 5.0 }
+      PISTON: { buy: 20.0, sell: 8.0 }
+      HOPPER: { buy: 35.0, sell: 14.0 }
+      TNT: { buy: 25.0, sell: 10.0 }
+      NAME_TAG: { buy: 50.0, sell: 20.0 }
