@@ -9,10 +9,12 @@
 ## ✨ Mit tud?
 
 - **ShopGUI+ kinézet** – ugyanaz a megjelenés, amit megszoktatok: egyedi **player-head ikonok**, **hex (#RRGGBB) színek**, szépen rendezett **kategóriás főmenü** és **többoldalas** kategóriák, balance-kijelző, fill-itemek, vissza/lapozás gombok.
-- **15 kategória, ~1200 item** – a mellékelt ShopGUI+ csomag teljes tartalma, **1.21.8-ra frissítve**:
-  Building Blocks, Colored Blocks, Food, Mob Drops, Miscellaneous, Minerals,
-  Potions & Arrows, Spawners, Monster Eggs, Redstone, Enchanting,
-  Dyes & Candles, Farming, Combat & Tools, Decoration.
+- **Teljesen magyar** felület és üzenetek (emberi megfogalmazás, ékezetekkel). Minden chat üzenet a `&b&l▶` jellel kezdődik.
+- A **tárgyak nevei a játékos kliens-nyelvén** (magyar resourcepackkel magyarul) jelennek meg – így nincs kézi félrefordítás vagy elírás.
+- **13 kategória, ~1000 item** – a mellékelt ShopGUI+ csomag tartalma, **1.21.8-ra frissítve** (a Spawner és Monster Egg kategória kérésre kivéve):
+  Építő blokkok, Színes blokkok, Dekoráció, Farm, Ételek, Festékek és gyertyák,
+  Redstone, Ércek, Varázslatok, Bájitalok és nyilak, Harc és eszközök, Egyéb, Szörny dropok.
+- **Egyedi anyag-ikonok** a főmenüben (mert a saját resourcepack nem tölti be a fejeket): füves föld, tűzkorall, távcső, netherite rúd, redstone por, spectral arrow, tehénhús, rohadt hús, búza, kék festék, stb. A „Vissza a főmenübe” egy **óra**, a lapozás **egyszerű nyíl**.
 - Támogatott item-típusok: sima itemek, **spawnerek** (mob beállítással), **dobható/iható bájitalok** (effekttel), **varázskönyvek** (enchantmenttel), és a **balance** speciális elem.
 - **Dinamikus árazás** – ez a plugin egyedi logikája (változatlan):
   - Amikor a szerveren valaki **elad** egy itemből, annak az **eladási ára kicsit beesik**.

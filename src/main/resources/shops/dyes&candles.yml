@@ -1,5 +1,5 @@
 dyes&candles:
-  name: "Shop → Dyes & Candles (&f%page%&8/&f2&8)"
+  name: "&b&l▶ &8• &7Festékek és gyertyák &8(&f%page%&8/&f2&8)"
   size: 54
   fillItem:
     material: GRAY_STAINED_GLASS_PANE

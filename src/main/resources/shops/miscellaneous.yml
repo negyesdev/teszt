@@ -1,5 +1,5 @@
 miscellaneous:
-  name: "Shop → Miscellaneous (&f%page%&8/&f2&8)"
+  name: "&b&l▶ &8• &7Egyéb &8(&f%page%&8/&f2&8)"
   fillItem:
     material: GRAY_STAINED_GLASS_PANE
     name: "&r"

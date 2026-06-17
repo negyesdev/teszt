@@ -1,5 +1,5 @@
 potions&arrows:
-  name: "Shop → Potions & Arrows (&f%page%&8/&f4&8)"
+  name: "&b&l▶ &8• &7Bájitalok és nyilak &8(&f%page%&8/&f4&8)"
   fillItem:
       material: GRAY_STAINED_GLASS_PANE
       name: "&r"

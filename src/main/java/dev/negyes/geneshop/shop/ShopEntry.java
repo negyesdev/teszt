@@ -26,6 +26,7 @@ public class ShopEntry {
     private ItemStack giveStack;   // amit a jatekos kap vetelnel
     private String displayName;    // szinezett nev az ikonhoz/uzenetekhez
     private String plainName;      // szin nelkuli nev az uzenetekbe agyazva
+    private boolean customName = false; // van-e configbol megadott nev
     private double buyPrice = -1;  // -1 = nem veheto
     private Double sellPrice = null; // null = nem elado
     private boolean sellable = false;
@@ -78,6 +79,14 @@ public class ShopEntry {
 
     public void setPlainName(String plainName) {
         this.plainName = plainName;
+    }
+
+    public boolean hasCustomName() {
+        return customName;
+    }
+
+    public void setCustomName(boolean customName) {
+        this.customName = customName;
     }
 
     public double getBuyPrice() {

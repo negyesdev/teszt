@@ -141,7 +141,10 @@ public class ShopGUI {
         if (meta == null) {
             return icon;
         }
-        meta.setDisplayName(entry.getDisplayName());
+        // Ha nincs egyedi nev, hagyjuk a kliensre (igy magyarul jelenik meg).
+        if (entry.hasCustomName()) {
+            meta.setDisplayName(entry.getDisplayName());
+        }
 
         Material material = entry.getMaterial();
         String buyStr = entry.isBuyable()
@@ -175,7 +178,7 @@ public class ShopGUI {
         if (entry.isSellable()
                 && plugin.getConfig().getBoolean("dynamic-pricing.show-discount-note", true)
                 && plugin.getPriceManager().isDiscounted(material)) {
-            lore.add(Text.color("#D3D3D3(Az ar most beesett, hamarosan visszaall.)"));
+            lore.add(Text.color("&7&o(Az ár most beesett, hamarosan visszaáll.)"));
         }
 
         meta.setLore(lore);

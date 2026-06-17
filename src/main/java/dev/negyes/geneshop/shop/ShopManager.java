@@ -1,8 +1,10 @@
 package dev.negyes.geneshop.shop;
 
 import dev.negyes.geneshop.GeNeShop;
+import dev.negyes.geneshop.config.Lang;
 import dev.negyes.geneshop.util.ItemFactory;
 import dev.negyes.geneshop.util.Text;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -230,6 +232,7 @@ public class ShopManager {
         }
 
         String name = itemSec.getString("name");
+        entry.setCustomName(name != null);
         String display = (name != null) ? Text.color(name) : Text.color("&f" + Text.pretty(give.getType()));
         entry.setDisplayName(display);
         entry.setPlainName((name != null) ? Text.strip(name) : Text.pretty(give.getType()));
@@ -258,6 +261,7 @@ public class ShopManager {
         entry.setEnchantLevel(level);
 
         String name = (itemSec != null) ? itemSec.getString("name") : null;
+        entry.setCustomName(true);
         String display = (name != null) ? Text.color(name) : Text.color("&b" + enchName);
         entry.setDisplayName(display);
         entry.setPlainName((name != null) ? Text.strip(name) : enchName);
@@ -306,18 +310,16 @@ public class ShopManager {
             return;
         }
         if (!plugin.getEconomyHook().has(player, total)) {
-            plugin.getLang().send(player, "MSG.ITEM.CANNOTAFFORD",
+            plugin.getLang().sendItem(player, "MSG.ITEM.CANNOTAFFORD", itemComponent(entry),
                     "%price%", plugin.getEconomyHook().format(total),
-                    "%amount%", String.valueOf(amount),
-                    "%item%", entry.getPlainName());
+                    "%amount%", String.valueOf(amount));
             failSound(player);
             return;
         }
         if (total > 0 && !plugin.getEconomyHook().withdraw(player, total)) {
-            plugin.getLang().send(player, "MSG.ITEM.CANNOTAFFORD",
+            plugin.getLang().sendItem(player, "MSG.ITEM.CANNOTAFFORD", itemComponent(entry),
                     "%price%", plugin.getEconomyHook().format(total),
-                    "%amount%", String.valueOf(amount),
-                    "%item%", entry.getPlainName());
+                    "%amount%", String.valueOf(amount));
             failSound(player);
             return;
         }
@@ -325,12 +327,11 @@ public class ShopManager {
         giveItems(player, entry.getGiveStack(), amount);
 
         if (total <= 0 && plugin.getConfig().getBoolean("useDifferentMessagesForFreeItems", true)) {
-            plugin.getLang().send(player, "MSG.ITEM.BOUGHTFREE",
-                    "%amount%", String.valueOf(amount), "%item%", entry.getPlainName());
+            plugin.getLang().sendItem(player, "MSG.ITEM.BOUGHTFREE", itemComponent(entry),
+                    "%amount%", String.valueOf(amount));
         } else {
-            plugin.getLang().send(player, "MSG.ITEM.BOUGHT",
+            plugin.getLang().sendItem(player, "MSG.ITEM.BOUGHT", itemComponent(entry),
                     "%amount%", String.valueOf(amount),
-                    "%item%", entry.getPlainName(),
                     "%price%", plugin.getEconomyHook().format(total));
         }
         playSound(player, "BUY_ITEM", Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
@@ -351,16 +352,16 @@ public class ShopManager {
         int unit = entry.getQuantity();
         int owned = countPlain(player, material);
         if (owned <= 0) {
-            plugin.getLang().send(player, "MSG.ITEM.NOTENOUGH",
-                    "%amount%", String.valueOf(unit), "%item%", entry.getPlainName());
+            plugin.getLang().sendItem(player, "MSG.ITEM.NOTENOUGH", itemComponent(entry),
+                    "%amount%", String.valueOf(unit));
             failSound(player);
             return;
         }
 
         int toSell = all ? owned : Math.min(unit, owned);
         if (toSell <= 0) {
-            plugin.getLang().send(player, "MSG.ITEM.NOTENOUGH",
-                    "%amount%", String.valueOf(unit), "%item%", entry.getPlainName());
+            plugin.getLang().sendItem(player, "MSG.ITEM.NOTENOUGH", itemComponent(entry),
+                    "%amount%", String.valueOf(unit));
             failSound(player);
             return;
         }
@@ -379,17 +380,26 @@ public class ShopManager {
 
         boolean free = total <= 0 && plugin.getConfig().getBoolean("useDifferentMessagesForFreeItems", true);
         if (all) {
-            plugin.getLang().send(player, free ? "MSG.ITEM.SOLDALLFREE" : "MSG.ITEM.SOLDALL",
+            plugin.getLang().sendItem(player, free ? "MSG.ITEM.SOLDALLFREE" : "MSG.ITEM.SOLDALL", itemComponent(entry),
                     "%amount%", String.valueOf(toSell),
-                    "%item%", entry.getPlainName(),
                     "%price%", plugin.getEconomyHook().format(total));
         } else {
-            plugin.getLang().send(player, free ? "MSG.ITEM.SOLDFREE" : "MSG.ITEM.SOLD",
+            plugin.getLang().sendItem(player, free ? "MSG.ITEM.SOLDFREE" : "MSG.ITEM.SOLD", itemComponent(entry),
                     "%amount%", String.valueOf(toSell),
-                    "%item%", entry.getPlainName(),
                     "%price%", plugin.getEconomyHook().format(total));
         }
         playSound(player, all ? "SELL_ALL_ITEM" : "SELL_ITEM", Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+    }
+
+    /**
+     * Az item neve komponensként az uzenetekhez. Sima itemeknel a kliens
+     * nyelven (magyarul) jelenik meg; egyedi nevu itemeknel a megadott nev.
+     */
+    private Component itemComponent(ShopEntry entry) {
+        if (entry.hasCustomName()) {
+            return Lang.legacy(entry.getDisplayName());
+        }
+        return Component.translatable(entry.getMaterial().translationKey());
     }
 
     // ---------------------------------------------------------------

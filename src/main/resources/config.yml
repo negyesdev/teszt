@@ -12,7 +12,7 @@ economyTypes:
   - VAULT
 
 # Name of the main GUI
-shopMenuName: "Shop → Main"
+shopMenuName: "&b&l▶ &8• &7Kategóriák"
 # Size of the main GUI, valid values are 9, 18, 27, 36, 45 and 54
 shopMenuSize: 54
 # Choose an item to fill the empty slots of menu with
@@ -133,16 +133,15 @@ shopItemLoreFormat:
   # This lore will be applied to items
   item:
     - ''
-    - '&8&m---------------------------'
-    - '#D3D3D3Use left or right click to'
-    - '#D3D3D3complete the transaction.'
+    - '&8&m─────────────────────'
+    - '&7Bal klikk &8» &fvásárlás'
+    - '&7Jobb klikk &8» &feladás'
+    - '&7Shift + jobb &8» &fösszes eladása'
     - ''
-    - '#DCB2FDInformation'
-    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
-    - '#DCB2FD ▪ &fSell Price: #DCB2FD%sell%'
-    - ''
-    - '#D3D3D3➥ Click with MMB to sell all.'
-    - '&8&m---------------------------'
+    - '&b&lÁrak'
+    - '&b ▪ &fVételi ár: &a%buy%'
+    - '&b ▪ &fEladási ár: &e%sell%'
+    - '&8&m─────────────────────'
     - ''
   # This lore will be applied to items in the buy GUI (when enableBuyGUI is set to true)
   itemBuyGUI:
@@ -188,15 +187,12 @@ shopItemLoreFormat:
   # And this one to enchantments
   enchantment:
     - ''
-    - '&8&m---------------------------'
-    - '#D3D3D3Use left click to complete'
-    - '#D3D3D3the transaction.'
+    - '&8&m─────────────────────'
+    - '&7Bal klikk &8» &fmegvásárlás'
     - ''
-    - '#DCB2FDInformation'
-    - '#DCB2FD ▪ &fBuy Price: #DCB2FD%buy%'
-    - ''
-    - '#D3D3D3➥ Left click to buy.'
-    - '&8&m---------------------------'
+    - '&b&lÁr'
+    - '&b ▪ &fVételi ár: &a%buy%'
+    - '&8&m─────────────────────'
     - ''
   # And the last one to commands
   command:
@@ -252,36 +248,27 @@ sellAll:
   excludeFreeItems: true
 
 buttons:
-  # "Go back button"
+  # Vissza a fomenube - ora
   goBack:
     item:
-      # Material name, full list can be found here: http://wiki.brcdev.net/Materials
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYThmZWQxMjI4NWYxZDliZjI0NWZlZGU0MTQ3YjhjZGE5M2Q1OTM4M2NlOGE1OGQ2Mjk5ZGQ0ZWFlOTg0MyJ9fX0=
-      # Amount of the item
+      material: CLOCK
       amount: 1
-      # (optional) Data value, for example 1 for WOOD:1 means spruce wood planks
-      # (optional) Custom name
-      name: "#B84DD3Back"
-      # (optional) Lore, can contain multiple lines
+      name: "&c&l« Vissza a főmenübe"
       lore: ''
-    # Slot in each shop's GUI
     slot: 49
-  # "Previous page" button
+  # Elozo oldal - egyszeru nyil
   previousPage:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWMwNjQ2YTI4YjQ1MWRhNzQzOTRlNjk4YjA0ZmFjOTM1YmExOTc1ZjQyODI5MDY3YTBmYmZlZDE4MWEzNjU5NCJ9fX0=
+      material: ARROW
       quantity: 1
-      name: "#DCB2FD◄ Previous Page"
+      name: "&e&l« Előző oldal"
     slot: 48
-  # "Next page" button
+  # Kovetkezo oldal - egyszeru nyil
   nextPage:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDYzNjgyZjE5ZGU0OTZjYjNjMzE0ZDYyOWQzZmMxZjQyNWU2NjAyNTI4MmQyY2U4YTFmMGUyMjQ3NmMwMWMwNCJ9fX0=
+      material: ARROW
       quantity: 1
-      name: "#DCB2FDNext Page ►"
+      name: "&e&lKövetkező oldal »"
     slot: 50
 
 # Elements of the bulk buy GUI
@@ -829,347 +816,230 @@ amountSelectionGUI:
 shopMenuItems:
   buildingblocks:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTIxYTZlMGNkMmRjMzIyM2IyNzFlNTYwM2I3MWQ3MDllNWI5ZWI2YzkxMzVhYTY0YmU1NjE2NmE2NTY3ZGMwIn19fQ==
+      material: GRASS_BLOCK
       quantity: 1
-      name: "#B84DD3&lBUILDING BLOCKS&7 → &f321 Items"
+      name: "&b&lÉpítő blokkok"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Search your favorite items for'
-        - '#D3D3D3build and make your best builds.'
+        - '&8&m─────────────────────'
+        - '&7Alapanyagok az építkezéshez:'
+        - '&8• &fkő, föld, fa, üveg és társaik'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fGrass, Dirt, Stone'
-        - '#DCB2FD ▪ &fWood, Glass, Doors'
-        - '#DCB2FD ▪ &fFence, Stairs and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
     shop: "buildingblocks"
-    slot: 11
+    slot: 10
   coloredblocks:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTFlNDJiOGY1MGZlZDgyOGQ0Yjk4MWMyN2NhMTNkMDcxY2U4NjNmNjE1NDBiMjc2MzgyNjZmNzcyZDQxZCJ9fX0=
+      material: FIRE_CORAL_BLOCK
       quantity: 1
-      name: "#B84DD3&lCOLORED BLOCKS&7 → &f176 Items"
+      name: "&b&lSzínes blokkok"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Beautify your builds with'
-        - '#D3D3D3different block colors.'
+        - '&8&m─────────────────────'
+        - '&7Színes blokkok a díszítéshez:'
+        - '&8• &fgyapjú, üveg, terrakotta'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fWool, Glass, Glass Pane'
-        - '#DCB2FD ▪ &fCarpet, Glazed Terracotta'
-        - '#DCB2FD ▪ &fBanners Shulkers and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
     shop: "coloredblocks"
+    slot: 11
+  decoration:
+    item:
+      material: FLOWER_POT
+      quantity: 1
+      name: "&b&lDekoráció"
+      lore:
+        - ''
+        - '&8&m─────────────────────'
+        - '&7Dekorációs elemek:'
+        - '&8• &fvirágok, levelek, lámpások'
+        - ''
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
+        - ''
+    shop: "decoration"
     slot: 12
-  food: 
+  farming:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2E5Yzg3NTM3ODBlYmMzOWMzNTFkYThlZmQ5MWJjZTkwYmQ4Y2NhN2I1MTFmOTNlNzhkZjc1ZjY2MTVjNzlhNiJ9fX0=
+      material: WHEAT
       quantity: 1
-      name: "#B84DD3&lFOOD&7 → &f30 Items"
+      name: "&b&lFarm"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Don''t be hungry! Buy some' 
-        - '#D3D3D3jummy food and feed yourself.'
+        - '&8&m─────────────────────'
+        - '&7Termények és magvak:'
+        - '&8• &fbúza, répa, krumpli, palánták'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fGolden Apple, Fish, Steak'
-        - '#DCB2FD ▪ &fCooked Porchop, Pumpkin Pie'
-        - '#DCB2FD ▪ &fBread, Cake and more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
+    shop: "farming"
+    slot: 13
+  food:
+    item:
+      material: BEEF
+      quantity: 1
+      name: "&b&lÉtelek"
+      lore:
         - ''
-    shop: "food" 
+        - '&8&m─────────────────────'
+        - '&7Ennivaló a túléléshez:'
+        - '&8• &fkenyér, hús, alma, sütemény'
+        - ''
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
+        - ''
+    shop: "food"
     slot: 14
-  mobdrops:
+  dyes&candles:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJhOGE4MDBhMGY5Y2Y3ZWJhNjQyM2E5MjVmOTZmMjYxYzQ0ODMyMWJlMzNkYTNmNzhiZjRmNTc4MGNiZGVhMCJ9fX0=
+      material: BLUE_DYE
       quantity: 1
-      name: "#B84DD3&lMOB DROPS&7 → &f26 Items"
+      name: "&b&lFestékek és gyertyák"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Make your money by killing or'
-        - '#D3D3D3farming mobs and sell their drops.'
+        - '&8&m─────────────────────'
+        - '&7Minden szín egy helyen:'
+        - '&8• &ffestékek és gyertyák'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fArrow, Leather, Feather'
-        - '#DCB2FD ▪ &fBlaze Rod, Magma Cube, String'
-        - '#DCB2FD ▪ &fBone, Gunpowder and more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "mobdrops"
+    shop: "dyes&candles"
     slot: 15
-  miscellaneous:
+  redstone:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzBhOTFjYTFkMjRmNDBlMWFiMGMyMjIyNmM5MDA5Mjk4ZWZhMDk3MmM4ZTA3YTliNTYzMmRiMmQ0M2U5MWNjIn19fQ==
+      material: REDSTONE
       quantity: 1
-      name: "#B84DD3&lMISCELLANEOUS&7 → &f42 Items"
+      name: "&b&lRedstone"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3There are some rare'
-        - '#D3D3D3and random items.'
+        - '&8&m─────────────────────'
+        - '&7Redstone alkatrészek:'
+        - '&8• &fpor, dugattyú, tölcsér, ismétlő'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fWater Bucket, Lava Bucket'
-        - '#DCB2FD ▪ &fEnder Chest, Beacon, Saddle'
-        - '#DCB2FD ▪ &fHorse Armor and more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "miscellaneous"
-    slot: 19
-  minerals: 
+    shop: "redstone"
+    slot: 16
+  minerals:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMyMTc5OWZkYjIzZWE0NDQzMmQ2YTQ0OWM3NDdkM2JiZDU2NmNjMjkzOTJjMGZlMzE1M2E5ZGRjYTVlNWQ1In19fQ==
+      material: NETHERITE_INGOT
       quantity: 1
-      name: "#B84DD3&lMINERALS&7 → &f48 Items"
+      name: "&b&lÉrcek"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Precious minerals are on sale.'
+        - '&8&m─────────────────────'
+        - '&7Értékes ércek és ásványok:'
+        - '&8• &fgyémánt, smaragd, netherite'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fNetherite, Diamond, Emerald'
-        - '#DCB2FD ▪ &fGold, Iron, Lapis, Redstone'
-        - '#DCB2FD ▪ &fQuartz, Coal & more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "minerals" 
+    shop: "minerals"
     slot: 20
+  enchanting:
+    item:
+      material: ENCHANTED_BOOK
+      quantity: 1
+      name: "&b&lVarázslatok"
+      lore:
+        - ''
+        - '&8&m─────────────────────'
+        - '&7Varázskönyvek a felszerelésedhez:'
+        - '&8• &fminden fontos varázslat'
+        - ''
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
+        - ''
+    shop: "enchanting"
+    slot: 21
   potions&arrows:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmQ4ZTBiMjY5NDJhODAwOTEwNTQyMGZmNWNiZDQwOTYwMTc3MDY0MDJiMGU0OTUwODA1Y2VkMDdlMWI4NGM2OCJ9fX0=
+      material: SPECTRAL_ARROW
       quantity: 1
-      name: "#B84DD3&lPOTIONS & ARROWS&7 → &f112 Items"
+      name: "&b&lBájitalok és nyilak"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Be stronger by using potions'
-        - '#D3D3D3and arrows with effects!'
+        - '&8&m─────────────────────'
+        - '&7Bájitalok és effektes nyilak:'
+        - '&8• &ferő, gyorsaság, gyógyítás'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fInstant Health, Regeneration'
-        - '#DCB2FD ▪ &fNight Vision, Jump and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
       flags:
         - HIDE_POTION_EFFECTS
     shop: "potions&arrows"
     slot: 22
-  spawners:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWY0NTVkMTEzNTVkZThlM2E2Y2Q2ZmU5NzBiYWQ1MWM1OTJhYTZhNTcxNzMwOTI1NWZiMWI5ZTQ3YTRlIn19fQ==
-      quantity: 1
-      name: "#B84DD3&lSPAWNERS&7 → &f68 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Build your own farms'
-        - '#D3D3D3and start making money!'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fPig, Sheep, Cow, Chicken'
-        - '#DCB2FD ▪ &fVillager, Zombie, Skeleton'
-        - '#DCB2FD ▪ &fand much other spawners!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "spawners"
-    slot: 24
-  monstereggs:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmMzZjExNGVmYmQ5MDgyODRjN2FhZGQ4MTk5Mzc2OTA1NzM2MWRkNzU2YmY1ZTc4ODNiOGUwYjFjZWE0NDZlNyJ9fX0=
-      quantity: 1
-      name: "#B84DD3&lMONSTEREGGS&7 → &f69 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Spawn your mobs with eggs.'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fPig, Sheep, Cow, Chicken'
-        - '#DCB2FD ▪ &fVillager, Zombie, Skeleton'
-        - '#DCB2FD ▪ &fand much other eggs!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "monstereggs"
-    slot: 25
-  redstone:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTRhMzdlNWUzYTVkYWU2ZDI3ODFmYWVmN2NkNGVlOThiMDFmMGQwYTQyOTM0MzJhYjNiY2JhNWEzYmNlZDE5YiJ9fX0=
-      quantity: 1
-      name: "#B84DD3&lREDSTONE&7 → &f42 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3You love to play with redstone?'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fRedstone, Piston, Sticky Piston'
-        - '#DCB2FD ▪ &fHopper, Dispenser, Red Lamp'
-        - '#DCB2FD ▪ &fDaylight Sensor and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "redstone"
-    slot: 28
-  enchanting:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjYyNjUxODc5ZDg3MDQ5OWRhNTBlMzQwMzY4MDBkZGZmZDUyZjNlNGUxOTkzYzVmYzBmYzgyNWQwMzQ0NmQ4YiJ9fX0=
-      quantity: 1
-      name: "#B84DD3&lENCHANTING&7 → &f37 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Enchant your weapon/armor.'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fEnchanting Table, Anvil'
-        - '#DCB2FD ▪ &fExperience Bottle, Book Shelf'
-        - '#DCB2FD ▪ &fEnchanting Books and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "enchanting"
-    slot: 30
-  dyes&candles:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGIzYmNjMWE2NjhmYjMzOTc1MDczNTk2NzQxMjhhNDJjMjZmMzQ0OTc0MTg5ZWMzMjJhMzNkMTMxNjg0MjhlYSJ9fX0=
-      quantity: 1
-      name: "#B84DD3&lDYES & CANDLES&7 → &f33 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Paint your leather armor, wool'
-        - '#D3D3D3or glass in various colors.'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fWhite Dye, Blue Dye'
-        - '#DCB2FD ▪ &fGreen Dye, Lime Dye'
-        - '#DCB2FD ▪ &fYellow Dye and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "dyes&candles"
-    slot: 32
-  farming:
-    item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjY0NTliZTA5OTk4ZTUwYWJkMmNjZjRjZDM4M2U2YjM4YWI1YmM5MDVmYWNiNjZkY2UwZTE0ZTAzOGJhMTk2OCJ9fX0=
-      quantity: 1
-      name: "#B84DD3&lFARMING&7 → &f33 Items"
-      lore:
-        - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Make your own garden and'
-        - '#D3D3D3start earning your money.'
-        - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fSeeds, Nether Wart, Melon'
-        - '#DCB2FD ▪ &fSapling, Mushroom, Cactus'
-        - '#DCB2FD ▪ &fCarrot, Potato and more!'
-        - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
-    shop: "farming"
-    slot: 34
   combat&tools:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjYyMTk2ZTQyZGVmOTk1ODE5Mjk4ZmJkMmE5YmJmYzJmNDU1NjRmZDQ0OGZhZjlhYzliZWQ3YmI4Nzc1NDU3NCJ9fX0=
+      material: DIAMOND_SWORD
       quantity: 1
-      name: "#B84DD3&lCOMBAT & TOOLS&7 → &f41 Items"
+      name: "&b&lHarc és eszközök"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Do you need PvP equipment'
-        - '#D3D3D3or some tools?'
+        - '&8&m─────────────────────'
+        - '&7Fegyverek, páncélok, szerszámok:'
+        - '&8• &fkard, íj, balta, csákány'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fArmor, Sword, Shears'
-        - '#DCB2FD ▪ &fBow, Crossbow, Arrow'
-        - '#DCB2FD ▪ &fFishing Rod, and more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
-        - ''
+      flags:
+        - HIDE_ATTRIBUTES
     shop: "combat&tools"
-    slot: 39
-  decoration:
+    slot: 23
+  miscellaneous:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWIyMDY0MzkwZTc5ZDllNTRjY2I0MThiMDczMzE1M2NmOTkyM2ZjNGE4ZDE0YWIxZDJiN2VmNTk2ODgzMWM5MyJ9fX0=
+      material: SPYGLASS
       quantity: 1
-      name: "#B84DD3&lDECORATION&7 → &f116 Items"
+      name: "&b&lEgyéb"
       lore:
         - ''
-        - '&8&m---------------------------'
-        - '#D3D3D3Decorate your builds with'
-        - '#D3D3D3flowers, leaves and more!'
+        - '&8&m─────────────────────'
+        - '&7Ritka és egyéb tárgyak:'
+        - '&8• &fvödrök, nyergek, beacon'
         - ''
-        - '#DCB2FDThis category contains'
-        - '#DCB2FD ▪ &fLeaves, Flowers, Signs'
-        - '#DCB2FD ▪ &fCampfire, Torch, Bell'
-        - '#DCB2FD ▪ &fCorals and more!'
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
         - ''
-        - '#D3D3D3➥ Click to browse.'
-        - '&8&m---------------------------'
+    shop: "miscellaneous"
+    slot: 24
+  mobdrops:
+    item:
+      material: ROTTEN_FLESH
+      quantity: 1
+      name: "&b&lSzörny dropok"
+      lore:
         - ''
-    shop: "decoration"
-    slot: 41
+        - '&8&m─────────────────────'
+        - '&7Szörnyek dropjai eladásra:'
+        - '&8• &fcsont, fonal, puskapor, gyöngy'
+        - ''
+        - '&b➥ &fKattints a megnyitáshoz!'
+        - '&8&m─────────────────────'
+        - ''
+    shop: "mobdrops"
+    slot: 25
 #
 #
 #
 specialElements:
   balance:
     item:
-      material: PLAYER_HEAD
-      skin: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMyNGE3ZDYxY2NkNDRiMDMxNzQ0YjUxN2Y5MTFhNWM0NjE2MTRiOTUzYjE3ZjY0ODI4MmUxNDdiMjlkMTBlIn19fQ==
+      material: GOLD_INGOT
       quantity: 1
-      name: "#B84DD3&lBALANCE"
+      name: "&6&lEgyenleged"
       lore:
         - ''
-        - '#D3D3D3Here''s displayed how much'
-        - '#D3D3D3money you currently have.'
+        - '&7Itt látod, mennyi pénzed van.'
         - ''
-        - '#DCB2FD➥ &f%balance%'
+        - '&6➥ &f%balance%'
         - ''
 # =====================================================================
 #  GeNe Shop - EGYEDI DINAMIKUS ARAZAS  (keszitette: negyes Gerii06)

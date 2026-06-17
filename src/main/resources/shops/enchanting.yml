@@ -1,5 +1,5 @@
 enchanting:
-  name: 'Shop → Enchanting (&f%page%&8/&f2&8)'
+  name: "&b&l▶ &8• &7Varázslatok &8(&f%page%&8/&f2&8)"
   fillItem:
     material: GRAY_STAINED_GLASS_PANE
     name: '&r'
@@ -65,7 +65,7 @@ enchanting:
       enchantment: PROTECTION
       enchantmentLevel: 4
       item:
-        name: '&fProtection IV'
+        name: '&fVédelem IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -75,7 +75,7 @@ enchanting:
       enchantment: PROTECTION_FIRE
       enchantmentLevel: 4
       item:
-        name: '&fFire Protection IV'
+        name: '&fTűzvédelem IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -85,7 +85,7 @@ enchanting:
       enchantment: PROTECTION_FALL
       enchantmentLevel: 4
       item:
-        name: '&fFeather Falling IV'
+        name: '&fEsés csillapítás IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -95,7 +95,7 @@ enchanting:
       enchantment: BLAST_PROTECTION
       enchantmentLevel: 4
       item:
-        name: '&fBlast Protection IV'
+        name: '&fRobbanásvédelem IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -105,7 +105,7 @@ enchanting:
       enchantment: PROJECTILE_PROTECTION
       enchantmentLevel: 4
       item:
-        name: '&fProjectile Protection IV'
+        name: '&fLövedékvédelem IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -115,7 +115,7 @@ enchanting:
       enchantment: RESPIRATION
       enchantmentLevel: 3
       item:
-        name: '&fRespiration III'
+        name: '&fLégzés III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -125,7 +125,7 @@ enchanting:
       enchantment: AQUA_AFFINITY
       enchantmentLevel: 1
       item:
-        name: '&fAqua Affinity I'
+        name: '&fVízi munka I'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -135,7 +135,7 @@ enchanting:
       enchantment: THORNS
       enchantmentLevel: 3
       item:
-        name: '&fThorns III'
+        name: '&fTüskék III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -145,7 +145,7 @@ enchanting:
       enchantment: DEPTH_STRIDER
       enchantmentLevel: 3
       item:
-        name: '&fDepth Strider III'
+        name: '&fMélységjáró III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -155,7 +155,7 @@ enchanting:
       enchantment: SHARPNESS
       enchantmentLevel: 5
       item:
-        name: '&fSharpness V'
+        name: '&fÉlesség V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -165,7 +165,7 @@ enchanting:
       enchantment: SMITE
       enchantmentLevel: 5
       item:
-        name: '&fSmite V'
+        name: '&fSújtás V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -175,7 +175,7 @@ enchanting:
       enchantment: BANE_OF_ARTHROPODS
       enchantmentLevel: 5
       item:
-        name: '&fBane Of Arthropods V'
+        name: '&fÍzeltlábúak átka V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -185,7 +185,7 @@ enchanting:
       enchantment: IMPALING
       enchantmentLevel: 5
       item:
-        name: '&fImpaling V'
+        name: '&fFelnyársalás V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -195,7 +195,7 @@ enchanting:
       enchantment: RIPTIDE
       enchantmentLevel: 3
       item:
-        name: '&fRiptide III'
+        name: '&fÖrvény III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -205,7 +205,7 @@ enchanting:
       enchantment: KNOCKBACK
       enchantmentLevel: 2
       item:
-        name: '&fKnockback II'
+        name: '&fVisszalökés II'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -216,7 +216,7 @@ enchanting:
       enchantment: FIRE_ASPECT
       enchantmentLevel: 2
       item:
-        name: '&fFire Aspect II'
+        name: '&fTűz hatás II'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -227,7 +227,7 @@ enchanting:
       enchantment: LOOTING
       enchantmentLevel: 3
       item:
-        name: '&fLooting III'
+        name: '&fZsákmányszerzés III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -238,7 +238,7 @@ enchanting:
       enchantment: EFFICIENCY
       enchantmentLevel: 5
       item:
-        name: '&fEfficiency V'
+        name: '&fHatékonyság V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 40000
@@ -249,7 +249,7 @@ enchanting:
       enchantment: SILK_TOUCH
       enchantmentLevel: 1
       item:
-        name: '&fSilk Touch I'
+        name: '&fSelyemérintés I'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 40000
@@ -260,7 +260,7 @@ enchanting:
       enchantment: UNBREAKING
       enchantmentLevel: 3
       item:
-        name: '&fUnbreaking III'
+        name: '&fTartósság III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 40000
@@ -271,7 +271,7 @@ enchanting:
       enchantment: FORTUNE
       enchantmentLevel: 3
       item:
-        name: '&fFortune III'
+        name: '&fSzerencse III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 50000
@@ -282,7 +282,7 @@ enchanting:
       enchantment: POWER
       enchantmentLevel: 5
       item:
-        name: '&fPower V'
+        name: '&fErő V'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -293,7 +293,7 @@ enchanting:
       enchantment: PUNCH
       enchantmentLevel: 2
       item:
-        name: '&fPunch II'
+        name: '&fÜtés II'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -304,7 +304,7 @@ enchanting:
       enchantment: FLAME
       enchantmentLevel: 1
       item:
-        name: '&fFlame I'
+        name: '&fLáng I'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -315,7 +315,7 @@ enchanting:
       enchantment: INFINITY
       enchantmentLevel: 1
       item:
-        name: '&fInfinity I'
+        name: '&fVégtelenség I'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -326,7 +326,7 @@ enchanting:
       enchantment: LUCK_OF_THE_SEA
       enchantmentLevel: 3
       item:
-        name: '&fLuck of the Sea III'
+        name: '&fTenger szerencséje III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -337,7 +337,7 @@ enchanting:
       enchantment: LURE
       enchantmentLevel: 3
       item:
-        name: '&fLure III'
+        name: '&fCsali III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -348,7 +348,7 @@ enchanting:
       enchantment: FROST_WALKER
       enchantmentLevel: 2
       item:
-        name: '&fFrost Walker II'
+        name: '&fFagyjáró II'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -359,7 +359,7 @@ enchanting:
       enchantment: SWEEPING_EDGE
       enchantmentLevel: 3
       item:
-        name: '&fSweeping Edge III'
+        name: '&fSuhintó él III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -370,7 +370,7 @@ enchanting:
       enchantment: MENDING
       enchantmentLevel: 1
       item:
-        name: '&fMending I'
+        name: '&fJavítás I'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -381,7 +381,7 @@ enchanting:
       enchantment: QUICK_CHARGE
       enchantmentLevel: 3
       item:
-        name: '&fQuick Charge III'
+        name: '&fGyorstöltés III'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000
@@ -392,7 +392,7 @@ enchanting:
       enchantment: PIERCING
       enchantmentLevel: 4
       item:
-        name: '&fPiercing IV'
+        name: '&fÁtütés IV'
         material: ENCHANTED_BOOK
         quantity: 1
       buyPrice: 20000

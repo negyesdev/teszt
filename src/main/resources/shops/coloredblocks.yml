@@ -1,5 +1,5 @@
 coloredblocks:
-  name: "Shop → Colored Blocks (&f%page%&8/&f11&8)"
+  name: "&b&l▶ &8• &7Színes blokkok &8(&f%page%&8/&f11&8)"
   fillItem:
       material: GRAY_STAINED_GLASS_PANE
       name: "&r"
